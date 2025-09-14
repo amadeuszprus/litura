@@ -1,0 +1,184 @@
+@layer components {
+  .prose {
+    max-width: var(--measure);
+  }
+  .prose :is(h1, h2, h3) {
+    line-height: 1.2;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+  }
+  .prose h1 {
+    font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem);
+  }
+  .prose h2 {
+    font-size: clamp(1.35rem, 1.2vw + 1rem, 1.75rem);
+  }
+  .prose h3 {
+    font-size: clamp(1.15rem, 0.8vw + 0.9rem, 1.35rem);
+  }
+  .prose h4 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+    margin-top: 1.25em;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+  }
+  .prose h5 {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    font-weight: 600;
+  }
+  .prose h6 {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .prose p,
+  .prose ul,
+  .prose ol,
+  .prose blockquote,
+  .prose pre {
+    margin-block: 1em;
+  }
+  .prose blockquote {
+    padding-left: var(--size-4);
+    border-left: 3px solid var(--line);
+    color: var(--muted);
+  }
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: color-mix(in srgb, var(--accent) 8%, var(--soft));
+    color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-1);
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--line));
+  }
+  .prose pre {
+    overflow: auto;
+    padding: var(--size-4);
+    background: color-mix(in srgb, var(--accent) 4%, var(--soft));
+    border-radius: var(--radius-2);
+    border: 1px solid color-mix(in srgb, var(--accent) 10%, var(--line));
+  }
+  
+  .prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .prose hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin-block: 2em;
+  }
+  .prose :is(ul, ol) {
+    padding-left: 1.25em;
+  }
+  .prose li + li {
+    margin-top: 0.25em;
+  }
+  .prose mark {
+    background: color-mix(in oklab, var(--accent) 20%, transparent);
+    padding: 0.1em 0.2em;
+    border-radius: var(--radius-1);
+  }
+  .prose abbr {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+  .prose del {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+  .prose ins {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 0.2em;
+  }
+  .prose kbd {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    padding: 0.15em 0.4em;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-1);
+    box-shadow: 0 2px 0 var(--line);
+  }
+  .prose small {
+    font-size: 0.875em;
+    color: var(--muted);
+  }
+  .prose strong {
+    font-weight: 700;
+  }
+  .prose em {
+    font-style: italic;
+  }
+  .prose table {
+    width: 100%;
+    margin-block: 1.5em;
+    border-collapse: collapse;
+  }
+  .prose th {
+    text-align: start;
+    padding: var(--size-3);
+    border-bottom: 2px solid var(--line);
+  }
+  .prose td {
+    padding: var(--size-3);
+    border-bottom: 1px solid var(--line);
+  }
+  .prose figure {
+    margin-block: 2em;
+  }
+  .prose figcaption {
+    margin-top: var(--size-3);
+    font-size: 0.875em;
+    color: var(--muted);
+    text-align: center;
+  }
+  .prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-2);
+  }
+  .prose a {
+    color: var(--accent);
+    text-underline-offset: 0.2em;
+  }
+  .prose a:hover {
+    text-decoration-thickness: 2px;
+  }
+  .prose dt {
+    font-weight: 600;
+    margin-top: 1em;
+  }
+  .prose dd {
+    margin-left: var(--size-5);
+    margin-bottom: 0.5em;
+  }
+  .prose details {
+    margin-block: 1em;
+    padding: var(--size-3);
+    background: var(--soft);
+    border-radius: var(--radius-2);
+  }
+  .prose summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .prose :first-child {
+    margin-top: 0;
+  }
+  .prose :last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,77 @@
+@layer components {
+  .dl {
+    display: grid;
+    gap: var(--size-4);
+  }
+  .dl dt {
+    font-weight: 600;
+    margin-bottom: var(--size-2);
+  }
+  .dl dd {
+    margin: 0;
+    margin-bottom: var(--size-4);
+    color: var(--muted);
+  }
+  .dl dd:last-child {
+    margin-bottom: 0;
+  }
+  .dl--inline {
+    display: grid;
+    grid-template-columns: minmax(8rem, max-content) 1fr;
+    gap: var(--size-3) var(--size-5);
+    align-items: baseline;
+  }
+  .dl--inline dt {
+    margin: 0;
+    text-align: end;
+  }
+  .dl--inline dd {
+    margin: 0;
+    color: var(--fg);
+  }
+  .dl--cards {
+    display: grid;
+    gap: var(--size-4);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+  .dl--cards > div {
+    padding: var(--size-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: var(--soft);
+  }
+  .dl--cards dt {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: var(--size-1);
+  }
+  .dl--cards dd {
+    font-size: 1.25rem;
+    color: var(--fg);
+    margin: 0;
+  }
+  .dl--bordered {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    padding: 0;
+    gap: 0;
+  }
+  .dl--bordered > * {
+    padding: var(--size-3) var(--size-4);
+  }
+  .dl--bordered dt {
+    background: var(--soft);
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+  }
+  .dl--bordered dd {
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+    color: var(--fg);
+  }
+  .dl--bordered dd:last-child {
+    border-bottom: 0;
+  }
+}

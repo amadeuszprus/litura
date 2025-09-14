@@ -1,0 +1,69 @@
+@layer utilities {
+  .text-xs { font-size: 0.75rem !important; }
+  .text-sm { font-size: 0.875rem !important; }
+  .text-base { font-size: 1rem !important; }
+  .text-lg { font-size: 1.125rem !important; }
+  .text-xl { font-size: 1.25rem !important; }
+  .text-2xl { font-size: 1.5rem !important; }
+  .text-3xl { font-size: 1.875rem !important; }
+  .text-4xl { font-size: 2.25rem !important; }
+  .text-5xl { font-size: 3rem !important; }
+
+  .font-thin { font-weight: 100 !important; }
+  .font-light { font-weight: 300 !important; }
+  .font-normal { font-weight: 400 !important; }
+  .font-medium { font-weight: 500 !important; }
+  .font-semibold { font-weight: 600 !important; }
+  .font-bold { font-weight: 700 !important; }
+  .font-black { font-weight: 900 !important; }
+
+  .italic { font-style: italic !important; }
+  .not-italic { font-style: normal !important; }
+
+  .uppercase { text-transform: uppercase !important; }
+  .lowercase { text-transform: lowercase !important; }
+  .capitalize { text-transform: capitalize !important; }
+  .normal-case { text-transform: none !important; }
+
+  .text-left { text-align: left !important; }
+  .text-center { text-align: center !important; }
+  .text-right { text-align: right !important; }
+  .text-justify { text-align: justify !important; }
+  .text-start { text-align: start !important; }
+  .text-end { text-align: end !important; }
+
+  .underline { text-decoration: underline !important; }
+  .line-through { text-decoration: line-through !important; }
+  .no-underline { text-decoration: none !important; }
+
+  .leading-none { line-height: 1 !important; }
+  .leading-tight { line-height: 1.25 !important; }
+  .leading-snug { line-height: 1.375 !important; }
+  .leading-normal { line-height: 1.5 !important; }
+  .leading-relaxed { line-height: 1.625 !important; }
+  .leading-loose { line-height: 2 !important; }
+
+  .tracking-tight { letter-spacing: -0.025em !important; }
+  .tracking-normal { letter-spacing: 0 !important; }
+  .tracking-wide { letter-spacing: 0.025em !important; }
+  .tracking-wider { letter-spacing: 0.05em !important; }
+  .tracking-widest { letter-spacing: 0.1em !important; }
+
+  .truncate {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  .text-wrap { text-wrap: wrap !important; }
+  .text-nowrap { white-space: nowrap !important; }
+  .text-balance { text-wrap: balance !important; }
+  .text-pretty { text-wrap: pretty !important; }
+
+  .break-normal { word-break: normal !important; overflow-wrap: normal !important; }
+  .break-words { overflow-wrap: break-word !important; }
+  .break-all { word-break: break-all !important; }
+  .break-keep { word-break: keep-all !important; }
+
+  .font-sans { font-family: var(--font-sans) !important; }
+  .font-mono { font-family: var(--font-mono) !important; }
+}

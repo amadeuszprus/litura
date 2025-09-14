@@ -1,0 +1,19 @@
+{
+  "name": "litura",
+  "version": "0.1.0-alpha",
+  "description": "A minimalist CSS library focused on content",
+  "author": "Amadeusz Prus <https://github.com/amadeuszprus>",
+  "license": "MIT",
+  "homepage": "https://litura.net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amadeuszprus/litura.git"
+  },
+  "style": "index.css",
+  "exports": {
+    "./core/*": "./core/*.css",
+    "./components/*": "./components/*.css",
+    "./utilities/*": "./utilities/*.css",
+    ".": "./index.css"
+  }
+}
