@@ -2,3 +2,5 @@ node_modules
 .vscode
 demo.html
 docs.html
+.npmignore
+min/

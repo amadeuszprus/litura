@@ -7,13 +7,50 @@
   "homepage": "https://litura.net",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amadeuszprus/litura.git"
+    "url": "git+https://github.com/amadeuszprus/litura.git"
   },
   "style": "index.css",
   "exports": {
     "./core/*": "./core/*.css",
     "./components/*": "./components/*.css",
     "./utilities/*": "./utilities/*.css",
+    "./js/*": "./js/*.js",
     ".": "./index.css"
+  },
+  "main": "index.css",
+  "keywords": [
+    "css",
+    "library",
+    "litura",
+    "styles"
+  ],
+  "files": [
+    "index.css",
+    "core/",
+    "js/",
+    "components/",
+    "utilities/"
+  ],
+  "scripts": {
+    "lint:js": "eslint '**/*.js'",
+    "lint:css": "stylelint '**/*.css'",
+    "lint:html": "htmlhint '**/*.html'",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "minify:css": "cleancss -o min/index.min.css index.css && find core components utilities -name '*.css' -exec sh -c 'mkdir -p min/$(dirname {}) && cleancss -o min/{}.min.css {}' \\;",
+    "minify:js": "find js -name '*.js' -exec sh -c 'mkdir -p min/$(dirname {}) && terser {} -o min/{}.min.js' \\;",
+    "minify": "npm run minify:css && npm run minify:js",
+    "build": "npm run lint && npm run minify"
+  },
+  "bugs": {
+    "url": "https://github.com/amadeuszprus/litura/issues"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "clean-css-cli": "^5.6.3",
+    "eslint": "^9.35.0",
+    "htmlhint": "^1.7.0",
+    "stylelint": "^16.24.0",
+    "stylelint-config-standard": "^39.0.0",
+    "terser": "^5.44.0"
   }
 }
