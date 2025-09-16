@@ -4,36 +4,36 @@
     border-collapse: collapse;
     font-variant-numeric: tabular-nums;
   }
-  .table caption {
+  .table__caption {
     padding-block: var(--size-3);
     font-weight: 600;
     text-align: start;
   }
-  .table th {
+  .table__header-cell {
     text-align: start;
     font-weight: 600;
     padding: var(--size-3) var(--size-4);
     border-bottom: 2px solid var(--line);
   }
-  .table td {
+  .table__cell {
     padding: var(--size-3) var(--size-4);
     border-bottom: 1px solid var(--line);
   }
-  .table tbody tr:last-child td {
+  .table__body .table__row:last-child .table__cell {
     border-bottom: 0;
   }
-  .table tbody tr:hover {
+  .table__row:hover {
     background: var(--soft);
   }
-  .table--striped tbody tr:nth-child(even) {
+  .table--striped .table__row:nth-child(even) {
     background: var(--soft);
   }
-  .table--compact th,
-  .table--compact td {
+  .table--compact .table__header-cell,
+  .table--compact .table__cell {
     padding: var(--size-2) var(--size-3);
   }
-  .table--borderless th,
-  .table--borderless td {
+  .table--borderless .table__header-cell,
+  .table--borderless .table__cell {
     border: 0;
   }
   .table--fixed {
@@ -48,25 +48,25 @@
     .table--stack {
       display: block;
     }
-    .table--stack thead {
+    .table--stack .table__head {
       display: none;
     }
-    .table--stack tbody,
-    .table--stack tr,
-    .table--stack td {
+    .table--stack .table__body,
+    .table--stack .table__row,
+    .table--stack .table__cell {
       display: block;
       width: 100%;
     }
-    .table--stack tr {
+    .table--stack .table__row {
       padding-block: var(--size-3);
       border-bottom: 1px solid var(--line);
     }
-    .table--stack td {
+    .table--stack .table__cell {
       padding: var(--size-2) 0;
       border: 0;
       text-align: end;
     }
-    .table--stack td::before {
+    .table--stack .table__cell::before {
       content: attr(data-label);
       float: left;
       font-weight: 600;

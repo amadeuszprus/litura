@@ -75,7 +75,7 @@ npm install litura
 
 ```html
 <form class="form">
-  <div class="form-row">
+  <div class="form__row">
     <label>Email</label>
     <input type="email" placeholder="Enter your email" />
   </div>
@@ -95,16 +95,16 @@ npm install litura
 
 ```html
 <table class="table table--striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Role</th>
+  <thead class="table__head">
+    <tr class="table__row">
+      <th class="table__header-cell">Name</th>
+      <th class="table__header-cell">Role</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td>John Doe</td>
-      <td>Developer</td>
+  <tbody class="table__body">
+    <tr class="table__row">
+      <td class="table__cell" data-label="Name">John Doe</td>
+      <td class="table__cell" data-label="Role">Developer</td>
     </tr>
   </tbody>
 </table>

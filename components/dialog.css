@@ -224,7 +224,7 @@
     margin: 0;
   }
 
-  .dialog__form .form-row:last-child {
+  .dialog__form .form__row:last-child {
     margin-bottom: 0;
   }
 
