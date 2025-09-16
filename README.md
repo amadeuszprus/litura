@@ -199,6 +199,28 @@ npm install
 # Use the CDN example above or your own test HTML page.
 ```
 
+### Development Scripts
+
+After installing dependencies, you can use these npm scripts:
+
+```bash
+# Linting
+npm run lint:js     # Lint JavaScript files with ESLint
+npm run lint:css    # Lint CSS files with Stylelint
+npm run lint:html   # Lint HTML files with HTMLHint
+npm run lint        # Lint all files (JS, CSS, HTML)
+
+# Minification
+npm run minify:css  # Minify CSS files to min/ directory
+npm run minify:js   # Minify JS files to min/ directory
+npm run minify      # Minify all files
+
+# Build
+npm run build       # Lint and minify everything
+```
+
+The minified files are generated in the `min/` directory with the same structure as source files.
+
 > Note: Local `demo.html` / `docs.html` are intentionally not tracked; see online docs.
 
 ---
@@ -256,24 +278,4 @@ Litura uses CSS Layers for predictable cascade control:
 
 ## License
 
-MIT License  
-
-Copyright (c) 2024 Litura  
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+This project is licensed under the MIT License - see the [LICENCE.md](LICENCE.md) file for details.
