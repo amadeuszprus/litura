@@ -12,6 +12,7 @@
 @import "./components/alert.css" layer(components);
 @import "./components/info-panel.css" layer(components);
 @import "./components/card.css" layer(components);
+@import "./components/badge.css" layer(components);
 @import "./components/label.css" layer(components);
 @import "./utilities/layout.css" layer(utilities);
 @import "./utilities/helpers.css" layer(utilities);
