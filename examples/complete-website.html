@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LituraVenture - Complete Website Example</title>
+  <link rel="stylesheet" href="../index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .theme-switcher {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      padding: var(--size-2);
+      box-shadow: 0 2px 8px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    }
+
+    .theme-switcher select {
+      appearance: none;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-1);
+      padding: var(--size-2) var(--size-5);
+      color: var(--fg);
+      font-size: 0.875rem;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right var(--size-2) center;
+      background-size: 0.875rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 80%, transparent) 100%);
+      color: var(--accent-fg);
+      text-align: center;
+      padding: var(--size-6) 0;
+    }
+
+    .hero h1 { margin-bottom: var(--size-3); }
+    .hero p { font-size: 1.125rem; opacity: 0.9; }
+
+    .hero .btn--soft {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--accent-fg);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero .btn--soft:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .hero .btn--ghost {
+      background: transparent;
+      color: var(--accent-fg);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .hero .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--size-4);
+      margin: var(--size-5) 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: var(--size-4);
+      background: var(--soft);
+      border-radius: var(--radius-2);
+      border: 1px solid var(--line);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--size-5);
+      margin: var(--size-5) 0;
+    }
+
+    .feature-card {
+      padding: var(--size-4);
+      background: var(--soft);
+      border-radius: var(--radius-2);
+      border: 1px solid var(--line);
+    }
+
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      background: var(--accent);
+      border-radius: var(--radius-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--size-3);
+      font-size: 1.5rem;
+      color: var(--accent-fg);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--size-4);
+      margin: var(--size-5) 0;
+    }
+
+    .pricing-card {
+      padding: var(--size-5);
+      background: var(--soft);
+      border: 2px solid var(--line);
+      border-radius: var(--radius-2);
+      text-align: center;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--accent-fg);
+      padding: var(--size-1) var(--size-3);
+      border-radius: var(--radius-1);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .price-period {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .testimonial {
+      background: var(--soft);
+      padding: var(--size-4);
+      border-radius: var(--radius-2);
+      border-left: 4px solid var(--accent);
+      margin: var(--size-3) 0;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      margin-top: var(--size-2);
+    }
+
+    .testimonial-role {
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    footer {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      margin-top: var(--size-6);
+      padding: var(--size-5) 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--size-4);
+    }
+
+    .footer-section h4 {
+      margin-bottom: var(--size-2);
+      color: var(--fg);
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: var(--size-1);
+    }
+
+    .footer-section a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <label for="theme-select" class="sr-only">Choose theme</label>
+    <select id="theme-select">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="container py-4">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-accent rounded flex items-center justify-center">
+          <span class="text-accent-fg font-bold">T</span>
+        </div>
+        <h1 class="text-lg font-bold">LituraVenture</h1>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="#features" class="text-muted hover:text-accent">Features</a>
+        <a href="#pricing" class="text-muted hover:text-accent">Pricing</a>
+        <a href="#about" class="text-muted hover:text-accent">About</a>
+        <button class="btn btn--ghost">Login</button>
+        <button class="btn">Get Started</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="text-4xl font-bold mb-4">Transform Your Business with Modern Technology</h1>
+      <p class="text-lg mb-6">Streamline operations, boost productivity, and scale your business with our comprehensive tech solutions.</p>
+      <div class="flex justify-center gap-3">
+        <button class="btn btn--soft">Start Free Trial</button>
+        <button class="btn btn--ghost">Watch Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="container my-6">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">50K+</span>
+        <span class="text-muted">Active Users</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">99.9%</span>
+        <span class="text-muted">Uptime</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">24/7</span>
+        <span class="text-muted">Support</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">150+</span>
+        <span class="text-muted">Countries</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="container my-6">
+    <div class="text-center mb-5">
+      <h2 class="text-3xl font-bold mb-3">Powerful Features</h2>
+      <p class="text-muted text-lg">Everything you need to succeed in the digital age</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
+        <p class="text-muted">Built for speed with modern architecture and optimized performance that scales with your business needs.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3 class="text-xl font-semibold mb-2">Enterprise Security</h3>
+        <p class="text-muted">Bank-level security with end-to-end encryption, SSO integration, and compliance with industry standards.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="text-xl font-semibold mb-2">Advanced Analytics</h3>
+        <p class="text-muted">Real-time insights and detailed reporting to help you make data-driven decisions for your business.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔧</div>
+        <h3 class="text-xl font-semibold mb-2">Easy Integration</h3>
+        <p class="text-muted">Seamlessly connect with your existing tools and workflows through our comprehensive API and integrations.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3 class="text-xl font-semibold mb-2">Mobile First</h3>
+        <p class="text-muted">Responsive design that works perfectly on all devices, with native mobile apps for iOS and Android.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+        <p class="text-muted">Round-the-clock customer support with live chat, phone support, and comprehensive documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="container my-6">
+    <div class="text-center mb-5">
+      <h2 class="text-3xl font-bold mb-3">Simple, Transparent Pricing</h2>
+      <p class="text-muted text-lg">Choose the plan that's right for your business</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="text-xl font-semibold mb-3">Starter</h3>
+        <div class="price">$29<span class="price-period">/month</span></div>
+        <p class="text-muted mb-4">Perfect for small teams getting started</p>
+
+        <ul class="text-left mb-5 space-y-2">
+          <li>✅ Up to 5 team members</li>
+          <li>✅ 10GB storage</li>
+          <li>✅ Basic analytics</li>
+          <li>✅ Email support</li>
+          <li>✅ Core integrations</li>
+        </ul>
+
+        <button class="btn btn--ghost w-full">Get Started</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3 class="text-xl font-semibold mb-3">Professional</h3>
+        <div class="price">$79<span class="price-period">/month</span></div>
+        <p class="text-muted mb-4">For growing businesses that need more</p>
+
+        <ul class="text-left mb-5 space-y-2">
+          <li>✅ Up to 25 team members</li>
+          <li>✅ 100GB storage</li>
+          <li>✅ Advanced analytics</li>
+          <li>✅ Priority support</li>
+          <li>✅ All integrations</li>
+          <li>✅ Custom workflows</li>
+          <li>✅ API access</li>
+        </ul>
+
+        <button class="btn w-full">Choose Professional</button>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="text-xl font-semibold mb-3">Enterprise</h3>
+        <div class="price">$199<span class="price-period">/month</span></div>
+        <p class="text-muted mb-4">For large organizations with complex needs</p>
+
+        <ul class="text-left mb-5 space-y-2">
+          <li>✅ Unlimited team members</li>
+          <li>✅ Unlimited storage</li>
+          <li>✅ Enterprise analytics</li>
+          <li>✅ Dedicated support</li>
+          <li>✅ Custom integrations</li>
+          <li>✅ SSO & advanced security</li>
+          <li>✅ On-premise deployment</li>
+          <li>✅ SLA guarantee</li>
+        </ul>
+
+        <button class="btn btn--ghost w-full">Contact Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="container my-6">
+    <div class="text-center mb-5">
+      <h2 class="text-3xl font-bold mb-3">What Our Customers Say</h2>
+      <p class="text-muted text-lg">Trusted by thousands of businesses worldwide</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="testimonial">
+        <p class="mb-3">"LituraVenture transformed how we work. The intuitive interface and powerful features helped us increase productivity by 40% in just three months."</p>
+        <div class="testimonial-author">Sarah Chen</div>
+        <div class="testimonial-role">CTO, InnovateCorp</div>
+      </div>
+
+      <div class="testimonial">
+        <p class="mb-3">"The customer support is exceptional. Every question is answered quickly and the team genuinely cares about our success. Highly recommended!"</p>
+        <div class="testimonial-author">Michael Rodriguez</div>
+        <div class="testimonial-role">Operations Director, ScaleUp Inc</div>
+      </div>
+
+      <div class="testimonial">
+        <p class="mb-3">"We've tried many solutions, but LituraVenture is the only one that scales with our growing business. The enterprise features are exactly what we needed."</p>
+        <div class="testimonial-author">Emma Thompson</div>
+        <div class="testimonial-role">VP of Technology, GlobalTech</div>
+      </div>
+
+      <div class="testimonial">
+        <p class="mb-3">"Implementation was seamless and the ROI was immediate. Our team adopted it quickly and we're seeing results across all departments."</p>
+        <div class="testimonial-author">David Kim</div>
+        <div class="testimonial-role">CEO, StartupLab</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="container my-6">
+    <div class="text-center mb-5">
+      <h2 class="text-3xl font-bold mb-3">Get Started Today</h2>
+      <p class="text-muted text-lg">Have questions? We're here to help you succeed</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      <form class="form">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="form-row">
+            <label for="first-name">First Name *</label>
+            <input type="text" id="first-name" name="first-name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="last-name">Last Name *</label>
+            <input type="text" id="last-name" name="last-name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-row">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company">
+        </div>
+
+        <div class="form-row">
+          <label for="plan">Interested in</label>
+          <select id="plan" name="plan">
+            <option value="">Select a plan</option>
+            <option value="starter">Starter Plan</option>
+            <option value="professional">Professional Plan</option>
+            <option value="enterprise">Enterprise Plan</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your needs..." required></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 mb-4">
+          <input type="checkbox" id="newsletter" name="newsletter">
+          <label for="newsletter" class="text-sm">I'd like to receive updates and special offers</label>
+        </div>
+
+        <button type="submit" class="btn w-full">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#integrations">Integrations</a></li>
+            <li><a href="#api">API</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#press">Press</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#investors">Investors</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#status">Status</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#compliance">Compliance</a></li>
+            <li><a href="#cookies">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-5 mt-5 border-t border-line">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 bg-accent rounded flex items-center justify-center">
+            <span class="text-accent-fg font-bold text-sm">T</span>
+          </div>
+          <span class="text-muted">© 2024 LituraVenture. All rights reserved.</span>
+        </div>
+
+        <div class="flex gap-4">
+          <a href="#twitter" class="text-muted hover:text-accent">Twitter</a>
+          <a href="#linkedin" class="text-muted hover:text-accent">LinkedIn</a>
+          <a href="#github" class="text-muted hover:text-accent">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Switching Script -->
+  <script>
+    // Theme switching functionality
+    const themeSelect = document.getElementById('theme-select');
+    const html = document.documentElement;
+
+    // Load saved theme or default to 'auto'
+    const savedTheme = localStorage.getItem('theme') || 'auto';
+    themeSelect.value = savedTheme;
+
+    // Apply theme
+    function applyTheme(theme) {
+      if (theme === 'auto') {
+        html.removeAttribute('data-theme');
+      } else {
+        html.setAttribute('data-theme', theme);
+      }
+    }
+
+    // Apply saved theme on load
+    applyTheme(savedTheme);
+
+    // Theme change handler
+    themeSelect.addEventListener('change', (e) => {
+      const theme = e.target.value;
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    });
+
+    // Form submission handler (demo)
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Form submitted! (This is just a demo)');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

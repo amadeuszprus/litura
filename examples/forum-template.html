@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LituraForum - Developer Community</title>
+  <link rel="stylesheet" href="../index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+    }
+
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+
+    .theme-switcher {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      padding: var(--size-2);
+      box-shadow: 0 2px 8px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    }
+
+    .theme-switcher select {
+      appearance: none;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-1);
+      padding: var(--size-2) var(--size-4);
+      color: var(--fg);
+      font-size: 0.875rem;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right var(--size-2) center;
+      background-size: 0.875rem;
+    }
+
+    /* Header */
+    .forum-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .site-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: var(--size-2) var(--size-3);
+      border-radius: var(--radius-1);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      background: var(--soft);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+
+    /* Forum Stats Bar */
+    .forum-stats {
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+      padding: var(--size-2) 0;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .stats-left {
+      display: flex;
+      gap: var(--size-4);
+    }
+
+    .online-indicator {
+      display: flex;
+      align-items: center;
+      gap: var(--size-1);
+    }
+
+    .online-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    /* Main Layout */
+    .forum-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: var(--size-5);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--size-4);
+    }
+
+    @media (max-width: 968px) {
+      .forum-layout {
+        grid-template-columns: 1fr;
+        gap: var(--size-3);
+        padding: var(--size-3);
+      }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--size-2);
+      margin-bottom: var(--size-4);
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Forum Categories */
+    .forum-section {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      overflow: hidden;
+      margin-bottom: var(--size-4);
+    }
+
+    .section-header {
+      background: var(--soft);
+      padding: var(--size-3);
+      border-bottom: 1px solid var(--line);
+      font-weight: 600;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: var(--size-2);
+    }
+
+    .section-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--accent);
+      border-radius: var(--radius-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-fg);
+      font-size: 0.75rem;
+    }
+
+    /* Forum Category Row */
+    .forum-category {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto auto;
+      gap: var(--size-3);
+      padding: var(--size-3);
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .forum-category:hover {
+      background: var(--soft);
+    }
+
+    .forum-category:last-child {
+      border-bottom: none;
+    }
+
+    .category-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--accent);
+      border-radius: var(--radius-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-fg);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .category-info {
+      min-width: 0;
+    }
+
+    .category-title {
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: var(--size-1);
+    }
+
+    .category-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .category-title a:hover {
+      color: var(--accent);
+    }
+
+    .category-description {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .category-stats {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .stat-number {
+      font-weight: 600;
+      color: var(--fg);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+    }
+
+    .last-post {
+      text-align: right;
+      font-size: 0.875rem;
+      color: var(--muted);
+      min-width: 120px;
+    }
+
+    .last-post-title {
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: var(--size-1);
+    }
+
+    .last-post-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .last-post-title a:hover {
+      color: var(--accent);
+    }
+
+    .last-post-meta {
+      font-size: 0.75rem;
+    }
+
+    /* Thread List */
+    .thread-list {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      overflow: hidden;
+    }
+
+    .thread-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: var(--size-3);
+      padding: var(--size-3);
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .thread-item:hover {
+      background: var(--soft);
+    }
+
+    .thread-item:last-child {
+      border-bottom: none;
+    }
+
+    .thread-status {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .thread-status.unread {
+      background: var(--accent);
+    }
+
+    .thread-status.read {
+      background: var(--muted);
+    }
+
+    .thread-status.pinned {
+      background: #f59e0b;
+    }
+
+    .thread-status.locked {
+      background: #6b7280;
+    }
+
+    .thread-content {
+      min-width: 0;
+    }
+
+    .thread-title {
+      font-weight: 600;
+      margin-bottom: var(--size-1);
+      line-height: 1.3;
+    }
+
+    .thread-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .thread-title a:hover {
+      color: var(--accent);
+    }
+
+    .thread-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--size-2);
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .thread-author {
+      display: flex;
+      align-items: center;
+      gap: var(--size-1);
+    }
+
+    .author-avatar {
+      width: 1.25rem;
+      height: 1.25rem;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-fg);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .thread-tags {
+      display: flex;
+      gap: var(--size-1);
+      margin-top: var(--size-1);
+    }
+
+    .thread-tag {
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      color: var(--accent);
+      padding: 0.125rem var(--size-1);
+      border-radius: var(--radius-1);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .thread-replies {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .thread-last-post {
+      text-align: right;
+      font-size: 0.875rem;
+      color: var(--muted);
+      min-width: 100px;
+    }
+
+    /* User Badges */
+    .user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      color: var(--accent);
+      padding: 0.125rem var(--size-1);
+      border-radius: var(--radius-1);
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-left: var(--size-1);
+    }
+
+    .user-badge.moderator {
+      background: color-mix(in srgb, #10b981 15%, transparent);
+      color: #10b981;
+    }
+
+    .user-badge.admin {
+      background: color-mix(in srgb, #dc2626 15%, transparent);
+      color: #dc2626;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-4);
+    }
+
+    .widget {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      padding: var(--size-4);
+    }
+
+    .widget-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--size-3);
+      color: var(--fg);
+    }
+
+    /* Forum Statistics */
+    .forum-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--size-2);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: var(--size-2);
+      background: var(--bg);
+      border-radius: var(--radius-1);
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-description {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Recent Activity */
+    .activity-item {
+      display: flex;
+      gap: var(--size-2);
+      padding: var(--size-2);
+      border-bottom: 1px solid var(--line);
+      font-size: 0.875rem;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-avatar {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-fg);
+      font-size: 0.75rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .activity-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .activity-text {
+      color: var(--fg);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .activity-time {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    /* Online Users */
+    .online-users {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--size-1);
+    }
+
+    .online-user {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--size-1);
+      background: var(--bg);
+      padding: var(--size-1) var(--size-2);
+      border-radius: var(--radius-1);
+      font-size: 0.75rem;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .online-user:hover {
+      background: var(--line);
+    }
+
+    .online-avatar {
+      width: 1rem;
+      height: 1rem;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-fg);
+      font-size: 0.625rem;
+      font-weight: 600;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--size-1);
+      margin-top: var(--size-4);
+    }
+
+    .pagination a,
+    .pagination span {
+      padding: var(--size-2) var(--size-3);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-1);
+      text-decoration: none;
+      color: var(--fg);
+      background: var(--bg);
+      font-size: 0.875rem;
+    }
+
+    .pagination a:hover {
+      background: var(--soft);
+      border-color: var(--accent);
+    }
+
+    .pagination .current {
+      background: var(--accent);
+      color: var(--accent-fg);
+      border-color: var(--accent);
+    }
+
+    /* Footer */
+    .forum-footer {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      margin-top: var(--size-6);
+      padding: var(--size-4) 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .forum-category {
+        grid-template-columns: auto 1fr;
+        gap: var(--size-2);
+      }
+
+      .category-stats,
+      .last-post {
+        display: none;
+      }
+
+      .thread-item {
+        grid-template-columns: auto 1fr;
+      }
+
+      .thread-replies,
+      .thread-last-post {
+        display: none;
+      }
+
+      .forum-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <select id="theme-select">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select>
+  </div>
+
+  <!-- Header -->
+  <header class="forum-header">
+    <div class="container py-3">
+      <div class="flex justify-between items-center">
+        <a href="#" class="site-logo">💬 LituraForum</a>
+
+        <nav class="flex items-center gap-2">
+          <a href="#" class="nav-link active">Forum</a>
+          <a href="#" class="nav-link">Members</a>
+          <a href="#" class="nav-link">Search</a>
+          <a href="#" class="nav-link">Rules</a>
+          <button class="btn btn--ghost">Login</button>
+          <button class="btn">Register</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Forum Stats Bar -->
+  <div class="forum-stats">
+    <div class="container">
+      <div class="stats-container">
+        <div class="stats-left">
+          <span>Welcome to LituraForum</span>
+          <div class="online-indicator">
+            <span class="online-dot"></span>
+            <span>247 users online</span>
+          </div>
+        </div>
+        <div>Last visit: March 15, 2024, 14:32</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="forum-layout">
+    <div class="forum-content">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="#">Home</a>
+        <span>→</span>
+        <span>Forum Index</span>
+      </nav>
+
+      <!-- General Discussion -->
+      <section class="forum-section">
+        <header class="section-header">
+          <div class="section-icon">💬</div>
+          General Discussion
+        </header>
+
+        <div class="forum-category">
+          <div class="category-icon">📢</div>
+          <div class="category-info">
+            <h3 class="category-title">
+              <a href="#">Announcements</a>
+            </h3>
+            <p class="category-description">Important news and updates from the LituraForum team</p>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">23</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">187</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="last-post">
+            <div class="last-post-title">
+              <a href="#">Forum Rules Updated</a>
+            </div>
+            <div class="last-post-meta">
+              by Admin<br>
+              2 hours ago
+            </div>
+          </div>
+        </div>
+
+        <div class="forum-category">
+          <div class="category-icon">💭</div>
+          <div class="category-info">
+            <h3 class="category-title">
+              <a href="#">General Chat</a>
+            </h3>
+            <p class="category-description">Casual discussions about technology, programming, and everything else</p>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">1,247</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">8,921</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="last-post">
+            <div class="last-post-title">
+              <a href="#">Best Code Editor 2024?</a>
+            </div>
+            <div class="last-post-meta">
+              by DevUser123<br>
+              15 minutes ago
+            </div>
+          </div>
+        </div>
+
+        <div class="forum-category">
+          <div class="category-icon">❓</div>
+          <div class="category-info">
+            <h3 class="category-title">
+              <a href="#">Help & Support</a>
+            </h3>
+            <p class="category-description">Get help with technical issues and programming problems</p>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">892</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">3,456</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="last-post">
+            <div class="last-post-title">
+              <a href="#">React Hook Error</a>
+            </div>
+            <div class="last-post-meta">
+              by ReactNewbie<br>
+              32 minutes ago
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development -->
+      <section class="forum-section">
+        <header class="section-header">
+          <div class="section-icon">💻</div>
+          Development
+        </header>
+
+        <div class="forum-category">
+          <div class="category-icon">⚛️</div>
+          <div class="category-info">
+            <h3 class="category-title">
+              <a href="#">Frontend Development</a>
+            </h3>
+            <p class="category-description">HTML, CSS, JavaScript, React, Vue, Angular discussions</p>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">567</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">2,890</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="last-post">
+            <div class="last-post-title">
+              <a href="#">CSS Grid vs Flexbox</a>
+            </div>
+            <div class="last-post-meta">
+              by CSSMaster<br>
+              1 hour ago
+            </div>
+          </div>
+        </div>
+
+        <div class="forum-category">
+          <div class="category-icon">🔧</div>
+          <div class="category-info">
+            <h3 class="category-title">
+              <a href="#">Backend Development</a>
+            </h3>
+            <p class="category-description">Node.js, Python, PHP, databases, and server-side technologies</p>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">423</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">1,987</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="last-post">
+            <div class="last-post-title">
+              <a href="#">MongoDB vs PostgreSQL</a>
+            </div>
+            <div class="last-post-meta">
+              by DBExpert<br>
+              3 hours ago
+            </div>
+          </div>
+        </div>
+
+        <div class="forum-category">
+          <div class="category-icon">📱</div>
+          <div class="category-info">
+            <h3 class="category-title">
+              <a href="#">Mobile Development</a>
+            </h3>
+            <p class="category-description">iOS, Android, React Native, Flutter app development</p>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">298</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="category-stats">
+            <span class="stat-number">1,234</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="last-post">
+            <div class="last-post-title">
+              <a href="#">Flutter vs React Native</a>
+            </div>
+            <div class="last-post-meta">
+              by MobileDev<br>
+              5 hours ago
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Threads -->
+      <section class="forum-section">
+        <header class="section-header">
+          <div class="section-icon">🕒</div>
+          Recent Threads
+        </header>
+
+        <div class="thread-list">
+          <div class="thread-item">
+            <div class="thread-status pinned"></div>
+            <div class="thread-content">
+              <h4 class="thread-title">
+                <a href="#">📌 Welcome to LituraForum - Please Read the Rules</a>
+              </h4>
+              <div class="thread-meta">
+                <div class="thread-author">
+                  <div class="author-avatar">A</div>
+                  <span>Admin</span>
+                  <span class="user-badge admin">Admin</span>
+                </div>
+                <span>•</span>
+                <span>March 1, 2024</span>
+              </div>
+              <div class="thread-tags">
+                <span class="thread-tag">pinned</span>
+                <span class="thread-tag">rules</span>
+              </div>
+            </div>
+            <div class="thread-replies">
+              <span class="stat-number">12</span>
+              <span class="stat-label">replies</span>
+            </div>
+            <div class="thread-last-post">
+              <div>by NewUser</div>
+              <div>2 hours ago</div>
+            </div>
+          </div>
+
+          <div class="thread-item">
+            <div class="thread-status unread"></div>
+            <div class="thread-content">
+              <h4 class="thread-title">
+                <a href="#">🔥 Best practices for React state management in 2024</a>
+              </h4>
+              <div class="thread-meta">
+                <div class="thread-author">
+                  <div class="author-avatar">R</div>
+                  <span>ReactExpert</span>
+                  <span class="user-badge moderator">Mod</span>
+                </div>
+                <span>•</span>
+                <span>March 15, 2024</span>
+              </div>
+              <div class="thread-tags">
+                <span class="thread-tag">react</span>
+                <span class="thread-tag">state-management</span>
+                <span class="thread-tag">best-practices</span>
+              </div>
+            </div>
+            <div class="thread-replies">
+              <span class="stat-number">24</span>
+              <span class="stat-label">replies</span>
+            </div>
+            <div class="thread-last-post">
+              <div>by StateGuru</div>
+              <div>15 min ago</div>
+            </div>
+          </div>
+
+          <div class="thread-item">
+            <div class="thread-status unread"></div>
+            <div class="thread-content">
+              <h4 class="thread-title">
+                <a href="#">Need help with CSS Grid layout issue</a>
+              </h4>
+              <div class="thread-meta">
+                <div class="thread-author">
+                  <div class="author-avatar">C</div>
+                  <span>CSSNewbie</span>
+                </div>
+                <span>•</span>
+                <span>March 15, 2024</span>
+              </div>
+              <div class="thread-tags">
+                <span class="thread-tag">css</span>
+                <span class="thread-tag">grid</span>
+                <span class="thread-tag">help</span>
+              </div>
+            </div>
+            <div class="thread-replies">
+              <span class="stat-number">7</span>
+              <span class="stat-label">replies</span>
+            </div>
+            <div class="thread-last-post">
+              <div>by GridMaster</div>
+              <div>28 min ago</div>
+            </div>
+          </div>
+
+          <div class="thread-item">
+            <div class="thread-status read"></div>
+            <div class="thread-content">
+              <h4 class="thread-title">
+                <a href="#">Docker deployment strategies discussion</a>
+              </h4>
+              <div class="thread-meta">
+                <div class="thread-author">
+                  <div class="author-avatar">D</div>
+                  <span>DevOpsGuy</span>
+                </div>
+                <span>•</span>
+                <span>March 14, 2024</span>
+              </div>
+              <div class="thread-tags">
+                <span class="thread-tag">docker</span>
+                <span class="thread-tag">deployment</span>
+                <span class="thread-tag">devops</span>
+              </div>
+            </div>
+            <div class="thread-replies">
+              <span class="stat-number">18</span>
+              <span class="stat-label">replies</span>
+            </div>
+            <div class="thread-last-post">
+              <div>by ContainerPro</div>
+              <div>1 hour ago</div>
+            </div>
+          </div>
+
+          <div class="thread-item">
+            <div class="thread-status locked"></div>
+            <div class="thread-content">
+              <h4 class="thread-title">
+                <a href="#">🔒 Resolved: Database connection timeout issues</a>
+              </h4>
+              <div class="thread-meta">
+                <div class="thread-author">
+                  <div class="author-avatar">D</div>
+                  <span>DBTrouble</span>
+                </div>
+                <span>•</span>
+                <span>March 13, 2024</span>
+              </div>
+              <div class="thread-tags">
+                <span class="thread-tag">database</span>
+                <span class="thread-tag">resolved</span>
+              </div>
+            </div>
+            <div class="thread-replies">
+              <span class="stat-number">11</span>
+              <span class="stat-label">replies</span>
+            </div>
+            <div class="thread-last-post">
+              <div>by DBExpert</div>
+              <div>6 hours ago</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <a href="#">← Previous</a>
+          <a href="#">1</a>
+          <span class="current">2</span>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">Next →</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Forum Statistics -->
+      <div class="widget">
+        <h3 class="widget-title">📊 Forum Statistics</h3>
+        <div class="forum-stats-grid">
+          <div class="stat-item">
+            <span class="stat-value">15,247</span>
+            <span class="stat-description">Total Posts</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">3,891</span>
+            <span class="stat-description">Total Topics</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">1,456</span>
+            <span class="stat-description">Members</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">247</span>
+            <span class="stat-description">Online</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Online Users -->
+      <div class="widget">
+        <h3 class="widget-title">👥 Online Users (247)</h3>
+        <div class="online-users">
+          <a href="#" class="online-user">
+            <div class="online-avatar">A</div>
+            <span>Admin</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">R</div>
+            <span>ReactExpert</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">J</div>
+            <span>JSNinja</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">C</div>
+            <span>CSSMaster</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">P</div>
+            <span>PythonPro</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">D</div>
+            <span>DevOpsGuy</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">M</div>
+            <span>MobileDev</span>
+          </a>
+          <a href="#" class="online-user">
+            <div class="online-avatar">F</div>
+            <span>FullStack</span>
+          </a>
+        </div>
+        <div class="text-center mt-3">
+          <a href="#" class="btn btn--ghost btn--sm">View All</a>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="widget">
+        <h3 class="widget-title">⚡ Recent Activity</h3>
+
+        <div class="activity-item">
+          <div class="activity-avatar">R</div>
+          <div class="activity-content">
+            <div class="activity-text">
+              <strong>ReactExpert</strong> started a new thread in <strong>Frontend Development</strong>
+            </div>
+            <div class="activity-time">15 minutes ago</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-avatar">C</div>
+          <div class="activity-content">
+            <div class="activity-text">
+              <strong>CSSMaster</strong> replied to <strong>Grid Layout Best Practices</strong>
+            </div>
+            <div class="activity-time">28 minutes ago</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-avatar">N</div>
+          <div class="activity-content">
+            <div class="activity-text">
+              <strong>NewUser</strong> joined the forum
+            </div>
+            <div class="activity-time">1 hour ago</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-avatar">D</div>
+          <div class="activity-content">
+            <div class="activity-text">
+              <strong>DBExpert</strong> solved a problem in <strong>Help & Support</strong>
+            </div>
+            <div class="activity-time">2 hours ago</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-avatar">A</div>
+          <div class="activity-content">
+            <div class="activity-text">
+              <strong>Admin</strong> updated the forum rules
+            </div>
+            <div class="activity-time">3 hours ago</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="widget">
+        <h3 class="widget-title">🚀 Quick Actions</h3>
+        <div class="flex flex-col gap-2">
+          <button class="btn w-full">New Thread</button>
+          <button class="btn btn--ghost w-full">Search Forum</button>
+          <button class="btn btn--ghost w-full">Mark All Read</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="forum-footer">
+    <div class="container">
+      <p>&copy; 2024 LituraForum. All rights reserved. Built with Litura CSS Library.</p>
+      <div class="flex justify-center gap-4 mt-2">
+        <a href="#" class="text-muted hover:text-accent">Privacy</a>
+        <a href="#" class="text-muted hover:text-accent">Terms</a>
+        <a href="#" class="text-muted hover:text-accent">Contact</a>
+        <a href="#" class="text-muted hover:text-accent">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme switching functionality
+    const themeSelect = document.getElementById('theme-select');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'auto';
+    themeSelect.value = savedTheme;
+
+    function applyTheme(theme) {
+      if (theme === 'auto') {
+        html.removeAttribute('data-theme');
+      } else {
+        html.setAttribute('data-theme', theme);
+      }
+    }
+
+    applyTheme(savedTheme);
+
+    themeSelect.addEventListener('change', (e) => {
+      const theme = e.target.value;
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    });
+
+    // Simulate live updates for online users count
+    function updateOnlineCount() {
+      const countElements = document.querySelectorAll('.online-indicator span:last-child, .widget-title:contains("Online Users")');
+      const baseCount = 247;
+      const variation = Math.floor(Math.random() * 21) - 10; // -10 to +10
+      const newCount = Math.max(1, baseCount + variation);
+
+      document.querySelector('.online-indicator span:last-child').textContent = `${newCount} users online`;
+
+      const onlineTitle = Array.from(document.querySelectorAll('.widget-title')).find(el => el.textContent.includes('Online Users'));
+      if (onlineTitle) {
+        onlineTitle.textContent = `👥 Online Users (${newCount})`;
+      }
+
+      // Update stats
+      const statsValue = document.querySelectorAll('.stat-value')[3];
+      if (statsValue) {
+        statsValue.textContent = newCount;
+      }
+    }
+
+    // Update online count every 30 seconds
+    setInterval(updateOnlineCount, 30000);
+
+    // Add new activity simulation
+    function addNewActivity() {
+      const activities = [
+        { user: 'CodeNinja', action: 'replied to', target: 'JavaScript Async/Await' },
+        { user: 'WebDev123', action: 'started a new thread in', target: 'Frontend Development' },
+        { user: 'TechGuru', action: 'solved a problem in', target: 'Help & Support' },
+        { user: 'ReactFan', action: 'liked a post in', target: 'React Best Practices' }
+      ];
+
+      const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+
+      const activityContainer = document.querySelector('.widget h3:contains("Recent Activity")').parentNode;
+      const firstActivity = activityContainer.querySelector('.activity-item');
+
+      // Remove last activity if more than 5
+      const allActivities = activityContainer.querySelectorAll('.activity-item');
+      if (allActivities.length >= 5) {
+        allActivities[allActivities.length - 1].remove();
+      }
+
+      // Create new activity
+      const newActivity = document.createElement('div');
+      newActivity.className = 'activity-item';
+      newActivity.innerHTML = `
+        <div class="activity-avatar">${randomActivity.user[0]}</div>
+        <div class="activity-content">
+          <div class="activity-text">
+            <strong>${randomActivity.user}</strong> ${randomActivity.action} <strong>${randomActivity.target}</strong>
+          </div>
+          <div class="activity-time">Just now</div>
+        </div>
+      `;
+
+      // Insert at top
+      firstActivity.parentNode.insertBefore(newActivity, firstActivity);
+    }
+
+    // Add new activity every 45 seconds
+    setInterval(addNewActivity, 45000);
+
+    // Thread status interactions
+    document.querySelectorAll('.thread-item').forEach(thread => {
+      thread.addEventListener('click', (e) => {
+        if (!e.target.closest('a')) {
+          const status = thread.querySelector('.thread-status');
+          if (status.classList.contains('unread')) {
+            status.classList.remove('unread');
+            status.classList.add('read');
+          }
+        }
+      });
+    });
+
+    // Forum category hover effects
+    document.querySelectorAll('.forum-category').forEach(category => {
+      category.addEventListener('mouseenter', () => {
+        category.style.transform = 'translateX(4px)';
+      });
+
+      category.addEventListener('mouseleave', () => {
+        category.style.transform = 'translateX(0)';
+      });
+    });
+
+    // Quick actions
+    document.querySelectorAll('.btn').forEach(button => {
+      if (button.textContent.includes('New Thread') ||
+          button.textContent.includes('Search Forum') ||
+          button.textContent.includes('Mark All Read')) {
+        button.addEventListener('click', () => {
+          alert(`${button.textContent} clicked! (This is just a demo)`);
+        });
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
