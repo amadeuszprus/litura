@@ -86,71 +86,71 @@
   
   .alert,
   .alert--info {
-    background: color-mix(in srgb, #3b82f6 8%, var(--bg));
-    border-color: color-mix(in srgb, #3b82f6 20%, var(--line));
-    color: color-mix(in srgb, #3b82f6 85%, var(--fg));
+    background: color-mix(in srgb, var(--info) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--info) 20%, var(--line));
+    color: color-mix(in srgb, var(--info) 85%, var(--fg));
   }
 
   .alert__icon,
   .alert--info .alert__icon {
-    fill: #3b82f6;
+    fill: var(--info);
   }
 
   
   .alert--success {
-    background: color-mix(in srgb, #10b981 8%, var(--bg));
-    border-color: color-mix(in srgb, #10b981 20%, var(--line));
-    color: color-mix(in srgb, #10b981 85%, var(--fg));
+    background: color-mix(in srgb, var(--success) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--success) 20%, var(--line));
+    color: color-mix(in srgb, var(--success) 85%, var(--fg));
   }
 
   .alert--success .alert__icon {
-    fill: #10b981;
+    fill: var(--success);
   }
 
   
   .alert--warning {
-    background: color-mix(in srgb, #f59e0b 8%, var(--bg));
-    border-color: color-mix(in srgb, #f59e0b 20%, var(--line));
-    color: color-mix(in srgb, #f59e0b 85%, var(--fg));
+    background: color-mix(in srgb, var(--warning) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--warning) 20%, var(--line));
+    color: color-mix(in srgb, var(--warning) 85%, var(--fg));
   }
 
   .alert--warning .alert__icon {
-    fill: #f59e0b;
+    fill: var(--warning);
   }
 
   
   .alert--error {
-    background: color-mix(in srgb, #ef4444 8%, var(--bg));
-    border-color: color-mix(in srgb, #ef4444 20%, var(--line));
-    color: color-mix(in srgb, #ef4444 85%, var(--fg));
+    background: color-mix(in srgb, var(--error) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--error) 20%, var(--line));
+    color: color-mix(in srgb, var(--error) 85%, var(--fg));
   }
 
   .alert--error .alert__icon {
-    fill: #ef4444;
+    fill: var(--error);
   }
 
   
   .alert--info-solid {
-    background: #3b82f6;
-    border-color: #3b82f6;
+    background: var(--info);
+    border-color: var(--info);
     color: white;
   }
 
   .alert--success-solid {
-    background: #10b981;
-    border-color: #10b981;
+    background: var(--success);
+    border-color: var(--success);
     color: white;
   }
 
   .alert--warning-solid {
-    background: #f59e0b;
-    border-color: #f59e0b;
+    background: var(--warning);
+    border-color: var(--warning);
     color: white;
   }
 
   .alert--error-solid {
-    background: #ef4444;
-    border-color: #ef4444;
+    background: var(--error);
+    border-color: var(--error);
     color: white;
   }
 

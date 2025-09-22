@@ -1,0 +1,91 @@
+@layer components {
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--size-1);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    line-height: 1;
+    background: var(--soft);
+    color: var(--fg);
+    white-space: nowrap;
+  }
+
+  .label__icon {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  /* Type variants - keep colors consistent with alerts/info-panels */
+  .label--info {
+    background: color-mix(in srgb, var(--info) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--info) 20%, var(--line));
+    color: color-mix(in srgb, var(--info) 85%, var(--fg));
+  }
+  .label--info .label__icon { fill: var(--info); }
+
+  .label--success {
+    background: color-mix(in srgb, var(--success) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--success) 20%, var(--line));
+    color: color-mix(in srgb, var(--success) 85%, var(--fg));
+  }
+  .label--success .label__icon { fill: var(--success); }
+
+  .label--warning {
+    background: color-mix(in srgb, var(--warning) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--warning) 20%, var(--line));
+    color: color-mix(in srgb, var(--warning) 85%, var(--fg));
+  }
+  .label--warning .label__icon { fill: var(--warning); }
+
+  .label--error {
+    background: color-mix(in srgb, var(--error) 8%, var(--bg));
+    border-color: color-mix(in srgb, var(--error) 20%, var(--line));
+    color: color-mix(in srgb, var(--error) 85%, var(--fg));
+  }
+  .label--error .label__icon { fill: var(--error); }
+
+  /* Solid variants */
+  .label--info-solid {
+    background: var(--info);
+    border-color: var(--info);
+    color: #fff;
+  }
+  .label--success-solid {
+    background: var(--success);
+    border-color: var(--success);
+    color: #fff;
+  }
+  .label--warning-solid {
+    background: var(--warning);
+    border-color: var(--warning);
+    color: #fff;
+  }
+  .label--error-solid {
+    background: var(--error);
+    border-color: var(--error);
+    color: #fff;
+  }
+  .label--info-solid .label__icon,
+  .label--success-solid .label__icon,
+  .label--warning-solid .label__icon,
+  .label--error-solid .label__icon { fill: #fff; }
+
+  /* Shape & size */
+  .label--pill { border-radius: 9999px; }
+
+  .label--small {
+    padding: 0.1rem 0.4rem;
+    font-size: var(--text-2xs, 0.7rem);
+  }
+
+  .label--large {
+    padding: 0.25rem 0.6rem;
+    font-size: var(--text-sm);
+  }
+}

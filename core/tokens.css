@@ -23,6 +23,14 @@
     --leading: 1.6;
     --measure: 65ch;
 
+    /* Typography scale */
+    --text-2xs: 0.7rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+
     color-scheme: light;
     --bg: #ffffff;
     --fg: #0a0a0a;
@@ -33,6 +41,12 @@
     --accent-fg: #ffffff;
     --shadow-color: 0 0 0;
     --shadow-strength: 1;
+
+    /* Semantic status colors */
+    --info: #3b82f6;    /* blue */
+    --success: #10b981; /* green */
+    --warning: #f59e0b; /* orange */
+    --error: #ef4444;   /* red */
   }
 
   :root[data-theme="light"],
@@ -47,6 +61,11 @@
     --accent-fg: #ffffff;
     --shadow-color: 0 0 0;
     --shadow-strength: 1;
+
+    --info: #3b82f6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
   }
 
   :root[data-theme="dark"],
@@ -61,6 +80,11 @@
     --accent-fg: #000000;
     --shadow-color: 255 255 255;
     --shadow-strength: 0.8;
+
+    --info: #3b82f6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
   }
 
   :root[data-theme="high-contrast"],
@@ -75,6 +99,11 @@
     --accent-fg: #000000;
     --shadow-color: 255 255 0;
     --shadow-strength: 1.2;
+
+    --info: #b3b3ff;    /* brighter for contrast mode */
+    --success: #a6ffbf;
+    --warning: #ffe680;
+    --error: #ff9999;
   }
 
   :root[data-theme="sepia"],
@@ -89,6 +118,11 @@
     --accent-fg: #ffffff;
     --shadow-color: 59 35 23;
     --shadow-strength: 0.6;
+
+    --info: #3563a3;
+    --success: #2a7f5e;
+    --warning: #b87419;
+    --error: #b23a3a;
   }
 
   :root[data-theme="nord"],
@@ -103,6 +137,11 @@
     --accent-fg: #000000;
     --shadow-color: 236 239 244;
     --shadow-strength: 0.4;
+
+    --info: #81a1c1;    /* Nord palette-ish */
+    --success: #a3be8c;
+    --warning: #ebcb8b;
+    --error: #bf616a;
   }
 
   :root[data-theme="ocean"],
@@ -117,6 +156,11 @@
     --accent-fg: #ffffff;
     --shadow-color: 12 74 110;
     --shadow-strength: 0.7;
+
+    --info: #0284c7;
+    --success: #059669;
+    --warning: #d97706;
+    --error: #dc2626;
   }
 
   :root[data-theme="rose"],
@@ -131,6 +175,11 @@
     --accent-fg: #ffffff;
     --shadow-color: 74 30 58;
     --shadow-strength: 0.5;
+
+    --info: #9a6fd1;
+    --success: #7cc4a3;
+    --warning: #e2a04a;
+    --error: #e26d8f;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -145,6 +194,11 @@
       --accent-fg: #000000;
       --shadow-color: 255 255 255;
       --shadow-strength: 0.8;
+
+      --info: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
     }
   }
 
