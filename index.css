@@ -19,6 +19,7 @@
 @import "./utilities/spacing.css" layer(utilities);
 @import "./utilities/typography.css" layer(utilities);
 @import "./utilities/flexbox.css" layer(utilities);
+@import "./utilities/grid.css" layer(utilities);
 @import "./utilities/display.css" layer(utilities);
 @import "./utilities/colors.css" layer(utilities);
 @import "./utilities/borders.css" layer(utilities);
