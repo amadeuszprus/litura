@@ -1,0 +1,44 @@
+@layer components {
+  .testimonial {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    padding: var(--size-4);
+    position: relative;
+  }
+
+  .testimonial::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: var(--size-3);
+    font-size: var(--text-5xl);
+    color: var(--accent);
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .testimonial p {
+    margin-bottom: var(--size-3);
+    font-style: italic;
+    color: var(--fg);
+    line-height: 1.6;
+    padding-top: var(--size-2);
+  }
+
+  .testimonial-author {
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: var(--size-1);
+  }
+
+  .testimonial-role {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+
+  .testimonial-meta {
+    border-top: 1px solid var(--line);
+    padding-top: var(--size-3);
+  }
+}

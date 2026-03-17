@@ -86,7 +86,6 @@
     fill: var(--error);
   }
 
-  
   .info-panel--dense {
     padding: var(--size-3);
   }
@@ -100,7 +99,6 @@
     margin-bottom: var(--size-2);
   }
 
-  
   .info-panel--large {
     padding: var(--size-5);
   }
@@ -110,12 +108,10 @@
     margin-bottom: var(--size-4);
   }
 
-  
   .info-panel--borderless {
     border-left: none;
   }
 
-  
   .info-panel--bordered {
     border: 1px solid var(--line);
     border-left: 4px solid var(--accent);

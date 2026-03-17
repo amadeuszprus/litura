@@ -1,11 +1,9 @@
 @layer components {
-  
   .menu {
     position: relative;
     display: inline-block;
   }
 
-  
   .menu summary {
     list-style: none;
   }
@@ -14,7 +12,6 @@
     display: none;
   }
 
-  
   .menu__trigger {
     display: flex;
     align-items: center;
@@ -26,7 +23,7 @@
     border-radius: var(--radius-1);
     cursor: pointer;
     font-size: var(--text-sm);
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     text-decoration: none;
   }
 
@@ -40,13 +37,10 @@
     outline-offset: 2px;
   }
 
-  
   .menu[open] .menu__arrow {
     transform: rotate(180deg);
   }
 
-
-  
   .menu__content {
     position: absolute;
     top: 100%;
@@ -57,10 +51,10 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-1);
     box-shadow: 0 4px 12px rgb(var(--shadow-color) / calc(0.15 * var(--shadow-strength))),
-                0 2px 4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
+      0 2px 4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
     padding: var(--size-2) 0;
     margin-top: var(--size-1);
-    animation: menuSlideIn 0.2s ease;
+    animation: menuSlideIn var(--transition-normal);
   }
 
   @keyframes menuSlideIn {
@@ -68,13 +62,13 @@
       opacity: 0;
       transform: translateY(-0.5rem);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  
   .menu__item {
     position: relative;
     list-style: none;
@@ -88,7 +82,7 @@
     padding: var(--size-2) var(--size-3);
     color: var(--fg);
     text-decoration: none;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     cursor: pointer;
     font-size: var(--text-sm);
     white-space: nowrap;
@@ -109,21 +103,18 @@
     background: var(--soft);
   }
 
-  
   .menu__link[aria-disabled="true"] {
     color: var(--muted);
     cursor: not-allowed;
     pointer-events: none;
   }
 
-  
   .menu__separator {
     height: 1px;
     background: var(--line);
     margin: var(--size-2) 0;
   }
 
-  
   .menu__label {
     padding: var(--size-1) var(--size-3) var(--size-2);
     font-size: var(--text-xs);
@@ -133,21 +124,18 @@
     letter-spacing: 0.05em;
   }
 
-  
   .menu__icon {
     flex-shrink: 0;
   }
 
-  
   .menu__arrow {
     width: 0.75rem;
     height: 0.75rem;
     fill: currentColor;
     margin-left: auto;
-    transition: transform 0.15s ease;
+    transition: transform var(--transition-fast);
   }
 
-  
   .menu__item--has-submenu {
     position: relative;
   }
@@ -158,7 +146,7 @@
     left: 100%;
     margin-top: 0;
     margin-left: var(--size-1);
-    animation: submenuSlideIn 0.2s ease;
+    animation: submenuSlideIn var(--transition-normal);
   }
 
   @keyframes submenuSlideIn {
@@ -166,13 +154,13 @@
       opacity: 0;
       transform: translateX(-0.5rem);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
     }
   }
 
-  
   .menu--right .menu__content {
     right: 0;
     left: auto;
@@ -183,7 +171,7 @@
     left: auto;
     margin-left: 0;
     margin-right: var(--size-1);
-    animation: submenuSlideInLeft 0.2s ease;
+    animation: submenuSlideInLeft var(--transition-normal);
   }
 
   @keyframes submenuSlideInLeft {
@@ -191,19 +179,19 @@
       opacity: 0;
       transform: translateX(0.5rem);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
     }
   }
 
-  
   .menu--up .menu__content {
     top: auto;
     bottom: 100%;
     margin-top: 0;
     margin-bottom: var(--size-1);
-    animation: menuSlideUp 0.2s ease;
+    animation: menuSlideUp var(--transition-normal);
   }
 
   @keyframes menuSlideUp {
@@ -211,22 +199,21 @@
       opacity: 0;
       transform: translateY(0.5rem);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  
   .menu__shortcut {
     font-size: var(--text-xs);
     color: var(--muted);
-    font-family: ui-monospace, 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+    font-family: var(--font-mono);
     margin-left: auto;
     padding-left: var(--size-3);
   }
 
-  
   .menu__item--checkable .menu__link {
     padding-left: var(--size-5);
   }
@@ -240,14 +227,13 @@
     height: 1rem;
     fill: var(--accent);
     opacity: 0;
-    transition: opacity 0.15s ease;
+    transition: opacity var(--transition-fast);
   }
 
   .menu__item--checked .menu__check {
     opacity: 1;
   }
 
-  
   .menu--dense .menu__link {
     padding: var(--size-1) var(--size-2);
     font-size: var(--text-xs);
@@ -257,7 +243,6 @@
     padding: var(--size-1) var(--size-2);
   }
 
-  
   .menu--large .menu__link {
     padding: var(--size-3) var(--size-4);
     font-size: var(--text-base);
@@ -267,33 +252,27 @@
     padding: var(--size-2) var(--size-4);
   }
 
-  
   .menu__item--has-submenu .menu__content {
     z-index: 101;
   }
 
-  
   .menu:not([open]) .menu__content {
     display: none;
   }
-
 
   .menu__item--has-submenu:not([open]) .menu__content {
     display: none;
   }
 
-  
   .menu--enhanced .menu__content {
-    
     box-shadow: 0 4px 12px rgb(var(--shadow-color) / calc(0.15 * var(--shadow-strength))),
-                0 2px 4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
+      0 2px 4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
   }
 
-  
   @media (max-width: 768px) {
     .menu__content {
       box-shadow: 0 8px 24px rgb(var(--shadow-color) / calc(0.2 * var(--shadow-strength))),
-                  0 4px 8px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+        0 4px 8px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
     }
   }
 }

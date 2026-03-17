@@ -10,7 +10,7 @@
     padding: var(--size-4);
     width: 100%;
     max-width: var(--card-max-width, 36rem);
-    align-self: start; /* avoid grid stretching; cards size to content */
+    align-self: start;
   }
 
   .card__header {
@@ -46,7 +46,9 @@
     font-size: var(--text-sm);
   }
 
-  .card__body { }
+  .card__body {
+    flex: 1;
+  }
 
   .card__footer {
     display: flex;
@@ -54,24 +56,32 @@
     justify-content: flex-end;
   }
 
-  /* Variants */
   .card--soft {
     background: var(--soft);
   }
 
   .card--elevated {
     box-shadow: 0 10px 15px -3px rgb(var(--shadow-color) / calc(0.10 * var(--shadow-strength))),
-                0 4px 6px -2px rgb(var(--shadow-color) / calc(0.06 * var(--shadow-strength)));
+      0 4px 6px -2px rgb(var(--shadow-color) / calc(0.06 * var(--shadow-strength)));
     border-color: color-mix(in srgb, var(--fg) 6%, var(--line));
+  }
+
+  .card--glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
   }
 
   .card--interactive {
     transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
   }
+
   .card--interactive:hover {
     transform: translateY(-1px);
     box-shadow: 0 12px 20px -5px rgb(var(--shadow-color) / calc(0.14 * var(--shadow-strength))),
-                0 5px 8px -4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
+      0 5px 8px -4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
     border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
   }
 
@@ -87,16 +97,17 @@
     border-top: 3px solid var(--accent);
   }
 
-  /* Horizontal layout */
   .card--horizontal {
     flex-direction: row;
     align-items: stretch;
   }
+
   .card--horizontal .card__media {
     flex: 0 0 12rem;
     max-width: 40%;
     border-radius: var(--radius-2) 0 0 var(--radius-2);
   }
+
   .card--horizontal .card__media img,
   .card--horizontal .card__media picture,
   .card--horizontal .card__media video {
@@ -105,16 +116,25 @@
     object-fit: cover;
   }
 
-  /* Note: color/status variants intentionally not provided */
+  .card--compact {
+    padding: var(--size-3);
+  }
 
-  /* Density */
-  .card--compact { padding: var(--size-3); }
-  .card--spacious { padding: var(--size-5); }
+  .card--spacious {
+    padding: var(--size-5);
+  }
 
-  /* Width modifiers */
-  .card--fluid { max-width: none; }
-  .card--narrow { --card-max-width: 24rem; }
-  .card--wide { --card-max-width: 48rem; }
+  .card--fluid {
+    max-width: none;
+  }
+
+  .card--narrow {
+    --card-max-width: 24rem;
+  }
+
+  .card--wide {
+    --card-max-width: 48rem;
+  }
 
   .card--centered {
     width: auto;

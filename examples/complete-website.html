@@ -1,239 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="auto" data-font="tech">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LituraVenture - Complete Website Example</title>
-  <link rel="stylesheet" href="../index.css">
+  <title>FlowMetrics - Analytics That Drive Growth</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-
-    .theme-switcher {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 50;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-2);
-      padding: var(--size-2);
-      box-shadow: 0 2px 8px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
-    }
-
-    .theme-switcher select {
-      appearance: none;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-1);
-      padding: var(--size-2) var(--size-5);
-      color: var(--fg);
-      font-size: 0.875rem;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right var(--size-2) center;
-      background-size: 0.875rem;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 80%, transparent) 100%);
-      color: var(--accent-fg);
-      text-align: center;
-      padding: var(--size-6) 0;
-    }
-
-    .hero h1 { margin-bottom: var(--size-3); }
-    .hero p { font-size: 1.125rem; opacity: 0.9; }
-
-    .hero .btn--soft {
-      background: rgba(255, 255, 255, 0.2);
-      color: var(--accent-fg);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .hero .btn--soft:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .hero .btn--ghost {
-      background: transparent;
-      color: var(--accent-fg);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .hero .btn--ghost:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.7);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--size-4);
-      margin: var(--size-5) 0;
-    }
-
-    .stat-card {
-      text-align: center;
-      padding: var(--size-4);
-      background: var(--soft);
-      border-radius: var(--radius-2);
-      border: 1px solid var(--line);
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      display: block;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--size-5);
-      margin: var(--size-5) 0;
-    }
-
-    .feature-card {
-      padding: var(--size-4);
-      background: var(--soft);
-      border-radius: var(--radius-2);
-      border: 1px solid var(--line);
-    }
-
-    .feature-icon {
-      width: 3rem;
-      height: 3rem;
-      background: var(--accent);
-      border-radius: var(--radius-1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--size-3);
-      font-size: 1.5rem;
-      color: var(--accent-fg);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--size-4);
-      margin: var(--size-5) 0;
-    }
-
-    .pricing-card {
-      padding: var(--size-5);
-      background: var(--soft);
-      border: 2px solid var(--line);
-      border-radius: var(--radius-2);
-      text-align: center;
-      position: relative;
-    }
-
-    .pricing-card.featured {
-      border-color: var(--accent);
-      transform: scale(1.05);
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: -0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: var(--accent-fg);
-      padding: var(--size-1) var(--size-3);
-      border-radius: var(--radius-1);
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
-
-    .price {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .price-period {
-      font-size: 1rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .testimonial {
-      background: var(--soft);
-      padding: var(--size-4);
-      border-radius: var(--radius-2);
-      border-left: 4px solid var(--accent);
-      margin: var(--size-3) 0;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      margin-top: var(--size-2);
-    }
-
-    .testimonial-role {
-      color: var(--muted);
-      font-size: 0.875rem;
-    }
-
-    footer {
-      background: var(--soft);
-      border-top: 1px solid var(--line);
-      margin-top: var(--size-6);
-      padding: var(--size-5) 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--size-4);
-    }
-
-    .footer-section h4 {
-      margin-bottom: var(--size-2);
-      color: var(--fg);
-    }
-
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-section li {
-      margin-bottom: var(--size-1);
-    }
-
-    .footer-section a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    .footer-section a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
-      .pricing-card.featured {
-        transform: none;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../index.css" />
 </head>
+
 <body>
+
   <!-- Theme Switcher -->
   <div class="theme-switcher">
-    <label for="theme-select" class="sr-only">Choose theme</label>
     <select id="theme-select">
       <option value="auto">Auto</option>
       <option value="light">Light</option>
@@ -246,337 +27,437 @@
     </select>
   </div>
 
-  <!-- Navigation -->
-  <nav class="container py-4">
-    <div class="flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-accent rounded flex items-center justify-center">
-          <span class="text-accent-fg font-bold">T</span>
-        </div>
-        <h1 class="text-lg font-bold">LituraVenture</h1>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <a href="#features" class="text-muted hover:text-accent">Features</a>
-        <a href="#pricing" class="text-muted hover:text-accent">Pricing</a>
-        <a href="#about" class="text-muted hover:text-accent">About</a>
-        <button class="btn btn--ghost">Login</button>
-        <button class="btn">Get Started</button>
-      </div>
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container flex justify-between items-center py-3">
+      <a href="#" class="site-logo">FlowMetrics</a>
+      <nav class="flex items-center gap-2">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#" class="btn btn--ghost">Log In</a>
+        <a href="#" class="btn">Start Free Trial</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="container">
-      <h1 class="text-4xl font-bold mb-4">Transform Your Business with Modern Technology</h1>
-      <p class="text-lg mb-6">Streamline operations, boost productivity, and scale your business with our comprehensive tech solutions.</p>
-      <div class="flex justify-center gap-3">
-        <button class="btn btn--soft">Start Free Trial</button>
-        <button class="btn btn--ghost">Watch Demo</button>
+    <div class="container py-6">
+      <div class="mb-3 text-center">
+        <span class="badge badge--pill badge--large badge--info">New: AI-Powered Insights Now Available</span>
+      </div>
+      <h1 class="text-5xl font-bold mb-4">Real-Time Analytics<br>for Modern Teams</h1>
+      <p class="text-muted text-xl mb-5 max-w-2xl mx-auto">
+        Track every metric that matters. FlowMetrics gives you actionable insights,
+        beautiful dashboards, and the clarity to make smarter decisions, faster.
+      </p>
+      <div class="flex justify-center gap-3 mb-6">
+        <a href="#" class="btn">Get Started Free</a>
+        <a href="#" class="btn btn--ghost">Watch Demo</a>
+      </div>
+      <div class="stats-grid max-w-3xl mx-auto">
+        <div class="stat-card">
+          <span class="stat-number">12K+</span>
+          <span class="text-muted">Teams Active</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3.2B</span>
+          <span class="text-muted">Events Tracked</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">99.99%</span>
+          <span class="text-muted">Uptime SLA</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">&lt;50ms</span>
+          <span class="text-muted">Query Latency</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats Section -->
-  <section class="container my-6">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-number">50K+</span>
-        <span class="text-muted">Active Users</span>
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="bg-soft py-6">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge badge--success badge--pill badge--large mb-3 inline-block">Simple Setup</span>
+        <h2 class="text-3xl font-bold mb-3">Up and Running in Minutes</h2>
+        <p class="text-muted text-lg max-w-2xl mx-auto">
+          No complex configuration. Three simple steps to start understanding your users better.
+        </p>
       </div>
-      <div class="stat-card">
-        <span class="stat-number">99.9%</span>
-        <span class="text-muted">Uptime</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">24/7</span>
-        <span class="text-muted">Support</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">150+</span>
-        <span class="text-muted">Countries</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
+        <div class="text-center stack gap-3">
+          <div class="text-4xl">📦</div>
+          <div>
+            <span class="badge badge--info badge--pill badge--large font-bold mb-2 inline-block">Step 1</span>
+            <h3 class="text-xl font-semibold mb-2">Install the SDK</h3>
+            <p class="text-muted">Add our lightweight snippet to your app. Just two lines of code for any framework.</p>
+          </div>
+        </div>
+        <div class="text-center stack gap-3">
+          <div class="text-4xl">⚙️</div>
+          <div>
+            <span class="badge badge--info badge--pill badge--large font-bold mb-2 inline-block">Step 2</span>
+            <h3 class="text-xl font-semibold mb-2">Define Your Events</h3>
+            <p class="text-muted">Use our visual editor to tag the user actions you care about. No engineering required.</p>
+          </div>
+        </div>
+        <div class="text-center stack gap-3">
+          <div class="text-4xl">🚀</div>
+          <div>
+            <span class="badge badge--info badge--pill badge--large font-bold mb-2 inline-block">Step 3</span>
+            <h3 class="text-xl font-semibold mb-2">Get Insights</h3>
+            <p class="text-muted">Dashboards populate instantly. AI surfaces anomalies and trends automatically.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="container my-6">
+  <section id="features" class="container py-6">
     <div class="text-center mb-5">
-      <h2 class="text-3xl font-bold mb-3">Powerful Features</h2>
-      <p class="text-muted text-lg">Everything you need to succeed in the digital age</p>
+      <span class="badge badge--pill badge--large badge--info mb-3 inline-block">Platform</span>
+      <h2 class="text-3xl font-bold mb-3">Everything You Need to Grow</h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        From real-time dashboards to predictive analytics, FlowMetrics equips your team
+        with the tools to understand users, optimize funnels, and ship with confidence.
+      </p>
     </div>
-
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
-        <p class="text-muted">Built for speed with modern architecture and optimized performance that scales with your business needs.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3 class="text-xl font-semibold mb-2">Enterprise Security</h3>
-        <p class="text-muted">Bank-level security with end-to-end encryption, SSO integration, and compliance with industry standards.</p>
-      </div>
-
-      <div class="feature-card">
         <div class="feature-icon">📊</div>
-        <h3 class="text-xl font-semibold mb-2">Advanced Analytics</h3>
-        <p class="text-muted">Real-time insights and detailed reporting to help you make data-driven decisions for your business.</p>
+        <div class="mb-2">
+          <span class="badge badge--pill badge--large badge--info">Analytics</span>
+        </div>
+        <h3>Live Dashboards</h3>
+        <p>Monitor key metrics in real time with customizable dashboards that update the moment your data changes.</p>
       </div>
-
       <div class="feature-card">
-        <div class="feature-icon">🔧</div>
-        <h3 class="text-xl font-semibold mb-2">Easy Integration</h3>
-        <p class="text-muted">Seamlessly connect with your existing tools and workflows through our comprehensive API and integrations.</p>
+        <div class="feature-icon">🔍</div>
+        <div class="mb-2">
+          <span class="badge badge--pill badge--large badge--success">Conversion</span>
+        </div>
+        <h3>Funnel Analysis</h3>
+        <p>Visualize every step of the user journey. Find drop-offs, test hypotheses, and improve conversion rates.</p>
       </div>
-
       <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3 class="text-xl font-semibold mb-2">Mobile First</h3>
-        <p class="text-muted">Responsive design that works perfectly on all devices, with native mobile apps for iOS and Android.</p>
+        <div class="feature-icon">🤖</div>
+        <div class="mb-2">
+          <span class="badge badge--pill badge--large badge--info">AI</span>
+        </div>
+        <h3>AI-Powered Insights</h3>
+        <p>Automatically surface anomalies, trends, and opportunities you might have missed with manual analysis.</p>
       </div>
-
       <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
-        <p class="text-muted">Round-the-clock customer support with live chat, phone support, and comprehensive documentation.</p>
+        <div class="feature-icon">🔗</div>
+        <div class="mb-2">
+          <span class="badge badge--pill badge--large badge--success">Ecosystem</span>
+        </div>
+        <h3>200+ Integrations</h3>
+        <p>Connect seamlessly with your existing stack. Segment, Stripe, Salesforce, Slack, and many more out of the box.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <div class="mb-2">
+          <span class="badge badge--pill badge--large badge--info">Security</span>
+        </div>
+        <h3>Privacy-First</h3>
+        <p>SOC 2 Type II compliant with GDPR and CCPA support built in. Your users' data is safe with us.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="mb-2">
+          <span class="badge badge--pill badge--large badge--success">Performance</span>
+        </div>
+        <h3>Blazing Fast Queries</h3>
+        <p>Sub-50ms query performance on billions of events. No waiting, no sampling, just instant answers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted By / Integrations Section -->
+  <section class="bg-soft py-6 border-t border-b border-line">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge badge--pill badge--large mb-3 inline-block">Trusted Worldwide</span>
+        <h2 class="text-3xl font-bold mb-3">Powering Data Teams Everywhere</h2>
+        <p class="text-muted text-lg max-w-2xl mx-auto">
+          From fast-growing startups to Fortune 500 companies, teams everywhere rely on FlowMetrics for their analytics.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center max-w-3xl mx-auto">
+        <div class="p-3">
+          <p class="text-xl font-bold text-muted">Stackline</p>
+        </div>
+        <div class="p-3">
+          <p class="text-xl font-bold text-muted">Comply.io</p>
+        </div>
+        <div class="p-3">
+          <p class="text-xl font-bold text-muted">Launchpad</p>
+        </div>
+        <div class="p-3">
+          <p class="text-xl font-bold text-muted">NovaPay</p>
+        </div>
+        <div class="p-3">
+          <p class="text-xl font-bold text-muted">Orbitra</p>
+        </div>
+        <div class="p-3">
+          <p class="text-xl font-bold text-muted">Crestview</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-5 max-w-3xl mx-auto">
+        <div class="card card--soft card--fluid text-center p-4">
+          <div class="card__body">
+            <p class="text-2xl font-bold text-accent">4.9/5</p>
+            <p class="text-muted text-sm">G2 Rating</p>
+          </div>
+        </div>
+        <div class="card card--soft card--fluid text-center p-4">
+          <div class="card__body">
+            <p class="text-2xl font-bold text-accent">500+</p>
+            <p class="text-muted text-sm">Enterprise Clients</p>
+          </div>
+        </div>
+        <div class="card card--soft card--fluid text-center p-4">
+          <div class="card__body">
+            <p class="text-2xl font-bold text-accent">45</p>
+            <p class="text-muted text-sm">Countries</p>
+          </div>
+        </div>
+        <div class="card card--soft card--fluid text-center p-4">
+          <div class="card__body">
+            <p class="text-2xl font-bold text-accent">200+</p>
+            <p class="text-muted text-sm">Integrations</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Pricing Section -->
-  <section id="pricing" class="container my-6">
+  <section id="pricing" class="container py-6">
     <div class="text-center mb-5">
-      <h2 class="text-3xl font-bold mb-3">Simple, Transparent Pricing</h2>
-      <p class="text-muted text-lg">Choose the plan that's right for your business</p>
+      <span class="badge badge--pill badge--large badge--success mb-3 inline-block">Pricing</span>
+      <h2 class="text-3xl font-bold mb-3">Simple, Predictable Pricing</h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        No per-seat fees. No hidden charges. Pick a plan based on your event volume and grow from there.
+      </p>
     </div>
-
     <div class="pricing-grid">
       <div class="pricing-card">
-        <h3 class="text-xl font-semibold mb-3">Starter</h3>
-        <div class="price">$29<span class="price-period">/month</span></div>
-        <p class="text-muted mb-4">Perfect for small teams getting started</p>
-
-        <ul class="text-left mb-5 space-y-2">
-          <li>✅ Up to 5 team members</li>
-          <li>✅ 10GB storage</li>
-          <li>✅ Basic analytics</li>
-          <li>✅ Email support</li>
-          <li>✅ Core integrations</li>
+        <h3>Starter</h3>
+        <div class="price">$0<span class="price-period">/month</span></div>
+        <p class="text-muted mb-4">For side projects and early-stage startups</p>
+        <ul>
+          <li>Up to 10K events/month</li>
+          <li>3 team members</li>
+          <li>Core analytics dashboards</li>
+          <li>7-day data retention</li>
+          <li>Community support</li>
         </ul>
-
-        <button class="btn btn--ghost w-full">Get Started</button>
+        <a href="#" class="btn btn--ghost w-full">Start for Free</a>
       </div>
-
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
-        <h3 class="text-xl font-semibold mb-3">Professional</h3>
+        <h3>Growth</h3>
         <div class="price">$79<span class="price-period">/month</span></div>
-        <p class="text-muted mb-4">For growing businesses that need more</p>
-
-        <ul class="text-left mb-5 space-y-2">
-          <li>✅ Up to 25 team members</li>
-          <li>✅ 100GB storage</li>
-          <li>✅ Advanced analytics</li>
-          <li>✅ Priority support</li>
-          <li>✅ All integrations</li>
-          <li>✅ Custom workflows</li>
-          <li>✅ API access</li>
+        <p class="text-muted mb-4">For scaling teams that need deeper insights</p>
+        <ul>
+          <li>Up to 1M events/month</li>
+          <li>Unlimited team members</li>
+          <li>Funnel and retention analysis</li>
+          <li>12-month data retention</li>
+          <li>AI-powered insights</li>
+          <li>Priority email support</li>
+          <li>Custom dashboards</li>
         </ul>
-
-        <button class="btn w-full">Choose Professional</button>
+        <a href="#" class="btn w-full">Start Free Trial</a>
       </div>
-
       <div class="pricing-card">
-        <h3 class="text-xl font-semibold mb-3">Enterprise</h3>
-        <div class="price">$199<span class="price-period">/month</span></div>
-        <p class="text-muted mb-4">For large organizations with complex needs</p>
-
-        <ul class="text-left mb-5 space-y-2">
-          <li>✅ Unlimited team members</li>
-          <li>✅ Unlimited storage</li>
-          <li>✅ Enterprise analytics</li>
-          <li>✅ Dedicated support</li>
-          <li>✅ Custom integrations</li>
-          <li>✅ SSO & advanced security</li>
-          <li>✅ On-premise deployment</li>
-          <li>✅ SLA guarantee</li>
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p class="text-muted mb-4">For organizations with advanced needs</p>
+        <ul>
+          <li>Unlimited events</li>
+          <li>Unlimited team members</li>
+          <li>Advanced security and SSO</li>
+          <li>Unlimited data retention</li>
+          <li>Dedicated account manager</li>
+          <li>Custom integrations</li>
+          <li>On-premise deployment option</li>
+          <li>99.99% SLA guarantee</li>
         </ul>
-
-        <button class="btn btn--ghost w-full">Contact Sales</button>
+        <a href="#" class="btn btn--ghost w-full">Contact Sales</a>
       </div>
     </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section class="container my-6">
-    <div class="text-center mb-5">
-      <h2 class="text-3xl font-bold mb-3">What Our Customers Say</h2>
-      <p class="text-muted text-lg">Trusted by thousands of businesses worldwide</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="testimonial">
-        <p class="mb-3">"LituraVenture transformed how we work. The intuitive interface and powerful features helped us increase productivity by 40% in just three months."</p>
-        <div class="testimonial-author">Sarah Chen</div>
-        <div class="testimonial-role">CTO, InnovateCorp</div>
+  <section id="testimonials" class="bg-soft py-6">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge badge--pill badge--large badge--info mb-3 inline-block">Testimonials</span>
+        <h2 class="text-3xl font-bold mb-3">Trusted by Data-Driven Teams</h2>
+        <p class="text-muted text-lg">See why thousands of teams rely on FlowMetrics every day.</p>
       </div>
-
-      <div class="testimonial">
-        <p class="mb-3">"The customer support is exceptional. Every question is answered quickly and the team genuinely cares about our success. Highly recommended!"</p>
-        <div class="testimonial-author">Michael Rodriguez</div>
-        <div class="testimonial-role">Operations Director, ScaleUp Inc</div>
-      </div>
-
-      <div class="testimonial">
-        <p class="mb-3">"We've tried many solutions, but LituraVenture is the only one that scales with our growing business. The enterprise features are exactly what we needed."</p>
-        <div class="testimonial-author">Emma Thompson</div>
-        <div class="testimonial-role">VP of Technology, GlobalTech</div>
-      </div>
-
-      <div class="testimonial">
-        <p class="mb-3">"Implementation was seamless and the ROI was immediate. Our team adopted it quickly and we're seeing results across all departments."</p>
-        <div class="testimonial-author">David Kim</div>
-        <div class="testimonial-role">CEO, StartupLab</div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="testimonial">
+          <p>"FlowMetrics replaced three separate tools for us. The funnel analysis alone helped us improve signup
+            conversion by 32% in our first quarter."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-author">Priya Sharma</div>
+            <div class="testimonial-role">Head of Growth, Launchpad</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"The real-time dashboards are a game changer. During product launches, we can see exactly what is happening
+            the moment it happens. No more guessing."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-author">Marcus Johnson</div>
+            <div class="testimonial-role">VP of Engineering, Stackline</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"We evaluated five analytics platforms before choosing FlowMetrics. The query speed on large datasets and
+            the privacy-first approach sealed the deal for us."</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-author">Elena Voss</div>
+            <div class="testimonial-role">CTO, Comply.io</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form Section -->
-  <section id="contact" class="container my-6">
+  <!-- FAQ Section -->
+  <section id="faq" class="container py-6">
     <div class="text-center mb-5">
-      <h2 class="text-3xl font-bold mb-3">Get Started Today</h2>
-      <p class="text-muted text-lg">Have questions? We're here to help you succeed</p>
+      <span class="badge badge--pill badge--large badge--success mb-3 inline-block">FAQ</span>
+      <h2 class="text-3xl font-bold mb-3">Frequently Asked Questions</h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        Everything you need to know about FlowMetrics. Can't find what you're looking for? Contact our support team.
+      </p>
     </div>
-
-    <div class="max-w-2xl mx-auto">
-      <form class="form">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="form-row">
-            <label for="first-name">First Name *</label>
-            <input type="text" id="first-name" name="first-name" required>
-          </div>
-
-          <div class="form-row">
-            <label for="last-name">Last Name *</label>
-            <input type="text" id="last-name" name="last-name" required>
-          </div>
+    <div class="max-w-prose mx-auto stack gap-3">
+      <details class="card card--fluid">
+        <summary class="card__title font-semibold">How long does it take to set up FlowMetrics?</summary>
+        <div class="card__body mt-3">
+          <p class="text-muted">Most teams are up and running in under 15 minutes. Our SDK supports all major frameworks, and our visual event editor means you can start tracking user actions without writing custom code. Enterprise customers with complex setups typically complete onboarding in under a week with help from our dedicated team.</p>
         </div>
-
-        <div class="form-row">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required>
+      </details>
+      <details class="card card--fluid">
+        <summary class="card__title font-semibold">Is there a free plan available?</summary>
+        <div class="card__body mt-3">
+          <p class="text-muted">Yes. Our Starter plan is completely free and includes up to 10,000 events per month, 3 team members, and core analytics dashboards. It is perfect for side projects, MVPs, and early-stage startups exploring product-market fit.</p>
         </div>
-
-        <div class="form-row">
-          <label for="company">Company</label>
-          <input type="text" id="company" name="company">
+      </details>
+      <details class="card card--fluid">
+        <summary class="card__title font-semibold">How does FlowMetrics handle data privacy and compliance?</summary>
+        <div class="card__body mt-3">
+          <p class="text-muted">We are SOC 2 Type II certified and fully support GDPR and CCPA requirements. Data is encrypted at rest and in transit. You can configure data residency to keep information in specific geographic regions. We also offer on-premise deployment for Enterprise customers with strict data sovereignty requirements.</p>
         </div>
-
-        <div class="form-row">
-          <label for="plan">Interested in</label>
-          <select id="plan" name="plan">
-            <option value="">Select a plan</option>
-            <option value="starter">Starter Plan</option>
-            <option value="professional">Professional Plan</option>
-            <option value="enterprise">Enterprise Plan</option>
-          </select>
+      </details>
+      <details class="card card--fluid">
+        <summary class="card__title font-semibold">Can I migrate from another analytics platform?</summary>
+        <div class="card__body mt-3">
+          <p class="text-muted">Absolutely. We provide migration guides and tools for all major platforms including Google Analytics, Mixpanel, Amplitude, and Heap. Our support team can also assist with custom migrations for Enterprise plans. Historical data import is available on Growth and Enterprise tiers.</p>
         </div>
-
-        <div class="form-row">
-          <label for="message">Message *</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us about your needs..." required></textarea>
+      </details>
+      <details class="card card--fluid">
+        <summary class="card__title font-semibold">What integrations are supported?</summary>
+        <div class="card__body mt-3">
+          <p class="text-muted">FlowMetrics integrates with over 200 tools including Segment, Stripe, Salesforce, Slack, HubSpot, Intercom, Jira, and many more. We also offer a robust REST API and webhooks for custom integrations. New integrations are added every month based on customer feedback.</p>
         </div>
-
-        <div class="flex items-center gap-2 mb-4">
-          <input type="checkbox" id="newsletter" name="newsletter">
-          <label for="newsletter" class="text-sm">I'd like to receive updates and special offers</label>
+      </details>
+      <details class="card card--fluid">
+        <summary class="card__title font-semibold">What kind of support do you offer?</summary>
+        <div class="card__body mt-3">
+          <p class="text-muted">Starter plans include community support through our forums and documentation. Growth plans include priority email support with a 4-hour response time. Enterprise customers receive a dedicated account manager, Slack-based support, and guaranteed 1-hour response times for critical issues.</p>
         </div>
+      </details>
+    </div>
+  </section>
 
-        <button type="submit" class="btn w-full">Send Message</button>
-      </form>
+  <!-- CTA Section -->
+  <section class="hero">
+    <div class="container py-6 text-center">
+      <h2 class="text-3xl font-bold mb-3">Ready to Unlock Your Data?</h2>
+      <p class="text-muted text-lg mb-4 max-w-2xl mx-auto">
+        Join 12,000+ teams already using FlowMetrics. Start your free trial today, no credit card required.
+      </p>
+      <div class="flex justify-center gap-3 mb-4">
+        <a href="#" class="btn">Get Started Free</a>
+        <a href="#" class="btn btn--soft">Talk to Sales</a>
+      </div>
+      <p class="text-muted text-sm">No credit card required. 14-day free trial on all paid plans.</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="site-footer mt-0">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-grid text-left">
         <div class="footer-section">
           <h4>Product</h4>
           <ul>
             <li><a href="#features">Features</a></li>
             <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#integrations">Integrations</a></li>
-            <li><a href="#api">API</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Changelog</a></li>
+            <li><a href="#">Documentation</a></li>
           </ul>
         </div>
-
         <div class="footer-section">
           <h4>Company</h4>
           <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#press">Press</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#investors">Investors</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Press</a></li>
           </ul>
         </div>
-
         <div class="footer-section">
           <h4>Resources</h4>
           <ul>
-            <li><a href="#documentation">Documentation</a></li>
-            <li><a href="#help">Help Center</a></li>
-            <li><a href="#tutorials">Tutorials</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#status">Status</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Status</a></li>
           </ul>
         </div>
-
         <div class="footer-section">
           <h4>Legal</h4>
           <ul>
-            <li><a href="#privacy">Privacy Policy</a></li>
-            <li><a href="#terms">Terms of Service</a></li>
-            <li><a href="#security">Security</a></li>
-            <li><a href="#compliance">Compliance</a></li>
-            <li><a href="#cookies">Cookie Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">GDPR</a></li>
           </ul>
         </div>
       </div>
-
-      <div class="flex justify-between items-center pt-5 mt-5 border-t border-line">
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 bg-accent rounded flex items-center justify-center">
-            <span class="text-accent-fg font-bold text-sm">T</span>
-          </div>
-          <span class="text-muted">© 2024 LituraVenture. All rights reserved.</span>
-        </div>
-
-        <div class="flex gap-4">
-          <a href="#twitter" class="text-muted hover:text-accent">Twitter</a>
-          <a href="#linkedin" class="text-muted hover:text-accent">LinkedIn</a>
-          <a href="#github" class="text-muted hover:text-accent">GitHub</a>
+      <div class="footer-bottom flex justify-between items-center">
+        <p>&copy; 2026 FlowMetrics. All rights reserved.</p>
+        <div class="flex gap-3">
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Theme Switching Script -->
   <script>
-    // Theme switching functionality
     const themeSelect = document.getElementById('theme-select');
     const html = document.documentElement;
 
-    // Load saved theme or default to 'auto'
     const savedTheme = localStorage.getItem('theme') || 'auto';
     themeSelect.value = savedTheme;
 
-    // Apply theme
     function applyTheme(theme) {
       if (theme === 'auto') {
         html.removeAttribute('data-theme');
@@ -585,35 +466,15 @@
       }
     }
 
-    // Apply saved theme on load
     applyTheme(savedTheme);
 
-    // Theme change handler
     themeSelect.addEventListener('change', (e) => {
       const theme = e.target.value;
       localStorage.setItem('theme', theme);
       applyTheme(theme);
     });
-
-    // Form submission handler (demo)
-    document.querySelector('form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Form submitted! (This is just a demo)');
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
   </script>
+
 </body>
+
 </html>

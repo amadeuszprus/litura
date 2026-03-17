@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en" data-theme="auto" data-font="artistic">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elena Vasquez - Designer &amp; Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <select id="theme-select">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="flex justify-between items-center py-4">
+        <a href="#" class="site-logo">Elena Vasquez</a>
+        <nav class="flex items-center gap-2">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#work" class="nav-link">Work</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#writing" class="nav-link">Writing</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container py-6">
+      <p class="text-sm uppercase tracking-wide font-semibold mb-3 text-accent">Designer &amp; Developer</p>
+      <h1 class="text-5xl font-black mb-3 leading-tight">I design experiences<br>that people remember.</h1>
+      <p class="text-xl text-muted mb-3 max-w-prose mx-auto">Blending clean aesthetics with solid engineering to build digital products that are beautiful, accessible, and built to last.</p>
+      <p class="text-lg text-accent font-medium mb-5">Based in Barcelona, working with clients worldwide.</p>
+      <div class="flex justify-center gap-3 flex-wrap">
+        <a href="#work" class="btn">View My Work</a>
+        <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+        <a href="#services" class="btn btn--soft">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="bg-soft border-t border-b border-line">
+    <div class="container py-6">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">48</span>
+          <span class="text-muted">Projects Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">35</span>
+          <span class="text-muted">Happy Clients</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">12</span>
+          <span class="text-muted">Awards Won</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">8+</span>
+          <span class="text-muted">Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="container py-6">
+    <h2 class="text-3xl font-bold text-center mb-3">About Me</h2>
+    <p class="text-lg text-muted text-center max-w-prose mx-auto mb-5">A multidisciplinary creative who thrives at the intersection of design and technology.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Left column: description -->
+      <div class="stack gap-3">
+        <div class="card card--soft p-5">
+          <div class="card__body">
+            <h3 class="card__title mb-3">My Story</h3>
+            <p class="text-muted leading-relaxed mb-3">With over eight years of experience crafting digital products, I've had the privilege of working with startups, agencies, and Fortune 500 companies. My approach combines user-centered design thinking with deep technical expertise.</p>
+            <p class="text-muted leading-relaxed mb-3">I started my career as a front-end developer, then fell in love with design. Today, I bridge both worlds -- turning abstract ideas into pixel-perfect, performant experiences that users love.</p>
+            <p class="text-muted leading-relaxed">When I'm not designing or coding, you'll find me exploring Barcelona's architecture, experimenting with generative art, or mentoring junior designers at local meetups.</p>
+          </div>
+        </div>
+        <div class="card card--accented p-4">
+          <div class="card__body">
+            <h3 class="card__title mb-2">Education</h3>
+            <p class="text-sm text-muted mb-2">MSc Human-Computer Interaction -- University of Barcelona</p>
+            <p class="text-sm text-muted">BA Graphic Design -- Central Saint Martins, London</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: skills -->
+      <div class="stack gap-3">
+        <div class="card card--soft p-4">
+          <div class="card__body">
+            <h3 class="card__title mb-3">Design Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge badge--info badge--pill">UI Design</span>
+              <span class="badge badge--info badge--pill">UX Research</span>
+              <span class="badge badge--info badge--pill">Design Systems</span>
+              <span class="badge badge--info badge--pill">Prototyping</span>
+              <span class="badge badge--info badge--pill">Figma</span>
+              <span class="badge badge--info badge--pill">Illustration</span>
+              <span class="badge badge--info badge--pill">Motion Design</span>
+              <span class="badge badge--info badge--pill">Brand Identity</span>
+            </div>
+          </div>
+        </div>
+        <div class="card card--soft p-4">
+          <div class="card__body">
+            <h3 class="card__title mb-3">Development Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge badge--success badge--pill">React</span>
+              <span class="badge badge--success badge--pill">Next.js</span>
+              <span class="badge badge--success badge--pill">TypeScript</span>
+              <span class="badge badge--success badge--pill">Node.js</span>
+              <span class="badge badge--success badge--pill">CSS / Sass</span>
+              <span class="badge badge--success badge--pill">Vue.js</span>
+              <span class="badge badge--success badge--pill">Python</span>
+              <span class="badge badge--success badge--pill">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="card card--soft p-4">
+          <div class="card__body">
+            <h3 class="card__title mb-3">Tools &amp; Methods</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge badge--pill">Agile / Scrum</span>
+              <span class="badge badge--pill">Git / GitHub</span>
+              <span class="badge badge--pill">Storybook</span>
+              <span class="badge badge--pill">User Testing</span>
+              <span class="badge badge--pill">A/B Testing</span>
+              <span class="badge badge--pill">CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="work" class="bg-soft border-t border-b border-line">
+    <div class="container py-6">
+      <h2 class="text-3xl font-bold text-center mb-3">Selected Work</h2>
+      <p class="text-lg text-muted text-center max-w-prose mx-auto mb-5">A curated selection of projects spanning brand identity, web development, and product design.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Project 1 -->
+        <article class="card card--interactive card--fluid card--stretch">
+          <div class="card__media">
+            <div class="flex items-center justify-center text-4xl"
+              style="background: linear-gradient(135deg, #667eea, #764ba2); height: 200px; color: #fff;">
+              🎨
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge--success badge--small">Award Winner</span>
+            </div>
+            <h3 class="card__title">Lumina Brand Identity</h3>
+            <p class="card__subtitle">Visual Design</p>
+            <p class="text-sm text-muted mb-3">Complete brand identity system for a sustainable fashion startup,
+              including logo, typography, color palette, and brand guidelines.</p>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Illustrator</span>
+              <span class="tag">Branding</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card card--interactive card--fluid card--stretch">
+          <div class="card__media">
+            <div class="flex items-center justify-center text-4xl"
+              style="background: linear-gradient(135deg, #f093fb, #f5576c); height: 200px; color: #fff;">
+              📱
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge--info badge--small">Featured</span>
+              <span class="badge badge--success badge--small">Award Winner</span>
+            </div>
+            <h3 class="card__title">Healthwise App</h3>
+            <p class="card__subtitle">Mobile Design &amp; Development</p>
+            <p class="text-sm text-muted mb-3">Health tracking application with personalized dashboards,
+              habit journaling, and integration with wearable devices.</p>
+            <div class="tags">
+              <span class="tag">React Native</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">UI/UX</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card card--interactive card--fluid card--stretch">
+          <div class="card__media">
+            <div class="flex items-center justify-center text-4xl"
+              style="background: linear-gradient(135deg, #0acffe, #495aff); height: 200px; color: #fff;">
+              🌐
+            </div>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Arcadia E-Commerce</h3>
+            <p class="card__subtitle">Web Development</p>
+            <p class="text-sm text-muted mb-3">Full-stack e-commerce platform with real-time inventory,
+              intelligent search, and a streamlined checkout experience.</p>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card card--interactive card--fluid card--stretch">
+          <div class="card__media">
+            <div class="flex items-center justify-center text-4xl"
+              style="background: linear-gradient(135deg, #f7971e, #ffd200); height: 200px; color: #fff;">
+              📊
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge--info badge--small">Featured</span>
+            </div>
+            <h3 class="card__title">Metric Studio</h3>
+            <p class="card__subtitle">Data Visualization</p>
+            <p class="text-sm text-muted mb-3">Analytics dashboard with interactive charts, custom reports,
+              and team collaboration features for data-driven organizations.</p>
+            <div class="tags">
+              <span class="tag">D3.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="card card--interactive card--fluid card--stretch">
+          <div class="card__media">
+            <div class="flex items-center justify-center text-4xl"
+              style="background: linear-gradient(135deg, #fa709a, #fee140); height: 200px; color: #fff;">
+              🏠
+            </div>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">NestFind Platform</h3>
+            <p class="card__subtitle">Product Design</p>
+            <p class="text-sm text-muted mb-3">Real estate discovery platform featuring map-based search,
+              virtual tours, and neighborhood insights for home buyers.</p>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Vue.js</span>
+              <span class="tag">Mapbox</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="card card--interactive card--fluid card--stretch">
+          <div class="card__media">
+            <div class="flex items-center justify-center text-4xl"
+              style="background: linear-gradient(135deg, #e233ff, #ff6b6b); height: 200px; color: #fff;">
+              🎵
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge--success badge--small">Award Winner</span>
+            </div>
+            <h3 class="card__title">Wavelength Music</h3>
+            <p class="card__subtitle">Design System</p>
+            <p class="text-sm text-muted mb-3">Comprehensive design system and component library for a music
+              streaming service, ensuring visual consistency across all platforms.</p>
+            <div class="tags">
+              <span class="tag">Storybook</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Accessibility</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="container py-6">
+    <h2 class="text-3xl font-bold text-center mb-3">Services</h2>
+    <p class="text-lg text-muted text-center max-w-prose mx-auto mb-5">I offer end-to-end design and development services tailored to bring your vision to life.</p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Brand &amp; Identity</h3>
+        <p>Logos, color systems, typography, and comprehensive brand guidelines that tell your story with clarity and consistency.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📐</div>
+        <h3>UI/UX Design</h3>
+        <p>User research, wireframes, prototypes, and polished interfaces. I design for usability, beauty, and delight.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💻</div>
+        <h3>Web Development</h3>
+        <p>Fast, accessible, SEO-friendly websites and web apps built with modern frameworks and clean, maintainable code.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Apps</h3>
+        <p>Cross-platform mobile applications with native-quality interactions, smooth animations, and offline-first architecture.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="bg-soft border-t border-b border-line">
+    <div class="container py-6">
+      <h2 class="text-3xl font-bold text-center mb-3">My Process</h2>
+      <p class="text-lg text-muted text-center max-w-prose mx-auto mb-5">A proven four-step workflow that turns ideas into polished, impactful products.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <div class="card card--accented card--fluid card--stretch p-4">
+          <div class="card__body text-center">
+            <p class="text-3xl font-black text-accent mb-2">01</p>
+            <h3 class="card__title mb-2">Discover</h3>
+            <p class="text-sm text-muted">We start with deep research -- understanding your users, business goals, competitors, and constraints to define a clear strategy.</p>
+          </div>
+        </div>
+
+        <div class="card card--accented card--fluid card--stretch p-4">
+          <div class="card__body text-center">
+            <p class="text-3xl font-black text-accent mb-2">02</p>
+            <h3 class="card__title mb-2">Design</h3>
+            <p class="text-sm text-muted">Wireframes evolve into high-fidelity prototypes. Every screen is tested, iterated, and refined until it feels just right.</p>
+          </div>
+        </div>
+
+        <div class="card card--accented card--fluid card--stretch p-4">
+          <div class="card__body text-center">
+            <p class="text-3xl font-black text-accent mb-2">03</p>
+            <h3 class="card__title mb-2">Develop</h3>
+            <p class="text-sm text-muted">Clean, performant code brings the design to life. I build with accessibility, responsiveness, and scalability at the core.</p>
+          </div>
+        </div>
+
+        <div class="card card--accented card--fluid card--stretch p-4">
+          <div class="card__body text-center">
+            <p class="text-3xl font-black text-accent mb-2">04</p>
+            <h3 class="card__title mb-2">Deliver</h3>
+            <p class="text-sm text-muted">Launch day is just the beginning. I provide documentation, training, and ongoing support to ensure long-term success.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="container py-6">
+    <h2 class="text-3xl font-bold text-center mb-3">What Clients Say</h2>
+    <p class="text-lg text-muted text-center max-w-prose mx-auto mb-5">Real feedback from teams I've had the pleasure of working with.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="testimonial">
+        <p>Elena transformed our vision into a product that exceeded every expectation. Her attention to detail
+          and ability to balance aesthetics with usability is remarkable.</p>
+        <div class="testimonial-meta">
+          <div class="testimonial-author">Marco Silva</div>
+          <div class="testimonial-role">CEO, Lumina Fashion</div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <p>Working with Elena was a seamless experience. She understood our technical constraints and still
+          delivered a design that felt effortless and elegant to our users.</p>
+        <div class="testimonial-meta">
+          <div class="testimonial-author">Aisha Patel</div>
+          <div class="testimonial-role">Product Lead, Healthwise</div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <p>Elena doesn't just design interfaces, she solves problems. Our conversion rate improved by 40%
+          after she redesigned our checkout flow. Truly exceptional work.</p>
+        <div class="testimonial-meta">
+          <div class="testimonial-author">Jonas Eriksson</div>
+          <div class="testimonial-role">CTO, Arcadia Commerce</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Latest Writing Section -->
+  <section id="writing" class="bg-soft border-t border-b border-line">
+    <div class="container py-6">
+      <h2 class="text-3xl font-bold text-center mb-3">Latest Writing</h2>
+      <p class="text-lg text-muted text-center max-w-prose mx-auto mb-5">Thoughts on design, development, and the creative process.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span>March 2, 2026</span>
+            <span class="badge badge--info badge--small badge--pill">Design</span>
+          </div>
+          <h3 class="article-title"><a href="#">Why Design Systems Fail (And How to Fix Yours)</a></h3>
+          <p class="article-excerpt">Most design systems die not from bad design, but from poor adoption. Here are the five patterns I've seen work -- and the pitfalls to avoid.</p>
+          <div class="tags mb-3">
+            <span class="tag">Design Systems</span>
+            <span class="tag">Process</span>
+          </div>
+          <a href="#" class="read-more">Read more</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span>February 14, 2026</span>
+            <span class="badge badge--success badge--small badge--pill">Code</span>
+          </div>
+          <h3 class="article-title"><a href="#">CSS Layers Changed How I Write Stylesheets</a></h3>
+          <p class="article-excerpt">After a year of using CSS @layer in production, I'm convinced it's the most important CSS feature since custom properties.</p>
+          <div class="tags mb-3">
+            <span class="tag">CSS</span>
+            <span class="tag">Architecture</span>
+          </div>
+          <a href="#" class="read-more">Read more</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span>January 28, 2026</span>
+            <span class="badge badge--info badge--small badge--pill">UX</span>
+          </div>
+          <h3 class="article-title"><a href="#">Designing for Accessibility Is Designing for Everyone</a></h3>
+          <p class="article-excerpt">Accessibility isn't a checklist -- it's a mindset. How inclusive thinking led to a 30% increase in engagement across three of my recent projects.</p>
+          <div class="tags mb-3">
+            <span class="tag">Accessibility</span>
+            <span class="tag">UX Research</span>
+          </div>
+          <a href="#" class="read-more">Read more</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container py-6 text-center">
+    <h2 class="text-3xl font-bold mb-3">Let's Work Together</h2>
+    <p class="text-lg text-muted max-w-prose mx-auto mb-3">Have a project in mind or just want to say hello?
+      I'm always open to new opportunities and interesting conversations.</p>
+    <p class="text-accent font-medium mb-5">elena@example.com</p>
+    <div class="flex justify-center gap-3 flex-wrap">
+      <a href="mailto:elena@example.com" class="btn">Send a Message</a>
+      <a href="#" class="btn btn--ghost">Download Resume</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="mb-3">&copy; 2026 Elena Vasquez. Built with Litura.</p>
+      <div class="flex justify-center gap-4 mb-3">
+        <a href="#" class="nav-link">GitHub</a>
+        <a href="#" class="nav-link">Dribbble</a>
+        <a href="#" class="nav-link">LinkedIn</a>
+        <a href="#" class="nav-link">Twitter</a>
+      </div>
+      <p class="text-sm text-muted">Barcelona, Spain</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeSelect = document.getElementById('theme-select');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'auto';
+    themeSelect.value = savedTheme;
+
+    function applyTheme(theme) {
+      if (theme === 'auto') {
+        html.removeAttribute('data-theme');
+      } else {
+        html.setAttribute('data-theme', theme);
+      }
+    }
+
+    applyTheme(savedTheme);
+
+    themeSelect.addEventListener('change', (e) => {
+      const theme = e.target.value;
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en" data-theme="auto" data-font="minimal">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Litura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <select id="theme-select">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <nav class="container">
+      <div class="flex justify-between items-center py-3">
+        <a href="#" class="site-logo">Dashboard</a>
+
+        <div class="flex items-center gap-2">
+          <a href="#" class="nav-link active">Overview</a>
+          <a href="#" class="nav-link">Analytics</a>
+          <a href="#" class="nav-link">Products</a>
+          <a href="#" class="nav-link">Settings</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted">Jane Doe</span>
+          <span class="flex items-center justify-center w-8 h-8 bg-accent text-accent-fg font-semibold rounded-full text-sm">JD</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container py-5">
+
+    <!-- Alert Banner -->
+    <div class="alert alert--success mb-5">
+      <div class="alert__content">
+        <p class="alert__title">All systems operational</p>
+        <p class="alert__message">Welcome back, Jane. Your last login was 2 hours ago. All services are running smoothly.</p>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <section class="stats-grid mb-5">
+      <div class="stat-card">
+        <span class="stat-number">$48,352</span>
+        <span class="text-muted">Revenue</span>
+        <div class="text-sm text-success mt-1">+12.5% from last month</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">3,241</span>
+        <span class="text-muted">Users</span>
+        <div class="text-sm text-success mt-1">+8.3% from last month</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">1,487</span>
+        <span class="text-muted">Orders</span>
+        <div class="text-sm text-error mt-1">-2.1% from last month</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">4.6%</span>
+        <span class="text-muted">Conversion Rate</span>
+        <div class="text-sm text-success mt-1">+0.7% from last month</div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid: Two Columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-5">
+
+      <!-- Left Column (wider) - Recent Orders Table + Charts -->
+      <div class="col-span-2 flex flex-col gap-4">
+        <div class="card card--fluid">
+          <div class="card__header">
+            <h2 class="card__title">Recent Orders</h2>
+          </div>
+          <div class="card__body">
+            <div class="overflow-x-auto">
+              <table class="table table--striped">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#ORD-2048</td>
+                    <td>Alice Morgan</td>
+                    <td>$129.00</td>
+                    <td><span class="label label--success">Completed</span></td>
+                    <td>Mar 15, 2026</td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-2047</td>
+                    <td>Brian Lee</td>
+                    <td>$74.50</td>
+                    <td><span class="label label--warning">Processing</span></td>
+                    <td>Mar 15, 2026</td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-2046</td>
+                    <td>Clara Diaz</td>
+                    <td>$210.00</td>
+                    <td><span class="label label--success">Completed</span></td>
+                    <td>Mar 14, 2026</td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-2045</td>
+                    <td>David Kim</td>
+                    <td>$55.00</td>
+                    <td><span class="label label--error">Cancelled</span></td>
+                    <td>Mar 14, 2026</td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-2044</td>
+                    <td>Eva Santos</td>
+                    <td>$162.75</td>
+                    <td><span class="label label--success">Completed</span></td>
+                    <td>Mar 13, 2026</td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-2043</td>
+                    <td>Frank Novak</td>
+                    <td>$89.00</td>
+                    <td><span class="label label--warning">Processing</span></td>
+                    <td>Mar 13, 2026</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Revenue Trend - Vertical Bar Chart -->
+          <div class="card card--fluid">
+            <div class="card__header">
+              <h2 class="card__title">Revenue Trend</h2>
+            </div>
+            <div class="card__body">
+              <div class="flex items-end gap-2" style="height: 12rem">
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 55%"></div>
+                  <span class="text-xs text-muted">Mon</span>
+                </div>
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 72%"></div>
+                  <span class="text-xs text-muted">Tue</span>
+                </div>
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 48%"></div>
+                  <span class="text-xs text-muted">Wed</span>
+                </div>
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 85%"></div>
+                  <span class="text-xs text-muted">Thu</span>
+                </div>
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 100%"></div>
+                  <span class="text-xs text-muted">Fri</span>
+                </div>
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 65%"></div>
+                  <span class="text-xs text-muted">Sat</span>
+                </div>
+                <div class="flex flex-col flex-1 items-center gap-1">
+                  <div class="w-full bg-accent rounded-1" style="height: 38%"></div>
+                  <span class="text-xs text-muted">Sun</span>
+                </div>
+              </div>
+              <p class="text-sm text-muted text-center mt-3 m-0">Daily revenue for the past week</p>
+            </div>
+          </div>
+
+          <!-- Traffic Sources - Horizontal Bar Chart -->
+          <div class="card card--fluid">
+            <div class="card__header">
+              <h2 class="card__title">Traffic Sources</h2>
+            </div>
+            <div class="card__body">
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <span class="text-sm shrink-0" style="width: 4rem">Direct</span>
+                  <div class="flex-1 bg-soft rounded-2 overflow-hidden" style="height: 0.5rem">
+                    <div class="bg-accent h-full rounded-2" style="width: 45%"></div>
+                  </div>
+                  <span class="text-sm text-muted shrink-0" style="width: 2.5rem; text-align: right">45%</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-sm shrink-0" style="width: 4rem">Search</span>
+                  <div class="flex-1 bg-soft rounded-2 overflow-hidden" style="height: 0.5rem">
+                    <div class="bg-accent h-full rounded-2" style="width: 30%"></div>
+                  </div>
+                  <span class="text-sm text-muted shrink-0" style="width: 2.5rem; text-align: right">30%</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-sm shrink-0" style="width: 4rem">Social</span>
+                  <div class="flex-1 bg-soft rounded-2 overflow-hidden" style="height: 0.5rem">
+                    <div class="bg-accent h-full rounded-2" style="width: 15%"></div>
+                  </div>
+                  <span class="text-sm text-muted shrink-0" style="width: 2.5rem; text-align: right">15%</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-sm shrink-0" style="width: 4rem">Referral</span>
+                  <div class="flex-1 bg-soft rounded-2 overflow-hidden" style="height: 0.5rem">
+                    <div class="bg-accent h-full rounded-2" style="width: 10%"></div>
+                  </div>
+                  <span class="text-sm text-muted shrink-0" style="width: 2.5rem; text-align: right">10%</span>
+                </div>
+              </div>
+              <p class="text-sm text-muted text-center mt-3 m-0">Traffic breakdown for March 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (narrower) -->
+      <div class="flex flex-col gap-4">
+
+        <!-- Quick Actions Card -->
+        <div class="card card--fluid">
+          <div class="card__header">
+            <h2 class="card__title">Quick Actions</h2>
+          </div>
+          <div class="card__body">
+            <div class="flex flex-col gap-2">
+              <button class="btn btn--soft w-full">+ New Order</button>
+              <button class="btn btn--soft w-full">+ Add Product</button>
+              <button class="btn btn--ghost w-full">Generate Report</button>
+              <button class="btn btn--ghost w-full">Export Data</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity Card -->
+        <div class="card card--fluid">
+          <div class="card__header">
+            <h2 class="card__title">Recent Activity</h2>
+          </div>
+          <div class="card__body">
+            <div class="flex flex-col gap-3">
+              <div class="flex gap-3 items-start">
+                <span class="text-lg shrink-0">🛒</span>
+                <div>
+                  <p class="text-sm m-0">Order #ORD-2048 completed</p>
+                  <p class="text-xs text-muted m-0">5 minutes ago</p>
+                </div>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="text-lg shrink-0">👤</span>
+                <div>
+                  <p class="text-sm m-0">New user registered: Brian Lee</p>
+                  <p class="text-xs text-muted m-0">23 minutes ago</p>
+                </div>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="text-lg shrink-0">📦</span>
+                <div>
+                  <p class="text-sm m-0">Product "Widget Pro" restocked</p>
+                  <p class="text-xs text-muted m-0">1 hour ago</p>
+                </div>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="text-lg shrink-0">💳</span>
+                <div>
+                  <p class="text-sm m-0">Payment of $210.00 received</p>
+                  <p class="text-xs text-muted m-0">2 hours ago</p>
+                </div>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="text-lg shrink-0">📊</span>
+                <div>
+                  <p class="text-sm m-0">Weekly report generated</p>
+                  <p class="text-xs text-muted m-0">5 hours ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Section: Quick Note Form -->
+    <div class="card card--fluid mb-5">
+      <div class="card__header">
+        <h2 class="card__title">Add Quick Note</h2>
+      </div>
+      <div class="card__body">
+        <form class="form">
+          <div class="form__group">
+            <label for="note-text">Note</label>
+            <textarea id="note-text" rows="3" placeholder="Write a quick note or reminder..."></textarea>
+            <span class="form__hint">Notes are visible to all team members.</span>
+          </div>
+          <div class="form__actions">
+            <button type="submit" class="btn">Save Note</button>
+            <button type="reset" class="btn btn--ghost">Clear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container py-4 text-center">
+      <p class="text-sm text-muted m-0">Dashboard powered by Litura CSS</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeSelect = document.getElementById('theme-select');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'auto';
+    themeSelect.value = savedTheme;
+
+    function applyTheme(theme) {
+      if (theme === 'auto') {
+        html.removeAttribute('data-theme');
+      } else {
+        html.setAttribute('data-theme', theme);
+      }
+    }
+
+    applyTheme(savedTheme);
+
+    themeSelect.addEventListener('change', (e) => {
+      const theme = e.target.value;
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    });
+  </script>
+
+</body>
+
+</html>

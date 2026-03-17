@@ -1,4 +1,21 @@
 @layer utilities {
+  /* Token-based fixed sizes */
+  .w-1 { width: var(--size-1) !important; }
+  .w-2 { width: var(--size-2) !important; }
+  .w-3 { width: var(--size-3) !important; }
+  .w-4 { width: var(--size-4) !important; }
+  .w-5 { width: var(--size-5) !important; }
+  .w-6 { width: var(--size-6) !important; }
+  .w-7 { width: var(--size-7) !important; }
+  .w-8 { width: var(--size-8) !important; }
+  .w-9 { width: var(--size-9) !important; }
+  .w-10 { width: var(--size-10) !important; }
+  .w-16 { width: 4rem !important; }
+  .w-24 { width: 6rem !important; }
+  .w-32 { width: 8rem !important; }
+  .w-48 { width: 12rem !important; }
+  .w-64 { width: 16rem !important; }
+
   .w-0 { width: 0 !important; }
   .w-auto { width: auto !important; }
   .w-full { width: 100% !important; }
@@ -44,6 +61,22 @@
   .max-w-5xl { max-width: 64rem !important; }
   .max-w-6xl { max-width: 72rem !important; }
   .max-w-7xl { max-width: 80rem !important; }
+
+  .h-1 { height: var(--size-1) !important; }
+  .h-2 { height: var(--size-2) !important; }
+  .h-3 { height: var(--size-3) !important; }
+  .h-4 { height: var(--size-4) !important; }
+  .h-5 { height: var(--size-5) !important; }
+  .h-6 { height: var(--size-6) !important; }
+  .h-7 { height: var(--size-7) !important; }
+  .h-8 { height: var(--size-8) !important; }
+  .h-9 { height: var(--size-9) !important; }
+  .h-10 { height: var(--size-10) !important; }
+  .h-16 { height: 4rem !important; }
+  .h-24 { height: 6rem !important; }
+  .h-32 { height: 8rem !important; }
+  .h-48 { height: 12rem !important; }
+  .h-64 { height: 16rem !important; }
 
   .h-0 { height: 0 !important; }
   .h-auto { height: auto !important; }

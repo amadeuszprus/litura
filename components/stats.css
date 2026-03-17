@@ -1,0 +1,34 @@
+@layer components {
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--size-4);
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: var(--size-4);
+    background: var(--soft);
+    border-radius: var(--radius-2);
+    border: 1px solid var(--line);
+    transition: all var(--transition-normal);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+  }
+
+  .stat-number {
+    display: block;
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--size-1);
+  }
+
+  .stat-card .text-muted {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+}

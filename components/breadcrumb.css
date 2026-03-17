@@ -1,0 +1,37 @@
+@layer components {
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--size-2);
+    margin-bottom: var(--size-4);
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+
+  .breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb-separator {
+    color: var(--muted);
+    user-select: none;
+  }
+
+  .breadcrumb-current {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .breadcrumb {
+      flex-wrap: wrap;
+      gap: var(--size-1);
+    }
+  }
+}

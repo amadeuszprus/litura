@@ -7,10 +7,21 @@
   .text-current { color: currentColor !important; }
   .text-transparent { color: transparent !important; }
 
+  .text-accent-fg { color: var(--accent-fg) !important; }
+  .text-success { color: var(--success) !important; }
+  .text-error { color: var(--error) !important; }
+  .text-warning { color: var(--warning) !important; }
+  .text-info { color: var(--info) !important; }
+
   .bg-fg { background-color: var(--fg) !important; }
   .bg-bg { background-color: var(--bg) !important; }
   .bg-soft { background-color: var(--soft) !important; }
   .bg-accent { background-color: var(--accent) !important; }
+  .bg-success { background-color: var(--success) !important; }
+  .bg-error { background-color: var(--error) !important; }
+  .bg-warning { background-color: var(--warning) !important; }
+  .bg-info { background-color: var(--info) !important; }
+  .bg-line { background-color: var(--line) !important; }
   .bg-inherit { background-color: inherit !important; }
   .bg-current { background-color: currentColor !important; }
   .bg-transparent { background-color: transparent !important; }

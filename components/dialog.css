@@ -1,11 +1,9 @@
 @layer components {
-  
   .dialog {
     position: relative;
     display: inline-block;
   }
 
-  
   .dialog summary {
     list-style: none;
   }
@@ -14,7 +12,6 @@
     display: none;
   }
 
-  
   .dialog__backdrop {
     position: fixed;
     top: 0;
@@ -22,21 +19,21 @@
     right: 0;
     bottom: 0;
     z-index: 100;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--backdrop-color);
     backdrop-filter: blur(2px);
-    animation: dialogBackdropFadeIn 0.3s ease;
+    animation: dialogBackdropFadeIn var(--transition-slow);
   }
 
   @keyframes dialogBackdropFadeIn {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
   }
 
-  
   .dialog__content {
     position: fixed;
     top: 50%;
@@ -50,8 +47,8 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
     box-shadow: 0 20px 25px -5px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
-                0 10px 10px -5px rgb(var(--shadow-color) / calc(0.04 * var(--shadow-strength)));
-    animation: dialogSlideIn 0.3s ease;
+      0 10px 10px -5px rgb(var(--shadow-color) / calc(0.04 * var(--shadow-strength)));
+    animation: dialogSlideIn var(--transition-slow);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -62,13 +59,13 @@
       opacity: 0;
       transform: translate(-50%, -50%) scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
   }
 
-  
   .dialog__header {
     display: flex;
     align-items: center;
@@ -85,7 +82,6 @@
     margin: 0;
   }
 
-  
   .dialog__close {
     display: flex;
     align-items: center;
@@ -97,7 +93,7 @@
     color: var(--muted);
     border-radius: var(--radius-1);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
   }
 
   .dialog__close:hover {
@@ -116,14 +112,12 @@
     fill: currentColor;
   }
 
-  
   .dialog__body {
     padding: var(--size-4);
     overflow-y: auto;
     flex: 1;
   }
 
-  
   .dialog__footer {
     display: flex;
     align-items: center;
@@ -134,7 +128,6 @@
     flex-shrink: 0;
   }
 
-  
   .dialog--no-header .dialog__content {
     padding-top: var(--size-4);
   }
@@ -143,12 +136,10 @@
     display: none;
   }
 
-  
   .dialog--no-footer .dialog__footer {
     display: none;
   }
 
-  
   .dialog--small .dialog__content {
     max-width: 20rem;
   }
@@ -167,7 +158,7 @@
   }
 
   .dialog--fullscreen .dialog__content {
-    animation: dialogFullscreenSlideIn 0.3s ease;
+    animation: dialogFullscreenSlideIn var(--transition-slow);
   }
 
   @keyframes dialogFullscreenSlideIn {
@@ -175,19 +166,18 @@
       opacity: 0;
       transform: translate(-50%, -50%) scale(0.98);
     }
+
     to {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
   }
 
-  
   .dialog:not([open]) .dialog__backdrop,
   .dialog:not([open]) .dialog__content {
     display: none;
   }
 
-  
   .dialog__trigger {
     display: inline-flex;
     align-items: center;
@@ -199,7 +189,7 @@
     border-radius: var(--radius-1);
     cursor: pointer;
     font-size: var(--text-sm);
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     text-decoration: none;
   }
 
@@ -213,13 +203,11 @@
     outline-offset: 2px;
   }
 
-  
   .dialog__body--scrollable {
     max-height: 20rem;
     overflow-y: auto;
   }
 
-  
   .dialog__form {
     margin: 0;
   }
@@ -228,13 +216,11 @@
     margin-bottom: 0;
   }
 
-  
   .dialog--enhanced .dialog__content {
     box-shadow: 0 25px 50px -12px rgb(var(--shadow-color) / calc(0.25 * var(--shadow-strength))),
-                0 0 0 1px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
+      0 0 0 1px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
   }
 
-  
   @media (max-width: 640px) {
     .dialog__content {
       width: 95vw;

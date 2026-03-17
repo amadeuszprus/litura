@@ -9,27 +9,52 @@
     --radius-1: 0.25rem;
     --radius-2: 0.5rem;
 
-    
-    --font-sans:
-      ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    
-    
     --font-system: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-modern: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-tech: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
     --font-minimal: "Poppins", "Avenir Next", "Avenir", ui-sans-serif, system-ui, sans-serif;
     --font-artistic: "Playfair Display", "Libre Baskerville", Georgia, "Times New Roman", serif;
+    --font-artistic-body: "Source Serif 4", "Libre Baskerville", Georgia, "Times New Roman", serif;
     --leading: 1.6;
     --measure: 65ch;
 
-    /* Typography scale */
     --text-2xs: 0.7rem;
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-base: 1rem;
     --text-lg: 1.125rem;
     --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+    --text-5xl: 3rem;
+
+    /* Sizing scale (extended) */
+    --size-7: 2rem;
+    --size-8: 2.5rem;
+    --size-9: 3rem;
+    --size-10: 4rem;
+
+    /* Radius */
+    --radius-3: 0.75rem;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+
+    /* Breakpoints (reference) */
+    --bp-sm: 40rem;
+    --bp-md: 48rem;
+    --bp-lg: 64rem;
+    --bp-xl: 80rem;
+    --bp-2xl: 96rem;
+
+    /* Backdrop */
+    --backdrop-color: rgba(0, 0, 0, 0.5);
 
     color-scheme: light;
     --bg: #ffffff;
@@ -42,11 +67,21 @@
     --shadow-color: 0 0 0;
     --shadow-strength: 1;
 
-    /* Semantic status colors */
-    --info: #3b82f6;    /* blue */
-    --success: #10b981; /* green */
-    --warning: #f59e0b; /* orange */
-    --error: #ef4444;   /* red */
+    --info: #3b82f6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+
+
+    /* Premium Tokens */
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --gradient-hero: linear-gradient(135deg, var(--soft) 0%, var(--bg) 100%);
+    --gradient-surface: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --glass-blur: blur(12px);
   }
 
   :root[data-theme="light"],
@@ -85,6 +120,16 @@
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
+
+    --backdrop-color: rgba(0, 0, 0, 0.7);
+
+    /* Premium Tokens Dark */
+    --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+    --gradient-hero: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+
+    --glass-bg: rgba(20, 20, 23, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   }
 
   :root[data-theme="high-contrast"],
@@ -100,7 +145,7 @@
     --shadow-color: 255 255 0;
     --shadow-strength: 1.2;
 
-    --info: #b3b3ff;    /* brighter for contrast mode */
+    --info: #b3b3ff;
     --success: #a6ffbf;
     --warning: #ffe680;
     --error: #ff9999;
@@ -138,7 +183,7 @@
     --shadow-color: 236 239 244;
     --shadow-strength: 0.4;
 
-    --info: #81a1c1;    /* Nord palette-ish */
+    --info: #81a1c1;
     --success: #a3be8c;
     --warning: #ebcb8b;
     --error: #bf616a;
@@ -199,16 +244,17 @@
       --success: #10b981;
       --warning: #f59e0b;
       --error: #ef4444;
+
+      --backdrop-color: rgba(0, 0, 0, 0.7);
     }
   }
 
-  
   :root[data-font="modern"] {
     --font-sans: var(--font-modern);
   }
 
   :root[data-font="tech"] {
-    --font-sans: var(--font-tech);
+    --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: var(--font-tech);
   }
 
@@ -217,6 +263,6 @@
   }
 
   :root[data-font="artistic"] {
-    --font-sans: var(--font-artistic);
+    --font-sans: var(--font-artistic-body);
   }
 }

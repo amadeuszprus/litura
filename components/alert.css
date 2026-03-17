@@ -1,5 +1,4 @@
 @layer components {
-  
   .alert {
     display: flex;
     align-items: flex-start;
@@ -10,7 +9,7 @@
     font-size: var(--text-sm);
     line-height: 1.5;
     position: relative;
-    animation: alertSlideIn 0.3s ease;
+    animation: alertSlideIn var(--transition-slow);
   }
 
   @keyframes alertSlideIn {
@@ -18,24 +17,23 @@
       opacity: 0;
       transform: translateY(-0.5rem);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  
   .alert__icon {
     flex-shrink: 0;
     width: 1.25rem;
     height: 1.25rem;
-    margin-top: 0.125rem; 
+    margin-top: 0.125rem;
   }
 
-  
   .alert__content {
     flex: 1;
-    min-width: 0; 
+    min-width: 0;
   }
 
   .alert__title {
@@ -49,7 +47,6 @@
     color: inherit;
   }
 
-  
   .alert__close {
     flex-shrink: 0;
     display: flex;
@@ -63,8 +60,8 @@
     border-radius: var(--radius-1);
     cursor: pointer;
     opacity: 0.7;
-    transition: all 0.15s ease;
-    margin-top: -0.125rem; 
+    transition: all var(--transition-fast);
+    margin-top: -0.125rem;
   }
 
   .alert__close:hover {
@@ -83,7 +80,6 @@
     fill: currentColor;
   }
 
-  
   .alert,
   .alert--info {
     background: color-mix(in srgb, var(--info) 8%, var(--bg));
@@ -96,7 +92,6 @@
     fill: var(--info);
   }
 
-  
   .alert--success {
     background: color-mix(in srgb, var(--success) 8%, var(--bg));
     border-color: color-mix(in srgb, var(--success) 20%, var(--line));
@@ -107,7 +102,6 @@
     fill: var(--success);
   }
 
-  
   .alert--warning {
     background: color-mix(in srgb, var(--warning) 8%, var(--bg));
     border-color: color-mix(in srgb, var(--warning) 20%, var(--line));
@@ -118,7 +112,6 @@
     fill: var(--warning);
   }
 
-  
   .alert--error {
     background: color-mix(in srgb, var(--error) 8%, var(--bg));
     border-color: color-mix(in srgb, var(--error) 20%, var(--line));
@@ -129,36 +122,35 @@
     fill: var(--error);
   }
 
-  
   .alert--info-solid {
     background: var(--info);
     border-color: var(--info);
-    color: white;
+    color: var(--accent-fg);
   }
 
   .alert--success-solid {
     background: var(--success);
     border-color: var(--success);
-    color: white;
+    color: var(--accent-fg);
   }
 
   .alert--warning-solid {
     background: var(--warning);
     border-color: var(--warning);
-    color: white;
+    color: var(--accent-fg);
   }
 
   .alert--error-solid {
     background: var(--error);
     border-color: var(--error);
-    color: white;
+    color: var(--accent-fg);
   }
 
   .alert--info-solid .alert__icon,
   .alert--success-solid .alert__icon,
   .alert--warning-solid .alert__icon,
   .alert--error-solid .alert__icon {
-    fill: white;
+    fill: var(--accent-fg);
   }
 
   .alert--info-solid .alert__close:hover,
@@ -168,17 +160,14 @@
     background: rgba(255, 255, 255, 0.2);
   }
 
-  
   .alert--no-icon .alert__icon {
     display: none;
   }
 
-  
   .alert--no-close .alert__close {
     display: none;
   }
 
-  
   .alert--small {
     padding: var(--size-2) var(--size-3);
     font-size: var(--text-xs);
@@ -206,7 +195,6 @@
     height: 1.5rem;
   }
 
-  
   .alert-container {
     position: fixed;
     z-index: 200;
@@ -219,10 +207,9 @@
     pointer-events: auto;
     margin-bottom: var(--size-3);
     box-shadow: 0 10px 15px -3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
-                0 4px 6px -2px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
+      0 4px 6px -2px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
   }
 
-  
   .alert-container--top-right {
     top: var(--size-4);
     right: var(--size-4);
@@ -255,9 +242,8 @@
     transform: translateX(-50%);
   }
 
-  
   .alert--dismissing {
-    animation: alertSlideOut 0.3s ease forwards;
+    animation: alertSlideOut var(--transition-slow) forwards;
     pointer-events: none;
   }
 
@@ -265,11 +251,12 @@
     from {
       opacity: 1;
       transform: translateX(0);
-      max-height: 200px; 
+      max-height: 200px;
       margin-bottom: var(--size-3);
       padding-top: var(--size-3);
       padding-bottom: var(--size-3);
     }
+
     50% {
       opacity: 0;
       transform: translateX(100%);
@@ -278,6 +265,7 @@
       padding-top: var(--size-3);
       padding-bottom: var(--size-3);
     }
+
     to {
       opacity: 0;
       transform: translateX(100%);
@@ -290,7 +278,6 @@
     }
   }
 
-  
   .alert--auto-dismiss {
     position: relative;
     overflow: hidden;
@@ -314,17 +301,14 @@
     from {
       transform: scaleX(0);
     }
+
     to {
       transform: scaleX(1);
     }
   }
 
-  
-  .alert--enhanced {
-    
-  }
+  .alert--enhanced {}
 
-  
   @media (max-width: 640px) {
     .alert-container {
       max-width: calc(100vw - 2rem);

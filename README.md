@@ -11,6 +11,7 @@ A minimalist CSS library focused on content. Pure CSS project using modern featu
 - **Component Library**: Buttons, forms, tables, info panels, and more  
 - **Utility Classes**: Spacing, typography, flexbox utilities  
 - **Modern CSS**: CSS Layers, Custom Properties, `color-mix()`, `:has()`, `:user-invalid`  
+- **Multiple Font Stacks**: Modern, Tech, Minimal, Artistic variants
 - **Zero Dependencies**: Pure CSS, no build step required  
 - **BEM-like Methodology**: Clean, predictable class naming
 
@@ -75,7 +76,7 @@ npm install litura
 
 ```html
 <form class="form">
-  <div class="form__row">
+  <div class="form-row">
     <label>Email</label>
     <input type="email" placeholder="Enter your email" />
   </div>
@@ -95,19 +96,34 @@ npm install litura
 
 ```html
 <table class="table table--striped">
-  <thead class="table__head">
-    <tr class="table__row">
-      <th class="table__header-cell">Name</th>
-      <th class="table__header-cell">Role</th>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
     </tr>
   </thead>
-  <tbody class="table__body">
-    <tr class="table__row">
-      <td class="table__cell" data-label="Name">John Doe</td>
-      <td class="table__cell" data-label="Role">Developer</td>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>Developer</td>
     </tr>
   </tbody>
 </table>
+```
+
+### Theme Switcher
+
+The theme switcher component provides styling for a theme selection dropdown.
+
+```html
+<div class="theme-switcher">
+  <select id="theme-select">
+    <option value="auto">Auto</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <!-- other themes -->
+  </select>
+</div>
 ```
 
 ---
@@ -142,6 +158,20 @@ Switch themes using the `data-theme` attribute on `<html>`:
 ```
 
 ### Typography
+
+Set the font stack using the `data-font` attribute on the `<html>` element:
+
+- (default) — System UI fonts
+- `modern` — Inter / Modern sans-serif
+- `tech` — Monospace / Technical look
+- `minimal` — Clean / Minimalist sans-serif
+- `artistic` — Serif / Elegant look
+
+```html
+<html data-font="modern">
+```
+
+### Typography Utilities
 
 ```html
 <h1 class="text-3xl font-bold">Large Bold Text</h1>
@@ -221,8 +251,6 @@ npm run build       # Lint and minify everything
 
 The minified files are generated in the `min/` directory with the same structure as source files.
 
-> Note: Local `demo.html` / `docs.html` are intentionally not tracked; see online docs.
-
 ---
 
 ## Project Structure
@@ -238,7 +266,8 @@ litura/
 │  ├─ form.css
 │  ├─ table.css
 │  ├─ info-panel.css
-│  └─ prose.css
+│  ├─ prose.css
+│  └─ theme-switcher.css
 ├─ utilities/          # Utility classes
 │  ├─ layout.css
 │  ├─ spacing.css

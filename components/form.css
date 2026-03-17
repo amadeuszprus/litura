@@ -3,37 +3,43 @@
     display: grid;
     gap: var(--size-5);
   }
+
   .form__group {
     display: grid;
     gap: var(--size-2);
   }
+
   .form__row {
     display: flex;
     gap: var(--size-4);
     flex-wrap: wrap;
     align-items: flex-start;
   }
-  .form__row > * {
+
+  .form__row>* {
     flex: 1;
     min-width: 16rem;
   }
+
   .form__row .form__group :is(input, select, textarea) {
     margin-bottom: 1.225rem;
   }
+
   .form__row .form__group :is(input, select, textarea):last-child {
     margin-bottom: 1.225rem;
   }
+
   .form label:not(.form__checkbox):not(.form__radio):not(.form__switch) {
     display: block;
     font-weight: 600;
     font-size: 0.95rem;
   }
-  
-  
+
   .form label.required::after {
     content: " *";
     color: var(--accent);
   }
+
   .form :is(input, textarea, select):not([type="checkbox"]):not([type="radio"]) {
     width: 100%;
     padding: var(--size-3);
@@ -43,20 +49,24 @@
     color: var(--fg);
     font: inherit;
   }
+
   .form :is(input, textarea, select):not([type="checkbox"]):not([type="radio"]):focus {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
     border-color: var(--accent);
   }
+
   .form :is(input, textarea, select):not([type="checkbox"]):not([type="radio"]):disabled {
     opacity: 0.6;
     cursor: not-allowed;
     background: var(--soft);
   }
+
   .form textarea {
     min-height: 8rem;
     resize: vertical;
   }
+
   .form select {
     appearance: none;
     -webkit-appearance: none;
@@ -68,84 +78,104 @@
     background-position: right var(--size-3) center;
     background-size: 1rem;
   }
+
   .form__check {
     display: flex;
     align-items: center;
     gap: var(--size-2);
   }
+
   .form__check input[type="checkbox"],
   .form__check input[type="radio"] {
     width: auto;
     margin: 0;
     flex-shrink: 0;
   }
+
   .form__check label {
     font-weight: 400;
     margin: 0;
   }
+
   .form__hint {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     color: var(--muted);
     margin-top: calc(var(--size-2) * -1);
   }
+
   .form__row .form__hint {
     margin-top: calc(var(--size-2) * -1 - 1.225rem);
   }
+
   .form__error {
-    font-size: 0.875rem;
-    color: #dc2626;
+    font-size: var(--text-sm);
+    color: var(--error);
     margin-top: var(--size-1);
   }
+
   .form__row .form__error {
     margin-top: calc(var(--size-1) - 1.225rem);
   }
+
   .form :is(input, textarea):invalid:not(:focus):not(:placeholder-shown) {
-    border-color: #dc2626;
+    border-color: var(--error);
   }
+
   .form select:invalid:not(:focus) {
-    border-color: #dc2626;
+    border-color: var(--error);
   }
+
   @supports selector(:user-invalid) {
     .form :is(input, textarea, select):user-invalid {
-      border-color: #dc2626;
+      border-color: var(--error);
     }
+
     .form :is(input, textarea):invalid:not(:focus):not(:placeholder-shown) {
       border-color: unset;
     }
+
     .form select:invalid:not(:focus) {
       border-color: unset;
     }
   }
+
   .form__actions {
     display: flex;
     gap: var(--size-3);
     flex-wrap: wrap;
     margin-top: var(--size-4);
   }
+
   .form fieldset {
     padding: var(--size-4);
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
   }
+
   .form legend {
     padding-inline: var(--size-2);
     font-weight: 600;
   }
+
   .form__input-group {
     display: flex;
   }
-  .form__input-group > * {
+
+  .form__input-group>* {
     flex: 1;
   }
-  .form__input-group > :not(:first-child) {
+
+  .form__input-group> :not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: -1px;
   }
-  .form__input-group > :not(:last-child) {
+
+  .form__input-group> :not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   .form__input-addon {
     padding: var(--size-3);
     background: var(--soft);
@@ -155,7 +185,6 @@
     white-space: nowrap;
   }
 
-  
   .form__checkbox {
     display: flex;
     align-items: center;
@@ -177,7 +206,7 @@
     border-radius: var(--radius-1);
     background: var(--bg);
     position: relative;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     flex-shrink: 0;
     margin: 0;
     cursor: pointer;
@@ -211,12 +240,10 @@
     background: var(--soft);
   }
 
-  
   .form__checkbox-custom {
     display: none;
   }
 
-  
   .form__radio {
     display: flex;
     align-items: center;
@@ -238,7 +265,7 @@
     border-radius: 50%;
     background: var(--bg);
     position: relative;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     flex-shrink: 0;
     margin: 0;
     cursor: pointer;
@@ -272,12 +299,10 @@
     background: var(--soft);
   }
 
-  
   .form__radio-custom {
     display: none;
   }
 
-  
   .form__switch {
     display: flex;
     align-items: center;
@@ -296,9 +321,9 @@
     width: 2.25rem;
     height: 1.25rem;
     background: var(--line);
-    border-radius: 0.625rem;
+    border-radius: var(--radius-2);
     position: relative;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     flex-shrink: 0;
     margin: 0;
     cursor: pointer;
@@ -313,7 +338,7 @@
     position: absolute;
     top: 0.1875rem;
     left: 0.1875rem;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     box-shadow: 0 1px 3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
   }
 
@@ -333,15 +358,14 @@
   .form__switch input[type="checkbox"]:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+    background: var(--soft);
   }
 
-  
   .form__switch-track,
   .form__switch-thumb {
     display: none;
   }
 
-  
   .form__range {
     position: relative;
     display: flex;
@@ -353,7 +377,7 @@
     width: 100%;
     height: 0.5rem;
     background: var(--line);
-    border-radius: 0.25rem;
+    border-radius: var(--radius-1);
     appearance: none;
     cursor: pointer;
     padding: 0;
@@ -367,7 +391,7 @@
     background: var(--accent);
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     box-shadow: 0 1px 3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
   }
 
@@ -378,7 +402,7 @@
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     box-shadow: 0 1px 3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
   }
 
@@ -403,7 +427,6 @@
     color: var(--muted);
   }
 
-  
   .form__file {
     position: relative;
     display: inline-block;
@@ -428,7 +451,7 @@
     background: var(--soft);
     color: var(--fg);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     text-align: center;
     min-height: 8rem;
     flex-direction: column;
@@ -440,7 +463,7 @@
     background: color-mix(in srgb, var(--accent) 5%, var(--soft));
   }
 
-  .form__file input:focus + .form__file-label {
+  .form__file input:focus+.form__file-label {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
@@ -460,7 +483,6 @@
     color: var(--fg);
   }
 
-  
   .form__file--compact .form__file-label {
     min-height: auto;
     flex-direction: row;
@@ -474,7 +496,6 @@
     height: 1.25rem;
   }
 
-  
   .form__radio-group {
     display: grid;
     gap: var(--size-2);
@@ -486,7 +507,6 @@
     flex-wrap: wrap;
   }
 
-  
   .form__checkbox-group {
     display: grid;
     gap: var(--size-2);
@@ -498,14 +518,12 @@
     flex-wrap: wrap;
   }
 
-  
-  .form__checkbox input:user-invalid + .form__checkbox-custom,
-  .form__radio input:user-invalid + .form__radio-custom,
-  .form__switch input:user-invalid + .form__switch-track {
-    border-color: #dc2626;
+  .form__checkbox input:user-invalid+.form__checkbox-custom,
+  .form__radio input:user-invalid+.form__radio-custom,
+  .form__switch input:user-invalid+.form__switch-track {
+    border-color: var(--error);
   }
 
-  
   .form__file-progress {
     width: 100%;
     height: 0.25rem;
@@ -518,7 +536,7 @@
   .form__file-progress-bar {
     height: 100%;
     background: var(--accent);
-    transition: width 0.3s ease;
+    transition: width var(--transition-slow);
     border-radius: 0.125rem;
   }
 }

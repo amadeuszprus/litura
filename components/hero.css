@@ -1,0 +1,40 @@
+@layer components {
+  .hero {
+    padding: var(--size-6) 0;
+    text-align: center;
+    background: var(--gradient-hero);
+    color: var(--fg);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--size-3);
+  }
+
+  .hero p {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+  }
+
+  .hero .btn--soft {
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .hero .btn--soft:hover {
+    background: color-mix(in srgb, var(--accent) 25%, transparent);
+    border-color: var(--accent);
+  }
+
+  .hero .btn--ghost {
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+    color: var(--fg);
+  }
+
+  .hero .btn--ghost:hover {
+    background: var(--soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
