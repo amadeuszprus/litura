@@ -8,8 +8,8 @@ A minimalist CSS library focused on content. Pure CSS project using modern featu
 
 - **8 Color Schemes**: Auto, Light, Dark, High Contrast, Sepia, Nord, Ocean, Rose  
 - **Responsive Design**: Mobile-first with logical properties  
-- **Component Library**: Buttons, forms, tables, info panels, and more  
-- **Utility Classes**: Spacing, typography, flexbox utilities  
+- **Component Library**: Buttons, forms, tables, cards, alerts, labels, badges, navigation, hero, pricing, stats, testimonials, breadcrumbs, dialogs, and more
+- **Utility Classes**: Spacing, typography, flexbox, grid, colors, borders, sizing, effects  
 - **Modern CSS**: CSS Layers, Custom Properties, `color-mix()`, `:has()`, `:user-invalid`  
 - **Multiple Font Stacks**: Modern, Tech, Minimal, Artistic variants
 - **Zero Dependencies**: Pure CSS, no build step required  
@@ -126,6 +126,154 @@ The theme switcher component provides styling for a theme selection dropdown.
 </div>
 ```
 
+### Cards
+
+```html
+<div class="card">
+  <div class="card__header">
+    <h3 class="card__title">Card Title</h3>
+    <p class="card__subtitle">Subtitle text</p>
+  </div>
+  <div class="card__body">Card content here.</div>
+  <div class="card__footer">Footer actions</div>
+</div>
+
+<div class="card card--soft">Soft background card</div>
+<div class="card card--accented">Accented border card</div>
+<div class="card card--fluid">Full-width fluid card</div>
+```
+
+### Alerts
+
+```html
+<div class="alert alert--info">
+  <div class="alert__content">
+    <h4 class="alert__title">Info</h4>
+    <p class="alert__message">This is an informational alert.</p>
+  </div>
+</div>
+
+<div class="alert alert--success">Success alert</div>
+<div class="alert alert--warning">Warning alert</div>
+<div class="alert alert--error">Error alert</div>
+```
+
+### Labels
+
+```html
+<span class="label">Default</span>
+<span class="label label--info">Info</span>
+<span class="label label--success">Success</span>
+<span class="label label--warning">Warning</span>
+<span class="label label--error">Error</span>
+<span class="label label--pill">Pill shape</span>
+```
+
+### Badges
+
+```html
+<span class="badge">Default</span>
+<span class="badge badge--info">Info</span>
+<span class="badge badge--success">Success</span>
+<span class="badge badge--warning">Warning</span>
+<span class="badge badge--error">Error</span>
+<span class="badge badge--pill">Pill</span>
+<span class="badge badge--small">Small</span>
+<span class="badge badge--large">Large</span>
+```
+
+### Navigation
+
+```html
+<nav class="nav">
+  <div class="nav__item">
+    <a class="nav__link" href="#">Home</a>
+  </div>
+  <div class="nav__item">
+    <a class="nav__link" href="#">About</a>
+  </div>
+</nav>
+```
+
+### Hero
+
+```html
+<section class="hero">
+  <h1>Welcome to Our Site</h1>
+  <p>A compelling tagline goes here.</p>
+  <button class="btn">Get Started</button>
+</section>
+```
+
+### Feature
+
+```html
+<div class="feature-grid">
+  <div class="feature-card">
+    <div class="feature-icon">🚀</div>
+    <h3>Fast</h3>
+    <p>Lightning-fast performance.</p>
+  </div>
+</div>
+```
+
+### Pricing
+
+```html
+<div class="pricing-grid">
+  <div class="pricing-card">
+    <h3>Basic</h3>
+    <p>$9/mo</p>
+  </div>
+  <div class="pricing-card pricing-card--featured">
+    <h3>Pro</h3>
+    <p>$29/mo</p>
+  </div>
+</div>
+```
+
+### Stats
+
+```html
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">1,234</div>
+    <p>Users</p>
+  </div>
+</div>
+```
+
+### Testimonials
+
+```html
+<div class="testimonial-grid">
+  <div class="testimonial-card">
+    <p>"An amazing product that changed our workflow."</p>
+    <cite>Jane Doe</cite>
+  </div>
+</div>
+```
+
+### Breadcrumb
+
+```html
+<nav class="breadcrumb">
+  <a href="#">Home</a>
+  <a href="#">Blog</a>
+  <span>Current Page</span>
+</nav>
+```
+
+### Dialog
+
+```html
+<dialog class="dialog">
+  <h2>Dialog Title</h2>
+  <p>Dialog content goes here.</p>
+  <button class="btn">Close</button>
+</dialog>
+```
+
 ---
 
 ## Color Schemes
@@ -193,7 +341,23 @@ Set the font stack using the `data-font` attribute on the `<html>` element:
 ```html
 <div class="bg-soft text-accent">Themed colors</div>
 <div class="border border-line">Themed border</div>
+<span class="text-success">Success text</span>
+<span class="text-error">Error text</span>
+<div class="bg-success">Success background</div>
 ```
+
+---
+
+## Example Templates
+
+The library includes ready-made templates demonstrating real-world usage:
+
+- `examples/blog-template.html` — Blog layout with articles, sidebar, and pagination
+- `examples/complete-website.html` — SaaS landing page with hero, features, pricing, FAQ
+- `examples/dashboard-template.html` — Admin dashboard with stats, tables, and CSS-only charts
+- `examples/forum-template.html` — Forum with category listings and user stats
+- `examples/portfolio-template.html` — Creative portfolio with projects, services, and testimonials
+- `examples/press-template.html` — News site with articles grid, live updates, and market data
 
 ---
 
@@ -262,17 +426,40 @@ litura/
 │  ├─ reset.css        # Style reset
 │  └─ base.css         # Basic HTML styles
 ├─ components/         # UI components
+│  ├─ alert.css
+│  ├─ badge.css
+│  ├─ blog.css
+│  ├─ breadcrumb.css
 │  ├─ button.css
+│  ├─ card.css
+│  ├─ dialog.css
+│  ├─ feature.css
 │  ├─ form.css
-│  ├─ table.css
+│  ├─ forum.css
+│  ├─ hero.css
 │  ├─ info-panel.css
+│  ├─ label.css
+│  ├─ menu.css
+│  ├─ nav.css
+│  ├─ press.css
+│  ├─ pricing.css
 │  ├─ prose.css
+│  ├─ stats.css
+│  ├─ table.css
+│  ├─ testimonial.css
 │  └─ theme-switcher.css
 ├─ utilities/          # Utility classes
+│  ├─ borders.css
+│  ├─ colors.css
+│  ├─ display.css
+│  ├─ effects.css
+│  ├─ flexbox.css
+│  ├─ grid.css
+│  ├─ helpers.css
 │  ├─ layout.css
+│  ├─ sizing.css
 │  ├─ spacing.css
-│  ├─ typography.css
-│  └─ flexbox.css
+│  └─ typography.css
 └─ index.css           # Main entry point
 ```
 
