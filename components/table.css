@@ -4,69 +4,103 @@
     border-collapse: collapse;
     font-variant-numeric: tabular-nums;
   }
-  .table__caption {
+
+  .table caption {
     padding-block: var(--size-3);
     font-weight: 600;
     text-align: start;
+    caption-side: top;
   }
-  .table__header-cell {
+
+  .table th {
     text-align: start;
     font-weight: 600;
     padding: var(--size-3) var(--size-4);
     border-bottom: 2px solid var(--line);
   }
-  .table__cell {
+
+  .table td {
     padding: var(--size-3) var(--size-4);
     border-bottom: 1px solid var(--line);
   }
-  .table__body .table__row:last-child .table__cell {
+
+  .table tbody tr:last-child td {
     border-bottom: 0;
   }
-  .table__row:hover {
+
+  .table tbody tr:hover {
     background: var(--soft);
   }
-  .table--striped .table__row:nth-child(even) {
+
+  .table--striped tbody tr:nth-child(even) {
     background: var(--soft);
   }
-  .table--compact .table__header-cell,
-  .table--compact .table__cell {
+
+  .table--striped tbody tr:nth-child(even):hover {
+    background: color-mix(in oklch, var(--fg) 8%, var(--soft));
+  }
+
+  .table--compact th,
+  .table--compact td {
     padding: var(--size-2) var(--size-3);
   }
-  .table--borderless .table__header-cell,
-  .table--borderless .table__cell {
+
+  .table--borderless th,
+  .table--borderless td {
     border: 0;
   }
+
+  .table--bordered,
+  .table--bordered th,
+  .table--bordered td {
+    border: 1px solid var(--line);
+  }
+
   .table--fixed {
     table-layout: fixed;
   }
-  .table--responsive {
-    display: block;
+
+  /* Horizontal scroll on small screens — wrap table in a div with this class
+     (not directly on <table>, otherwise the table loses its table layout). */
+  .table-responsive {
     overflow-x: auto;
-    white-space: nowrap;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
+
+  /* Stack mode: on mobile, each row becomes a card.
+     Requires <td data-label="Label">value</td> on each cell. */
   @media (max-width: 48rem) {
-    .table--stack {
-      display: block;
-    }
-    .table--stack .table__head {
-      display: none;
-    }
-    .table--stack .table__body,
-    .table--stack .table__row,
-    .table--stack .table__cell {
+    .table--stack,
+    .table--stack thead,
+    .table--stack tbody,
+    .table--stack tr,
+    .table--stack td {
       display: block;
       width: 100%;
     }
-    .table--stack .table__row {
+
+    .table--stack thead {
+      position: absolute;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+    }
+
+    .table--stack tr {
       padding-block: var(--size-3);
       border-bottom: 1px solid var(--line);
     }
-    .table--stack .table__cell {
+
+    .table--stack td {
       padding: var(--size-2) 0;
       border: 0;
       text-align: end;
     }
-    .table--stack .table__cell::before {
+
+    .table--stack td::before {
       content: attr(data-label);
       float: left;
       font-weight: 600;
