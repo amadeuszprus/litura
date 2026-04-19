@@ -1,4 +1,23 @@
 (function () {
+  // Preload the four font stacks referenced by --font-modern / --font-tech /
+  // --font-minimal / --font-artistic so the font switcher actually changes
+  // something visible.
+  const preconnect1 = document.createElement('link');
+  preconnect1.rel = 'preconnect';
+  preconnect1.href = 'https://fonts.googleapis.com';
+  document.head.appendChild(preconnect1);
+
+  const preconnect2 = document.createElement('link');
+  preconnect2.rel = 'preconnect';
+  preconnect2.href = 'https://fonts.gstatic.com';
+  preconnect2.crossOrigin = 'anonymous';
+  document.head.appendChild(preconnect2);
+
+  const fonts = document.createElement('link');
+  fonts.rel = 'stylesheet';
+  fonts.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap';
+  document.head.appendChild(fonts);
+
   // Single flat list, alphabetical.
   const items = [
     ['accordion', 'Accordion'],
