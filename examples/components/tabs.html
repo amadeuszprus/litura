@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Tabs</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="tabs">
+  <main class="pg-main">
+    <header>
+      <h1>Tabs</h1>
+      <p>CSS-only via radio inputs + <code>:has()</code> panel routing. Works without JavaScript; full ARIA needs JS with <code>aria-controls</code>.</p>
+    </header>
+    
+  <h2>Default (underline)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="tabs" role="tablist" aria-label="Docs">
+  <div class="tabs__list">
+    <input type="radio" name="d" id="t1" class="tabs__input" checked>
+    <label for="t1" class="tabs__tab" role="tab">Overview</label>
+    <input type="radio" name="d" id="t2" class="tabs__input">
+    <label for="t2" class="tabs__tab" role="tab">Install</label>
+    <input type="radio" name="d" id="t3" class="tabs__input">
+    <label for="t3" class="tabs__tab" role="tab">API</label>
+  </div>
+  <div class="tabs__panel" data-for="t1" role="tabpanel">Minimal content-first CSS library.</div>
+  <div class="tabs__panel" data-for="t2" role="tabpanel"><code>npm install litura</code></div>
+  <div class="tabs__panel" data-for="t3" role="tabpanel">See the README for all classes.</div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="tabs" role="tablist"&gt;
+  &lt;div class="tabs__list"&gt;
+    &lt;input type="radio" name="x" id="t1" class="tabs__input" checked&gt;
+    &lt;label for="t1" class="tabs__tab" role="tab"&gt;One&lt;/label&gt;
+    &lt;input type="radio" name="x" id="t2" class="tabs__input"&gt;
+    &lt;label for="t2" class="tabs__tab" role="tab"&gt;Two&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="tabs__panel" data-for="t1" role="tabpanel"&gt;…&lt;/div&gt;
+  &lt;div class="tabs__panel" data-for="t2" role="tabpanel"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Pills</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="tabs tabs--pills" role="tablist">
+  <div class="tabs__list">
+    <input type="radio" name="p" id="p1" class="tabs__input" checked>
+    <label for="p1" class="tabs__tab" role="tab">Daily</label>
+    <input type="radio" name="p" id="p2" class="tabs__input">
+    <label for="p2" class="tabs__tab" role="tab">Weekly</label>
+    <input type="radio" name="p" id="p3" class="tabs__input">
+    <label for="p3" class="tabs__tab" role="tab">Monthly</label>
+  </div>
+  <div class="tabs__panel" data-for="p1" role="tabpanel">Daily view</div>
+  <div class="tabs__panel" data-for="p2" role="tabpanel">Weekly view</div>
+  <div class="tabs__panel" data-for="p3" role="tabpanel">Monthly view</div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="tabs tabs--pills" role="tablist"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Vertical</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="tabs tabs--vertical" role="tablist">
+  <div class="tabs__list">
+    <input type="radio" name="v" id="v1" class="tabs__input" checked>
+    <label for="v1" class="tabs__tab" role="tab">Section 1</label>
+    <input type="radio" name="v" id="v2" class="tabs__input">
+    <label for="v2" class="tabs__tab" role="tab">Section 2</label>
+    <input type="radio" name="v" id="v3" class="tabs__input">
+    <label for="v3" class="tabs__tab" role="tab">Section 3</label>
+  </div>
+  <div class="tabs__panel" data-for="v1" role="tabpanel">Panel 1</div>
+  <div class="tabs__panel" data-for="v2" role="tabpanel">Panel 2</div>
+  <div class="tabs__panel" data-for="v3" role="tabpanel">Panel 3</div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="tabs tabs--vertical"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.tabs</code></td><td>Base container.</td></tr>
+    <tr><td><code>.tabs--pills</code></td><td>Rounded pills; selected fills with accent.</td></tr>
+    <tr><td><code>.tabs--vertical</code></td><td>Vertical list with right-side indicator.</td></tr>
+    <tr><td><code>.tabs__list</code></td><td>Container for input+label pairs.</td></tr>
+    <tr><td><code>.tabs__input</code></td><td>Hidden radio input (one per tab).</td></tr>
+    <tr><td><code>.tabs__tab</code></td><td>Clickable label (rendered tab).</td></tr>
+    <tr><td><code>.tabs__panel[data-for="id"]</code></td><td>Panel shown when matching input is <code>:checked</code>.</td></tr>
+  </tbody>
+</table>
+
+  <p class="text-sm" style="color:var(--muted);margin-top:var(--size-4)"><strong>Note:</strong> The CSS routes panels for IDs <code>t1</code>–<code>t6</code> out of the box. For unique IDs, extend the <code>:has</code> selector in <code>components/tabs.css</code>.</p>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

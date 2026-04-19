@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Nav</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="nav">
+  <main class="pg-main">
+    <header>
+      <h1>Nav</h1>
+      <p>Horizontal or vertical navigation with pills, tabs, and underline variants.</p>
+    </header>
+    
+  <h2>Pills</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview pg-example__preview--soft"><nav class="nav nav--pills" aria-label="Pills">
+  <div class="nav__item"><a class="nav__link nav__link--active" href="#" aria-current="page">Home</a></div>
+  <div class="nav__item"><a class="nav__link" href="#">Docs</a></div>
+  <div class="nav__item"><a class="nav__link" href="#">Blog</a></div>
+  <div class="nav__item"><a class="nav__link" href="#">Contact</a></div>
+</nav></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;nav class="nav nav--pills"&gt;
+  &lt;div class="nav__item"&gt;&lt;a class="nav__link nav__link--active" href="#"&gt;Home&lt;/a&gt;&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+
+  <h2>Tabs</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><nav class="nav nav--tabs" aria-label="Tabs">
+  <div class="nav__item"><a class="nav__link nav__link--active" href="#" aria-current="page">Overview</a></div>
+  <div class="nav__item"><a class="nav__link" href="#">Settings</a></div>
+</nav></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;nav class="nav nav--tabs"&gt;…&lt;/nav&gt;</code></pre>
+</div>
+
+  <h2>Underline</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><nav class="nav nav--underline" aria-label="Underline">
+  <div class="nav__item"><a class="nav__link nav__link--active" href="#" aria-current="page">First</a></div>
+  <div class="nav__item"><a class="nav__link" href="#">Second</a></div>
+  <div class="nav__item"><a class="nav__link" href="#">Third</a></div>
+</nav></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;nav class="nav nav--underline"&gt;…&lt;/nav&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.nav</code></td><td>Base horizontal flex row.</td></tr>
+    <tr><td><code>.nav--vertical</code></td><td>Stack items vertically.</td></tr>
+    <tr><td><code>.nav--pills</code></td><td>Rounded chip style.</td></tr>
+    <tr><td><code>.nav--tabs</code></td><td>Tab-style indicator.</td></tr>
+    <tr><td><code>.nav--underline</code></td><td>Underlined active item.</td></tr>
+    <tr><td><code>.nav--compact / --spacious</code></td><td>Size variants.</td></tr>
+    <tr><td><code>.nav--responsive</code></td><td>Wrap / collapse on small viewports.</td></tr>
+    <tr><td><code>.nav__item / __link / __link--active / __brand / __divider</code></td><td>Sub-elements.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

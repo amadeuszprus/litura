@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Dialog</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="dialog">
+  <main class="pg-main">
+    <header>
+      <h1>Dialog</h1>
+      <p>Built on the native <code>&lt;dialog&gt;</code> element — the browser handles focus trap + ESC to close. Entry via <code>@starting-style</code> with a keyframe fallback.</p>
+    </header>
+    
+  <h2>Basic</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><button class="btn" onclick="document.getElementById('pg-dialog').showModal()">Open dialog</button>
+<dialog class="dialog" id="pg-dialog">
+  <div class="dialog__content">
+    <header class="dialog__header">
+      <h3 class="dialog__title">Confirm action</h3>
+      <button class="dialog__close" onclick="this.closest('dialog').close()" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg></button>
+    </header>
+    <div class="dialog__body">
+      <p>Are you sure you want to continue?</p>
+    </div>
+    <footer class="dialog__footer">
+      <button class="btn btn--ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn" onclick="this.closest('dialog').close()">Confirm</button>
+    </footer>
+  </div>
+</dialog></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;dialog class="dialog" id="d1"&gt;
+  &lt;div class="dialog__content"&gt;
+    &lt;header class="dialog__header"&gt;
+      &lt;h3 class="dialog__title"&gt;Title&lt;/h3&gt;
+      &lt;button class="dialog__close"&gt;×&lt;/button&gt;
+    &lt;/header&gt;
+    &lt;div class="dialog__body"&gt;Content&lt;/div&gt;
+    &lt;footer class="dialog__footer"&gt;Actions&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;
+&lt;script&gt;d1.showModal()&lt;/script&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>dialog.dialog</code></td><td>Base — use the native element.</td></tr>
+    <tr><td><code>.dialog--small / --large</code></td><td>Max-width 20rem / 48rem.</td></tr>
+    <tr><td><code>.dialog--fullscreen</code></td><td>Covers the viewport.</td></tr>
+    <tr><td><code>.dialog--no-header / --no-footer</code></td><td>Hide sub-regions.</td></tr>
+    <tr><td><code>.dialog--enhanced</code></td><td>Heavier shadow + ring.</td></tr>
+    <tr><td><code>.dialog__header / __title / __body / __footer / __close</code></td><td>Sub-elements.</td></tr>
+  </tbody>
+</table>
+  <p class="text-sm" style="color:var(--muted);margin-top:var(--size-3)">Open with <code>dialogEl.showModal()</code> (traps focus) or <code>dialogEl.show()</code> (no backdrop). Close with <code>dialogEl.close()</code>.</p>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

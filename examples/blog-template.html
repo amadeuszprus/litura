@@ -31,8 +31,8 @@
     <div class="container">
       <div class="flex justify-between items-center py-4">
         <a href="#" class="site-logo">LituraInsights</a>
-        <nav class="flex items-center gap-2">
-          <a href="#" class="nav-link active">Home</a>
+        <nav class="flex items-center gap-2" aria-label="Main navigation">
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
           <a href="#" class="nav-link">Articles</a>
           <a href="#" class="nav-link">Categories</a>
           <a href="#" class="nav-link">About</a>
@@ -73,7 +73,7 @@
   <main class="blog-layout">
     <!-- Articles Column -->
     <div>
-      <article class="article-card">
+      <article class="article-card hover-lift animate-fade-in">
         <div class="article-meta">
           <div class="author-bio">
             <div class="author-avatar">KN</div>
@@ -108,7 +108,7 @@
         <a href="#" class="read-more">Read Full Article &#8594;</a>
       </article>
 
-      <article class="article-card">
+      <article class="article-card hover-lift animate-fade-in">
         <div class="article-meta">
           <div class="author-bio">
             <div class="author-avatar">TP</div>
@@ -138,7 +138,7 @@
         <a href="#" class="read-more">Read Full Article &#8594;</a>
       </article>
 
-      <article class="article-card">
+      <article class="article-card hover-lift animate-fade-in">
         <div class="article-meta">
           <div class="author-bio">
             <div class="author-avatar">LW</div>
@@ -168,7 +168,7 @@
         <a href="#" class="read-more">Read Full Article &#8594;</a>
       </article>
 
-      <article class="article-card">
+      <article class="article-card hover-lift animate-fade-in">
         <div class="article-meta">
           <div class="author-bio">
             <div class="author-avatar">SR</div>
@@ -198,15 +198,34 @@
         <a href="#" class="read-more">Read Full Article &#8594;</a>
       </article>
 
+      <!-- FAQ -->
+      <section class="mt-6 mb-5">
+        <h2 class="text-2xl font-bold mb-3">FAQ</h2>
+        <div class="accordion">
+          <details class="accordion__item" open>
+            <summary class="accordion__header">Jak często publikujemy nowe artykuły?</summary>
+            <div class="accordion__content">Średnio 3 artykuły tygodniowo — w poniedziałek, środę i piątek.</div>
+          </details>
+          <details class="accordion__item">
+            <summary class="accordion__header">Czy mogę napisać gościnny post?</summary>
+            <div class="accordion__content">Tak, sprawdź stronę „About" i zostaw wiadomość z propozycją tematu.</div>
+          </details>
+          <details class="accordion__item">
+            <summary class="accordion__header">Gdzie znajdę kod źródłowy do tutoriali?</summary>
+            <div class="accordion__content">Każdy artykuł ma link do repozytorium GitHub z kompletnym kodem.</div>
+          </details>
+        </div>
+      </section>
+
       <!-- Pagination -->
-      <div class="pagination">
-        <a href="#">&#8592; Previous</a>
+      <nav class="pagination" role="navigation" aria-label="Pagination">
+        <a href="#" rel="prev">&#8592; Previous</a>
         <a href="#">1</a>
-        <span class="current">2</span>
+        <span class="current" aria-current="page">2</span>
         <a href="#">3</a>
         <a href="#">4</a>
-        <a href="#">Next &#8594;</a>
-      </div>
+        <a href="#" rel="next">Next &#8594;</a>
+      </nav>
     </div>
 
     <!-- Sidebar -->

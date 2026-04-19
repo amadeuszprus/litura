@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Density & Fluid typography</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="density">
+  <main class="pg-main">
+    <header>
+      <h1>Density & Fluid typography</h1>
+      <p><code>data-density</code> on <code>&lt;html&gt;</code> scales every <code>--size-*</code> token. <code>data-typo="fixed"</code> disables the fluid <code>clamp()</code> scale.</p>
+    </header>
+    
+  <div style="display:flex;gap:var(--size-2);padding:var(--size-3);background:var(--soft);border-radius:var(--radius-2);margin-bottom:var(--size-4);flex-wrap:wrap;align-items:center">
+    <strong>Density:</strong>
+    <button class="btn btn--ghost" onclick="document.documentElement.removeAttribute('data-density')">Normal</button>
+    <button class="btn btn--ghost" onclick="document.documentElement.dataset.density='compact'">Compact</button>
+    <button class="btn btn--ghost" onclick="document.documentElement.dataset.density='spacious'">Spacious</button>
+    <strong style="margin-left:var(--size-3)">Typo:</strong>
+    <button class="btn btn--ghost" onclick="document.documentElement.removeAttribute('data-typo')">Fluid</button>
+    <button class="btn btn--ghost" onclick="document.documentElement.dataset.typo='fixed'">Fixed</button>
+  </div>
+
+  <h2>Type scale</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div>
+  <h1 class="text-5xl">text-5xl</h1>
+  <h2 class="text-4xl">text-4xl</h2>
+  <h3 class="text-3xl">text-3xl</h3>
+  <h4 class="text-2xl">text-2xl</h4>
+  <p class="text-lg">text-lg — paragraph</p>
+  <p class="text-base">text-base — body</p>
+  <p class="text-sm text-muted">text-sm — small</p>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;html data-typo="fixed"&gt; &lt;!-- disables fluid scaling --&gt;</code></pre>
+</div>
+
+  <h2>Spacing under density</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview pg-example__preview--soft"><div class="grid md:grid-cols-3 gap-3">
+  <div class="card"><div class="card__body">Card 1</div></div>
+  <div class="card"><div class="card__body">Card padding scales with density.</div></div>
+  <div class="card"><div class="card__body">Try compact or spacious above.</div></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;html data-density="compact"&gt;   &lt;!-- ~80% spacing --&gt;
+&lt;html data-density="spacious"&gt;  &lt;!-- ~120% spacing --&gt;</code></pre>
+</div>
+
+  <h2>Attribute reference</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Attribute</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>data-density="compact"</code></td><td>All <code>--size-1…-10</code> tokens scaled down ~80%.</td></tr>
+    <tr><td><code>data-density="spacious"</code></td><td>All size tokens scaled up ~120%.</td></tr>
+    <tr><td><code>data-typo="fixed"</code></td><td>Locks <code>--text-*</code> to static rem values (disables <code>clamp()</code>).</td></tr>
+    <tr><td><code>data-theme="dark"</code></td><td>Force dark scheme (plus <code>light / high-contrast / sepia / nord / ocean / rose</code>).</td></tr>
+    <tr><td><code>data-font="modern"</code></td><td>Swap font stack (<code>modern / tech / minimal / artistic</code>).</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

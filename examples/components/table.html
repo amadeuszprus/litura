@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Table</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="table">
+  <main class="pg-main">
+    <header>
+      <h1>Table</h1>
+      <p>Styled table. Composable modifiers: striped, compact, borderless, fixed, responsive, stack (mobile).</p>
+    </header>
+    
+  <h2>Default + striped</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><table class="table table--striped">
+  <thead><tr><th>Product</th><th>Price</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Laptop</td><td>$3,499</td><td><span class="badge badge--success">In stock</span></td></tr>
+    <tr><td>Monitor</td><td>$1,299</td><td><span class="badge badge--success">In stock</span></td></tr>
+    <tr><td>Keyboard</td><td>$299</td><td><span class="badge badge--error">Out</span></td></tr>
+  </tbody>
+</table></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;table class="table table--striped"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;…&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;…&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+
+  <h2>Compact + borderless</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><table class="table table--compact table--borderless">
+  <thead><tr><th>File</th><th>Size</th><th>Modified</th></tr></thead>
+  <tbody>
+    <tr><td>document.pdf</td><td>2.4 MB</td><td>2026-01-15</td></tr>
+    <tr><td>image.jpg</td><td>456 KB</td><td>2026-01-14</td></tr>
+    <tr><td>sheet.xlsx</td><td>1.2 MB</td><td>2026-01-13</td></tr>
+  </tbody>
+</table></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;table class="table table--compact table--borderless"&gt;…&lt;/table&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.table</code></td><td>Base — left-aligned, bordered.</td></tr>
+    <tr><td><code>.table--striped</code></td><td>Zebra rows.</td></tr>
+    <tr><td><code>.table--compact</code></td><td>Tighter cell padding.</td></tr>
+    <tr><td><code>.table--borderless</code></td><td>Remove vertical/outer borders.</td></tr>
+    <tr><td><code>.table--fixed</code></td><td>Fixed <code>table-layout</code> for equal columns.</td></tr>
+    <tr><td><code>.table--responsive</code></td><td>Horizontal scroll on small screens.</td></tr>
+    <tr><td><code>.table--stack</code></td><td>On mobile, rows stack as cards (requires <code>data-label</code> on cells).</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

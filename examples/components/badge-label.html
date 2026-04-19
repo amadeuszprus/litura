@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Badge & Label</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="badge-label">
+  <main class="pg-main">
+    <header>
+      <h1>Badge & Label</h1>
+      <p>Tiny inline markers. Badge — denser and bolder. Label — slightly roomier. Both share the same tone system.</p>
+    </header>
+    
+  <h2>Badge — subtle tones</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <span class="badge">default</span>
+  <span class="badge badge--info">info</span>
+  <span class="badge badge--success">success</span>
+  <span class="badge badge--warning">warning</span>
+  <span class="badge badge--error">error</span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;span class="badge badge--success"&gt;New&lt;/span&gt;</code></pre>
+</div>
+
+  <h2>Badge — solid + pill</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <span class="badge badge--info-solid">info solid</span>
+  <span class="badge badge--success-solid badge--pill">success pill</span>
+  <span class="badge badge--warning-solid">warning</span>
+  <span class="badge badge--error-solid badge--pill">urgent</span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;span class="badge badge--success-solid badge--pill"&gt;Live&lt;/span&gt;</code></pre>
+</div>
+
+  <h2>Badge — sizes & dot</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster items-center">
+  <span class="badge badge--info badge--small">small</span>
+  <span class="badge badge--info">default</span>
+  <span class="badge badge--info badge--large">large</span>
+  <span class="badge badge--dot badge--success"></span>
+  <span class="badge badge--dot badge--warning"></span>
+  <span class="badge badge--dot badge--error"></span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;span class="badge badge--dot badge--success"&gt;&lt;/span&gt;</code></pre>
+</div>
+
+  <h2>Label</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <span class="label">default</span>
+  <span class="label label--info">info</span>
+  <span class="label label--success">success</span>
+  <span class="label label--warning">warning</span>
+  <span class="label label--error">error</span>
+  <span class="label label--info label--pill">pill</span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;span class="label label--info label--pill"&gt;Info&lt;/span&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.badge / .label</code></td><td>Base markers.</td></tr>
+    <tr><td><code>.{badge,label}--info / --success / --warning / --error</code></td><td>Subtle tone.</td></tr>
+    <tr><td><code>.{badge,label}--info-solid / ...-solid</code></td><td>Solid tone.</td></tr>
+    <tr><td><code>.{badge,label}--pill</code></td><td>Fully rounded.</td></tr>
+    <tr><td><code>.{badge,label}--small / --large</code></td><td>Size variants.</td></tr>
+    <tr><td><code>.badge--dot</code></td><td>Round 0.5rem dot. Compose with a tone class.</td></tr>
+    <tr><td><code>.{badge,label}__icon</code></td><td>Leading SVG icon slot.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

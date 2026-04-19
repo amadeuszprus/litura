@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Templates</title>
+  <meta name="description" content="Ready-to-fork HTML templates built with Litura: blog, dashboard, SaaS landing, forum, portfolio, press.">
+  <link rel="stylesheet" href="../index.css">
+  <style>
+    body { background: var(--bg); color: var(--fg); min-height: 100vh; }
+
+    .t-nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklch, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--line);
+      padding-block: var(--size-3);
+    }
+    .t-nav__inner {
+      max-width: 72rem; margin-inline: auto; padding-inline: var(--size-5);
+      display: flex; align-items: center; gap: var(--size-4);
+    }
+    .t-logo {
+      font-size: var(--text-xl); font-weight: 800; letter-spacing: -0.02em;
+      color: var(--fg); text-decoration: none;
+    }
+    .t-logo::first-letter { color: var(--accent); }
+    .t-nav__links { margin-inline-start: auto; display: flex; gap: var(--size-1); }
+    .t-nav__links a {
+      padding: var(--size-2) var(--size-3); border-radius: var(--radius-1);
+      color: var(--muted); text-decoration: none; font-size: var(--text-sm); font-weight: 500;
+    }
+    .t-nav__links a:hover { color: var(--fg); background: var(--soft); }
+    .t-nav__links a[aria-current="page"] { color: var(--accent); background: color-mix(in oklch, var(--accent) 12%, transparent); }
+
+    .t-header {
+      max-width: 72rem; margin-inline: auto; padding: var(--size-8) var(--size-5) var(--size-6);
+      text-align: center;
+    }
+    .t-header h1 {
+      font-size: clamp(2rem, 1.2rem + 3vw, 3rem);
+      letter-spacing: -0.02em; margin: 0 0 var(--size-2);
+    }
+    .t-header p { color: var(--muted); margin: 0; max-width: 42rem; margin-inline: auto; }
+
+    .t-grid {
+      max-width: 72rem; margin-inline: auto; padding: 0 var(--size-5) var(--size-8);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+      gap: var(--size-4);
+    }
+
+    .t-card {
+      display: flex; flex-direction: column;
+      border: 1px solid var(--line); border-radius: var(--radius-2);
+      background: var(--bg); overflow: clip;
+      text-decoration: none; color: var(--fg);
+      transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+    }
+    .t-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    .t-card__preview {
+      position: relative;
+      aspect-ratio: 16/10;
+      background: var(--soft);
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .t-card__preview svg { display: block; width: 100%; height: 100%; }
+
+    .t-card__body { padding: var(--size-4); }
+    .t-card__title { font-weight: 700; font-size: var(--text-lg); margin: 0 0 var(--size-1); }
+    .t-card__desc { color: var(--muted); font-size: var(--text-sm); margin: 0 0 var(--size-3); line-height: 1.5; }
+
+    .t-card__meta {
+      display: flex; gap: var(--size-2); flex-wrap: wrap;
+    }
+    .t-chip {
+      font-size: var(--text-xs); font-weight: 500;
+      padding: 0.15rem 0.5rem; border-radius: var(--radius-full);
+      background: var(--soft); color: var(--muted);
+      border: 1px solid var(--line);
+    }
+
+    .t-card__open {
+      margin-top: var(--size-3);
+      display: inline-flex; align-items: center; gap: var(--size-1);
+      font-size: var(--text-sm); font-weight: 600;
+      color: var(--accent);
+    }
+
+    .t-theme {
+      position: fixed; top: var(--size-3); right: var(--size-3); z-index: 60;
+      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-2);
+      padding: var(--size-2); box-shadow: var(--shadow-sm); font-size: var(--text-xs);
+    }
+    .t-theme select {
+      font: inherit; background: var(--soft); color: var(--fg);
+      border: 1px solid var(--line); border-radius: var(--radius-1);
+      padding: 0.25rem 0.5rem; cursor: pointer;
+    }
+
+    /* Preview mini-graphics — SVG stylized previews */
+    .t-preview-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        color-mix(in oklch, var(--accent) 12%, var(--soft)),
+        color-mix(in oklch, var(--accent) 4%, var(--soft)));
+    }
+    .t-preview-content {
+      position: absolute; inset: var(--size-4);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .t-preview-bar {
+      height: 8px; background: color-mix(in oklch, var(--fg) 20%, transparent);
+      border-radius: 3px;
+    }
+    .t-preview-bar--accent { background: var(--accent); }
+    .t-preview-bar--light { background: color-mix(in oklch, var(--fg) 8%, transparent); }
+    .t-preview-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; flex: 1; }
+    .t-preview-tile {
+      background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
+      padding: 4px; display: flex; flex-direction: column; gap: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="t-theme">
+    <select id="theme-select" aria-label="Theme">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select>
+  </div>
+
+  <nav class="t-nav" aria-label="Primary">
+    <div class="t-nav__inner">
+      <a href="../" class="t-logo">Litura</a>
+      <div class="t-nav__links">
+        <a href="components/">Components</a>
+        <a href="./" aria-current="page">Templates</a>
+        <a href="https://github.com/amadeuszprus/litura">GitHub</a>
+        <a href="https://www.npmjs.com/package/litura">npm</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="t-header">
+    <h1>Templates</h1>
+    <p>Ready-to-fork HTML pages built entirely with Litura classes. Open to preview, inspect source for structure.</p>
+  </header>
+
+  <div class="t-grid">
+
+    <a class="t-card" href="complete-website.html">
+      <div class="t-card__preview">
+        <div class="t-preview-gradient"></div>
+        <div class="t-preview-content">
+          <div class="t-preview-bar" style="width:30%;height:10px"></div>
+          <div class="t-preview-bar t-preview-bar--accent" style="width:60%;height:18px;margin-top:4px"></div>
+          <div class="t-preview-bar t-preview-bar--light" style="width:75%"></div>
+          <div class="t-preview-bar t-preview-bar--light" style="width:55%"></div>
+          <div class="t-preview-cards" style="margin-top:6px">
+            <div class="t-preview-tile"><div class="t-preview-bar t-preview-bar--light" style="height:5px;width:60%"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:80%"></div></div>
+            <div class="t-preview-tile"><div class="t-preview-bar t-preview-bar--light" style="height:5px;width:60%"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:80%"></div></div>
+            <div class="t-preview-tile"><div class="t-preview-bar t-preview-bar--light" style="height:5px;width:60%"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:80%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card__body">
+        <h2 class="t-card__title">SaaS landing</h2>
+        <p class="t-card__desc">Hero, feature grid, pricing plans, testimonials, FAQ accordion and footer.</p>
+        <div class="t-card__meta">
+          <span class="t-chip">hero</span>
+          <span class="t-chip">pricing</span>
+          <span class="t-chip">features</span>
+          <span class="t-chip">FAQ</span>
+        </div>
+        <span class="t-card__open">Open template →</span>
+      </div>
+    </a>
+
+    <a class="t-card" href="dashboard-template.html">
+      <div class="t-card__preview">
+        <div class="t-preview-gradient"></div>
+        <div class="t-preview-content">
+          <div style="display:flex;gap:6px;align-items:center;margin-bottom:4px">
+            <div class="t-preview-bar t-preview-bar--accent" style="width:40px;height:10px"></div>
+            <div class="t-preview-bar t-preview-bar--light" style="flex:1;height:6px"></div>
+          </div>
+          <div class="t-preview-cards">
+            <div class="t-preview-tile"><div class="t-preview-bar" style="height:10px;width:70%"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:40%"></div></div>
+            <div class="t-preview-tile"><div class="t-preview-bar" style="height:10px;width:60%"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:50%"></div></div>
+            <div class="t-preview-tile"><div class="t-preview-bar" style="height:10px;width:80%"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:30%"></div></div>
+          </div>
+          <div class="t-preview-bar t-preview-bar--light" style="height:40px;border-radius:4px;margin-top:4px"></div>
+        </div>
+      </div>
+      <div class="t-card__body">
+        <h2 class="t-card__title">Dashboard</h2>
+        <p class="t-card__desc">Admin panel: animated stats, tables, forms, tabs, accordion, toast notifications.</p>
+        <div class="t-card__meta">
+          <span class="t-chip">stats</span>
+          <span class="t-chip">tables</span>
+          <span class="t-chip">forms</span>
+          <span class="t-chip">toast</span>
+        </div>
+        <span class="t-card__open">Open template →</span>
+      </div>
+    </a>
+
+    <a class="t-card" href="blog-template.html">
+      <div class="t-card__preview">
+        <div class="t-preview-gradient"></div>
+        <div class="t-preview-content">
+          <div class="t-preview-bar t-preview-bar--accent" style="width:55%;height:14px"></div>
+          <div class="t-preview-bar t-preview-bar--light" style="width:85%"></div>
+          <div class="t-preview-bar t-preview-bar--light" style="width:78%"></div>
+          <div class="t-preview-bar t-preview-bar--light" style="width:70%"></div>
+          <div style="display:flex;gap:6px;margin-top:4px">
+            <span class="t-chip" style="padding:2px 6px;font-size:9px">tag</span>
+            <span class="t-chip" style="padding:2px 6px;font-size:9px">tag</span>
+          </div>
+        </div>
+      </div>
+      <div class="t-card__body">
+        <h2 class="t-card__title">Blog</h2>
+        <p class="t-card__desc">Article list with featured post, sidebar widgets, pagination, FAQ accordion.</p>
+        <div class="t-card__meta">
+          <span class="t-chip">articles</span>
+          <span class="t-chip">sidebar</span>
+          <span class="t-chip">pagination</span>
+        </div>
+        <span class="t-card__open">Open template →</span>
+      </div>
+    </a>
+
+    <a class="t-card" href="forum-template.html">
+      <div class="t-card__preview">
+        <div class="t-preview-gradient"></div>
+        <div class="t-preview-content">
+          <div class="t-preview-bar t-preview-bar--accent" style="width:40%;height:10px"></div>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px">
+            <div style="display:flex;gap:6px;align-items:center"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div><div class="t-preview-bar t-preview-bar--light" style="flex:1;height:5px"></div></div>
+            <div style="display:flex;gap:6px;align-items:center"><div style="width:12px;height:12px;border-radius:50%;background:color-mix(in oklch, var(--fg) 30%, transparent)"></div><div class="t-preview-bar t-preview-bar--light" style="flex:1;height:5px"></div></div>
+            <div style="display:flex;gap:6px;align-items:center"><div style="width:12px;height:12px;border-radius:50%;background:color-mix(in oklch, var(--fg) 30%, transparent)"></div><div class="t-preview-bar t-preview-bar--light" style="flex:1;height:5px"></div></div>
+            <div style="display:flex;gap:6px;align-items:center"><div style="width:12px;height:12px;border-radius:50%;background:color-mix(in oklch, var(--fg) 30%, transparent)"></div><div class="t-preview-bar t-preview-bar--light" style="flex:1;height:5px"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card__body">
+        <h2 class="t-card__title">Forum</h2>
+        <p class="t-card__desc">Community board: categories, threads, online indicator, user stats sidebar.</p>
+        <div class="t-card__meta">
+          <span class="t-chip">categories</span>
+          <span class="t-chip">threads</span>
+          <span class="t-chip">sidebar</span>
+        </div>
+        <span class="t-card__open">Open template →</span>
+      </div>
+    </a>
+
+    <a class="t-card" href="portfolio-template.html">
+      <div class="t-card__preview">
+        <div class="t-preview-gradient"></div>
+        <div class="t-preview-content">
+          <div style="display:flex;gap:6px;align-items:center">
+            <div class="t-preview-bar t-preview-bar--accent" style="width:25%;height:12px"></div>
+            <div class="t-preview-bar t-preview-bar--light" style="flex:1;height:4px"></div>
+          </div>
+          <div class="t-preview-bar" style="width:70%;height:16px;margin-top:4px"></div>
+          <div class="t-preview-cards" style="margin-top:8px">
+            <div class="t-preview-tile" style="aspect-ratio:1/1;padding:0;background:color-mix(in oklch, var(--accent) 20%, var(--soft))"></div>
+            <div class="t-preview-tile" style="aspect-ratio:1/1;padding:0;background:color-mix(in oklch, var(--accent) 8%, var(--soft))"></div>
+            <div class="t-preview-tile" style="aspect-ratio:1/1;padding:0;background:color-mix(in oklch, var(--accent) 15%, var(--soft))"></div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card__body">
+        <h2 class="t-card__title">Portfolio</h2>
+        <p class="t-card__desc">Creative showcase: project grid, services, testimonials, contact section.</p>
+        <div class="t-card__meta">
+          <span class="t-chip">projects</span>
+          <span class="t-chip">services</span>
+          <span class="t-chip">testimonials</span>
+        </div>
+        <span class="t-card__open">Open template →</span>
+      </div>
+    </a>
+
+    <a class="t-card" href="press-template.html">
+      <div class="t-card__preview">
+        <div class="t-preview-gradient"></div>
+        <div class="t-preview-content">
+          <div class="t-preview-bar t-preview-bar--accent" style="width:100%;height:12px"></div>
+          <div class="t-preview-bar" style="width:80%;height:14px;margin-top:4px"></div>
+          <div class="t-preview-bar t-preview-bar--light" style="width:95%"></div>
+          <div class="t-preview-cards" style="grid-template-columns:1fr 1fr;margin-top:4px">
+            <div class="t-preview-tile"><div class="t-preview-bar t-preview-bar--light" style="height:24px;border-radius:2px"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:70%;margin-top:3px"></div></div>
+            <div class="t-preview-tile"><div class="t-preview-bar t-preview-bar--light" style="height:24px;border-radius:2px"></div><div class="t-preview-bar t-preview-bar--light" style="height:4px;width:70%;margin-top:3px"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card__body">
+        <h2 class="t-card__title">Press / News</h2>
+        <p class="t-card__desc">News site layout: breaking banner, article grid, live updates, market tickers.</p>
+        <div class="t-card__meta">
+          <span class="t-chip">articles</span>
+          <span class="t-chip">live updates</span>
+          <span class="t-chip">tickers</span>
+        </div>
+        <span class="t-card__open">Open template →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <script>
+    const themeSelect = document.getElementById('theme-select');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('litura-theme') || 'auto';
+    themeSelect.value = saved;
+    if (saved !== 'auto') root.setAttribute('data-theme', saved);
+
+    themeSelect.addEventListener('change', e => {
+      const v = e.target.value;
+      localStorage.setItem('litura-theme', v);
+      if (v === 'auto') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', v);
+    });
+  </script>
+</body>
+</html>

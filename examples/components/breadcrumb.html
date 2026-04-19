@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Breadcrumb</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="breadcrumb">
+  <main class="pg-main">
+    <header>
+      <h1>Breadcrumb</h1>
+      <p>Breadcrumb trail. Remember to set <code>aria-label="Breadcrumb"</code> and <code>aria-current="page"</code> on the last item.</p>
+    </header>
+    
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="#">Home</a>
+  <span class="breadcrumb-separator" aria-hidden="true">/</span>
+  <a href="#">Blog</a>
+  <span class="breadcrumb-separator" aria-hidden="true">/</span>
+  <span aria-current="page">Current article</span>
+</nav></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;span class="breadcrumb-separator" aria-hidden="true"&gt;/&lt;/span&gt;
+  &lt;span aria-current="page"&gt;Current&lt;/span&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.breadcrumb</code></td><td>Horizontal trail container.</td></tr>
+    <tr><td><code>.breadcrumb-separator</code></td><td>Decorative separator.</td></tr>
+    <tr><td><code>.breadcrumb-current</code></td><td>Styling for the active crumb.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

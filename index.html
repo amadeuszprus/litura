@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — a minimalist content-first CSS library</title>
+  <meta name="description" content="A minimalist, content-focused CSS library built on modern primitives: layers, tokens, color-mix, @starting-style, container queries. 23 components, 8 themes, fluid typography, zero runtime dependencies.">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" id="hljs-theme" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  <style>
+    body { background: var(--bg); color: var(--fg); }
+
+    .lp-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklch, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--line);
+      padding-block: var(--size-3);
+    }
+    .lp-nav__inner {
+      max-width: 72rem;
+      margin-inline: auto;
+      padding-inline: var(--size-5);
+      display: flex;
+      align-items: center;
+      gap: var(--size-4);
+    }
+    .lp-logo {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      text-decoration: none;
+    }
+    .lp-logo::first-letter { color: var(--accent); }
+    .lp-nav__links {
+      margin-inline-start: auto;
+      display: flex;
+      gap: var(--size-1);
+      align-items: center;
+    }
+    .lp-nav__links a {
+      padding: var(--size-2) var(--size-3);
+      border-radius: var(--radius-1);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+    .lp-nav__links a:hover { color: var(--fg); background: var(--soft); }
+
+    .lp-hero {
+      padding-block: var(--size-10) var(--size-9);
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, color-mix(in oklch, var(--accent) 12%, transparent), transparent 60%),
+        var(--bg);
+    }
+    .lp-hero__inner {
+      max-width: 50rem;
+      margin-inline: auto;
+      padding-inline: var(--size-5);
+    }
+    .lp-eyebrow {
+      display: inline-block;
+      padding: var(--size-1) var(--size-3);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid color-mix(in oklch, var(--accent) 30%, var(--line));
+      border-radius: var(--radius-full);
+      background: color-mix(in oklch, var(--accent) 8%, transparent);
+      margin-bottom: var(--size-4);
+    }
+    .lp-hero h1 {
+      font-size: clamp(2.5rem, 1.2rem + 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+      margin: 0 0 var(--size-4);
+    }
+    .lp-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), color-mix(in oklch, var(--accent) 50%, var(--fg)));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lp-hero p.lp-lead {
+      font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+      color: var(--muted);
+      margin: 0 auto var(--size-6);
+      max-width: 40rem;
+    }
+    .lp-cta { display: flex; gap: var(--size-3); justify-content: center; flex-wrap: wrap; }
+
+    .lp-install {
+      margin: var(--size-6) auto 0;
+      max-width: 38rem;
+      padding: var(--size-1);
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      display: flex;
+      align-items: center;
+      gap: var(--size-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+    }
+    .lp-install__cmd {
+      flex: 1;
+      padding: var(--size-2) var(--size-3);
+      color: var(--fg);
+    }
+    .lp-install__cmd .dollar { color: var(--muted); user-select: none; margin-right: var(--size-2); }
+    .lp-install__copy {
+      padding: var(--size-2) var(--size-3);
+      border: 0;
+      background: var(--bg);
+      color: var(--fg);
+      border-radius: var(--radius-1);
+      cursor: pointer;
+      font: inherit;
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+    .lp-install__copy:hover { background: var(--accent); color: var(--accent-fg); }
+
+    .lp-section {
+      max-width: 72rem;
+      margin-inline: auto;
+      padding: var(--size-8) var(--size-5);
+    }
+    .lp-section__head {
+      text-align: center;
+      margin-bottom: var(--size-6);
+    }
+    .lp-section__head h2 {
+      font-size: clamp(1.75rem, 1.1rem + 2vw, 2.5rem);
+      margin: 0 0 var(--size-2);
+      letter-spacing: -0.02em;
+    }
+    .lp-section__head p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 42rem;
+      margin-inline: auto;
+    }
+
+    .lp-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: var(--size-4);
+    }
+    .lp-feature {
+      padding: var(--size-5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      background: var(--bg);
+    }
+    .lp-feature__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--radius-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: color-mix(in oklch, var(--accent) 15%, transparent);
+      color: var(--accent);
+      margin-bottom: var(--size-3);
+    }
+    .lp-feature h3 { font-size: var(--text-lg); margin: 0 0 var(--size-2); }
+    .lp-feature p { color: var(--muted); margin: 0; font-size: var(--text-sm); line-height: 1.55; }
+
+    .lp-code {
+      max-width: 56rem;
+      margin-inline: auto;
+      background: var(--code-bg, #0d1117);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      overflow: hidden;
+    }
+    .lp-code__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--size-2) var(--size-4);
+      border-bottom: 1px solid color-mix(in oklch, var(--code-fg, #e6edf3) 15%, transparent);
+      color: color-mix(in oklch, var(--code-fg, #e6edf3) 70%, transparent);
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+    }
+    .lp-code pre {
+      margin: 0;
+      padding: var(--size-4);
+      background: transparent;
+      overflow-x: auto;
+    }
+    .lp-code code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--code-fg, #e6edf3);
+      background: transparent;
+    }
+
+    .lp-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: var(--size-3);
+      max-width: 56rem;
+      margin-inline: auto;
+    }
+    .lp-link-card {
+      display: flex;
+      align-items: center;
+      gap: var(--size-3);
+      padding: var(--size-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      background: var(--bg);
+      color: var(--fg);
+      text-decoration: none;
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .lp-link-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: color-mix(in oklch, var(--accent) 4%, var(--bg));
+    }
+    .lp-link-card__icon {
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .lp-link-card__title { font-weight: 700; margin-bottom: 2px; }
+    .lp-link-card__sub { color: var(--muted); font-size: var(--text-sm); }
+    .lp-link-card__arrow { margin-inline-start: auto; color: var(--muted); }
+
+    .lp-footer {
+      border-top: 1px solid var(--line);
+      padding-block: var(--size-5);
+      margin-top: var(--size-8);
+      text-align: center;
+      color: var(--muted);
+      font-size: var(--text-sm);
+    }
+    .lp-footer a { color: inherit; }
+
+    .lp-theme-picker {
+      position: fixed;
+      top: var(--size-3);
+      right: var(--size-3);
+      z-index: 60;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      padding: var(--size-2);
+      box-shadow: var(--shadow-sm);
+      font-size: var(--text-xs);
+    }
+    .lp-theme-picker select {
+      font: inherit;
+      background: var(--soft);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-1);
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lp-link-card, .card--interactive { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="lp-theme-picker">
+    <select id="theme-select" aria-label="Theme">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select>
+  </div>
+
+  <nav class="lp-nav" aria-label="Primary">
+    <div class="lp-nav__inner">
+      <a href="/" class="lp-logo">Litura</a>
+      <div class="lp-nav__links">
+        <a href="examples/components/">Components</a>
+        <a href="examples/">Templates</a>
+        <a href="https://github.com/amadeuszprus/litura">GitHub</a>
+        <a href="https://www.npmjs.com/package/litura">npm</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="lp-hero">
+    <div class="lp-hero__inner">
+      <span class="lp-eyebrow">v0.1.0-alpha · pure CSS</span>
+      <h1>A minimalist CSS library, <em>built on modern primitives</em></h1>
+      <p class="lp-lead">Content-first styling with <code>@layer</code>, custom properties, <code>color-mix(in oklch)</code>, <code>:has()</code>, <code>@starting-style</code>, container queries. 23 components, 8 themes, fluid typography, zero runtime dependencies.</p>
+
+      <div class="lp-cta">
+        <a href="examples/components/" class="btn">Open playground</a>
+        <a href="https://github.com/amadeuszprus/litura" class="btn btn--ghost">View on GitHub</a>
+      </div>
+
+      <div class="lp-install">
+        <span class="lp-install__cmd"><span class="dollar">$</span>npm install litura</span>
+        <button class="lp-install__copy" type="button" onclick="copyInstall(this)">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-section">
+    <div class="lp-section__head">
+      <h2>Drop-in, zero build</h2>
+      <p>Single stylesheet. Use classes directly in your HTML.</p>
+    </div>
+    <div class="lp-code">
+      <div class="lp-code__header"><span>index.html</span><span>HTML</span></div>
+      <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html data-theme="auto"&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="https://unpkg.com/litura"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="container"&gt;
+    &lt;section class="hero"&gt;
+      &lt;h1&gt;Ship a clean UI today&lt;/h1&gt;
+      &lt;p&gt;No runtime. No config. Just content.&lt;/p&gt;
+      &lt;a class="btn" href="#"&gt;Get started&lt;/a&gt;
+    &lt;/section&gt;
+
+    &lt;div class="stats-grid"&gt;
+      &lt;div class="stat-card"&gt;&lt;span class="stat-number"&gt;12k&lt;/span&gt;&lt;span class="text-muted"&gt;Users&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="stat-card"&gt;&lt;span class="stat-number"&gt;99.9%&lt;/span&gt;&lt;span class="text-muted"&gt;Uptime&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="lp-section">
+    <div class="lp-section__head">
+      <h2>What&rsquo;s inside</h2>
+      <p>Everything you need for content-heavy UIs.</p>
+    </div>
+    <div class="lp-features">
+      <article class="lp-feature">
+        <span class="lp-feature__icon">⚡</span>
+        <h3>Pure CSS</h3>
+        <p>No runtime, no JavaScript required for components like accordion, tabs, tooltip, menu, dialog. Optional enhancement scripts add keyboard &amp; ARIA polish.</p>
+      </article>
+      <article class="lp-feature">
+        <span class="lp-feature__icon">🎨</span>
+        <h3>8 color themes</h3>
+        <p>Light, Dark, High contrast, Sepia, Nord, Ocean, Rose + Auto. Switch via <code>data-theme</code> on <code>&lt;html&gt;</code>. All tokens derive from semantic custom properties.</p>
+      </article>
+      <article class="lp-feature">
+        <span class="lp-feature__icon">📐</span>
+        <h3>Fluid typography</h3>
+        <p>Type scale uses <code>clamp()</code>, adapts smoothly between 40rem and 96rem viewports. Opt out with <code>data-typo="fixed"</code>.</p>
+      </article>
+      <article class="lp-feature">
+        <span class="lp-feature__icon">📏</span>
+        <h3>Density modes</h3>
+        <p><code>data-density="compact"</code> or <code>"spacious"</code> rescales every <code>--size-*</code> token. Great for data-dense dashboards.</p>
+      </article>
+      <article class="lp-feature">
+        <span class="lp-feature__icon">♿</span>
+        <h3>Accessibility first</h3>
+        <p><code>prefers-reduced-motion</code>, focus-visible rings, <code>:user-invalid</code> forms, <code>contrast-color()</code> forward-compat, ARIA examples in every template.</p>
+      </article>
+      <article class="lp-feature">
+        <span class="lp-feature__icon">🧩</span>
+        <h3>23 components</h3>
+        <p>Buttons, cards, forms, tables, nav, dialog, menu, accordion, tabs, tooltip, toast, alert, badge, label, hero, stats, pricing, breadcrumb, testimonial &amp; more.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="lp-section">
+    <div class="lp-section__head">
+      <h2>Explore</h2>
+      <p>Live components, ready-to-fork templates, source on GitHub.</p>
+    </div>
+    <div class="lp-links-grid">
+      <a class="lp-link-card" href="examples/components/">
+        <span class="lp-link-card__icon" aria-hidden="true">
+          <svg class="icon icon--lg icon--stroke" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </span>
+        <div>
+          <div class="lp-link-card__title">Component playground</div>
+          <div class="lp-link-card__sub">Live preview + snippets</div>
+        </div>
+        <span class="lp-link-card__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="lp-link-card" href="examples/">
+        <span class="lp-link-card__icon" aria-hidden="true">
+          <svg class="icon icon--lg icon--stroke" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </span>
+        <div>
+          <div class="lp-link-card__title">Templates</div>
+          <div class="lp-link-card__sub">Blog, dashboard, SaaS, forum…</div>
+        </div>
+        <span class="lp-link-card__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="lp-link-card" href="https://github.com/amadeuszprus/litura">
+        <span class="lp-link-card__icon" aria-hidden="true">
+          <svg class="icon icon--lg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.55 2.87 8.4 6.84 9.77.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0112 7.1c.85 0 1.7.12 2.5.34 1.9-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .28.18.6.69.5A10.26 10.26 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        </span>
+        <div>
+          <div class="lp-link-card__title">GitHub</div>
+          <div class="lp-link-card__sub">Source, issues, roadmap</div>
+        </div>
+        <span class="lp-link-card__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="lp-link-card" href="https://www.npmjs.com/package/litura">
+        <span class="lp-link-card__icon" aria-hidden="true">
+          <svg class="icon icon--lg" viewBox="0 0 24 24" fill="currentColor"><path d="M1 8h22v8h-11v2H7v-2H1V8zm2 2v4h3v-3h1v3h1v-4H3zm6 0v6h2v-2h3V10H9zm3 1v2h-1v-2h1zm3-1v4h2v-3h1v3h1v-3h1v3h1v-4h-6z"/></svg>
+        </span>
+        <div>
+          <div class="lp-link-card__title">npm</div>
+          <div class="lp-link-card__sub">npm install litura</div>
+        </div>
+        <span class="lp-link-card__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="lp-footer">
+    MIT licensed · built with Litura ·
+    <a href="examples/components/">playground</a> ·
+    <a href="https://github.com/amadeuszprus/litura">GitHub</a> ·
+    <a href="https://www.npmjs.com/package/litura">npm</a>
+  </footer>
+
+  <script>
+    function copyInstall(btn) {
+      navigator.clipboard.writeText('npm install litura').then(() => {
+        const prev = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = prev; }, 1200);
+      }).catch(() => { btn.textContent = 'Copy failed'; });
+    }
+
+    // Theme persistence + hljs sync
+    const themeSelect = document.getElementById('theme-select');
+    const root = document.documentElement;
+    const hljsLink = document.getElementById('hljs-theme');
+    const DARK_HREF = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css';
+    const LIGHT_HREF = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css';
+    const DARK_THEMES = new Set(['dark', 'high-contrast', 'nord']);
+
+    const saved = localStorage.getItem('litura-theme') || 'auto';
+    themeSelect.value = saved;
+    if (saved !== 'auto') root.setAttribute('data-theme', saved);
+
+    function isDark() {
+      const attr = root.getAttribute('data-theme');
+      if (attr) return DARK_THEMES.has(attr);
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function syncHljs() {
+      const dark = isDark();
+      hljsLink.href = dark ? DARK_HREF : LIGHT_HREF;
+      root.style.setProperty('--code-bg', dark ? '#0d1117' : '#f6f8fa');
+      root.style.setProperty('--code-fg', dark ? '#e6edf3' : '#24292f');
+    }
+    syncHljs();
+
+    themeSelect.addEventListener('change', e => {
+      const v = e.target.value;
+      localStorage.setItem('litura-theme', v);
+      if (v === 'auto') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', v);
+      syncHljs();
+    });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncHljs);
+
+    if (window.hljs) document.querySelectorAll('pre code').forEach(b => window.hljs.highlightElement(b));
+    else window.addEventListener('load', () => {
+      if (window.hljs) document.querySelectorAll('pre code').forEach(b => window.hljs.highlightElement(b));
+    });
+  </script>
+</body>
+</html>

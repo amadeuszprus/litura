@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Animations</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="animations">
+  <main class="pg-main">
+    <header>
+      <h1>Animations</h1>
+      <p>Keyframes + <code>.animate-*</code>, <code>.hover-*</code> utilities and a skeleton loader. All honor <code>prefers-reduced-motion</code>.</p>
+    </header>
+    
+  <h2>Entrance (click card to replay)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="grid md:grid-cols-3 gap-3">
+  <button class="card card--interactive animate-fade-in" onclick="pgReplay(this,'animate-fade-in')"><div class="card__body"><strong>animate-fade-in</strong><p class="text-sm text-muted">opacity 0→1, 300ms</p></div></button>
+  <button class="card card--interactive animate-slide-up" onclick="pgReplay(this,'animate-slide-up')"><div class="card__body"><strong>animate-slide-up</strong><p class="text-sm text-muted">translateY .75rem→0</p></div></button>
+  <button class="card card--interactive animate-slide-down" onclick="pgReplay(this,'animate-slide-down')"><div class="card__body"><strong>animate-slide-down</strong><p class="text-sm text-muted">translateY -.75rem→0</p></div></button>
+  <button class="card card--interactive animate-slide-left" onclick="pgReplay(this,'animate-slide-left')"><div class="card__body"><strong>animate-slide-left</strong><p class="text-sm text-muted">translateX .75rem→0</p></div></button>
+  <button class="card card--interactive animate-slide-right" onclick="pgReplay(this,'animate-slide-right')"><div class="card__body"><strong>animate-slide-right</strong><p class="text-sm text-muted">translateX -.75rem→0</p></div></button>
+  <button class="card card--interactive animate-scale-in" onclick="pgReplay(this,'animate-scale-in')"><div class="card__body"><strong>animate-scale-in</strong><p class="text-sm text-muted">scale .95→1</p></div></button>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="animate-fade-in"&gt;Fade in&lt;/div&gt;
+&lt;div class="animate-slide-up"&gt;Slide up&lt;/div&gt;
+&lt;div class="animate-slide-up animate-delay-150"&gt;Slide up, delayed&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Loops</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <span class="badge animate-pulse">pulse</span>
+  <span class="badge badge--success animate-bounce">bounce</span>
+  <span class="badge badge--info animate-ping">ping</span>
+  <span class="badge badge--error animate-shake">shake</span>
+  <svg class="icon icon--xl animate-spin" style="color:var(--accent)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="14 40"/></svg>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;span class="animate-pulse"&gt;Pulse&lt;/span&gt;
+&lt;span class="animate-bounce"&gt;Bounce&lt;/span&gt;
+&lt;span class="animate-ping"&gt;Ping&lt;/span&gt;
+&lt;span class="animate-shake"&gt;Shake&lt;/span&gt;
+&lt;svg class="icon animate-spin"&gt;…&lt;/svg&gt;</code></pre>
+</div>
+
+  <h2>Stagger (delays)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="grid md:grid-cols-4 gap-3">
+  <div class="stat-card animate-slide-up animate-delay-0"><span class="stat-number">01</span><span class="text-muted">delay-0</span></div>
+  <div class="stat-card animate-slide-up animate-delay-150"><span class="stat-number">02</span><span class="text-muted">delay-150</span></div>
+  <div class="stat-card animate-slide-up animate-delay-300"><span class="stat-number">03</span><span class="text-muted">delay-300</span></div>
+  <div class="stat-card animate-slide-up animate-delay-500"><span class="stat-number">04</span><span class="text-muted">delay-500</span></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="animate-slide-up animate-delay-0"&gt;…&lt;/div&gt;
+&lt;div class="animate-slide-up animate-delay-75"&gt;…&lt;/div&gt;
+&lt;div class="animate-slide-up animate-delay-150"&gt;…&lt;/div&gt;
+&lt;div class="animate-slide-up animate-delay-300"&gt;…&lt;/div&gt;
+&lt;div class="animate-slide-up animate-delay-500"&gt;…&lt;/div&gt;
+&lt;div class="animate-slide-up animate-delay-700"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Hover micro-interactions</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <button class="btn hover-lift">hover-lift</button>
+  <button class="btn btn--ghost hover-grow">hover-grow</button>
+  <button class="btn btn--soft hover-glow">hover-glow</button>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;button class="btn hover-lift"&gt;Lift&lt;/button&gt;
+&lt;button class="btn hover-grow"&gt;Grow&lt;/button&gt;
+&lt;button class="btn hover-glow"&gt;Glow&lt;/button&gt;</code></pre>
+</div>
+
+  <h2>Skeleton loader</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="card" style="max-width:28rem">
+  <div class="card__body">
+    <div class="skeleton" style="height:1.25rem;width:70%">&nbsp;</div>
+    <div class="skeleton mt-2" style="height:0.875rem;width:90%">&nbsp;</div>
+    <div class="skeleton mt-2" style="height:0.875rem;width:50%">&nbsp;</div>
+  </div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="skeleton" style="height:1rem;width:80%"&gt;&amp;nbsp;&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Reference</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.animate-fade-in / -fade-out</code></td><td>opacity transitions</td></tr>
+    <tr><td><code>.animate-slide-up / -down / -left / -right</code></td><td>0.75rem translate + fade</td></tr>
+    <tr><td><code>.animate-scale-in / -scale-out</code></td><td>scale 0.95 ↔ 1 + fade</td></tr>
+    <tr><td><code>.animate-pulse</code></td><td>opacity 1→.5→1, infinite</td></tr>
+    <tr><td><code>.animate-ping</code></td><td>scale(2) + fade, infinite</td></tr>
+    <tr><td><code>.animate-bounce</code></td><td>vertical bounce</td></tr>
+    <tr><td><code>.animate-spin</code></td><td>360° rotate, infinite</td></tr>
+    <tr><td><code>.animate-shake</code></td><td>horizontal shake, single-shot</td></tr>
+    <tr><td><code>.animate-delay-{0,75,150,300,500,700}</code></td><td>animation-delay</td></tr>
+    <tr><td><code>.animate-once / -infinite</code></td><td>iteration-count</td></tr>
+    <tr><td><code>.hover-lift / -grow / -glow</code></td><td>hover micro-interactions</td></tr>
+    <tr><td><code>.skeleton</code></td><td>shimmer loader background</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  <script>function pgReplay(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);}</script>
+</body>
+</html>

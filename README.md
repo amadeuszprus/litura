@@ -1,18 +1,29 @@
 # Litura
 
-A minimalist CSS library focused on content. Pure CSS project using modern features like CSS Layers, Custom Properties, and `color-mix()`.
+A minimalist, content-first CSS library built on modern primitives: `@layer`, custom properties, `color-mix(in oklch)`, `:has()`, `@starting-style`, container queries. 23 components, 8 themes, fluid typography, zero runtime dependencies.
+
+[![npm](https://img.shields.io/npm/v/litura.svg)](https://www.npmjs.com/package/litura)
+[![license](https://img.shields.io/npm/l/litura.svg)](./LICENCE.md)
+
+**🔗 [Landing](https://litura.net/) · [Component playground](https://litura.net/examples/components/) · [Templates](https://litura.net/examples/)**
 
 ---
 
 ## Features
 
-- **8 Color Schemes**: Auto, Light, Dark, High Contrast, Sepia, Nord, Ocean, Rose  
-- **Responsive Design**: Mobile-first with logical properties  
-- **Component Library**: Buttons, forms, tables, cards, alerts, labels, badges, navigation, hero, pricing, stats, testimonials, breadcrumbs, dialogs, and more
-- **Utility Classes**: Spacing, typography, flexbox, grid, colors, borders, sizing, effects  
-- **Modern CSS**: CSS Layers, Custom Properties, `color-mix()`, `:has()`, `:user-invalid`  
+- **8 Color Schemes**: Auto, Light, Dark, High Contrast, Sepia, Nord, Ocean, Rose
+- **Fluid Typography**: `clamp()`-based type scale adapts to viewport; opt-out via `data-typo="fixed"`
+- **Density System**: `data-density="compact|spacious"` rescales every spacing token
+- **Responsive by Default**: Logical properties, `sm:/md:/lg:/xl:/2xl:` utility prefixes, container queries on cards & grids
+- **Component Library**: Buttons, forms, tables, cards, alerts, toasts, labels, badges, navigation, hero, pricing, stats, testimonials, breadcrumbs, dialogs, accordion, tabs, tooltip, and more
+- **Animation Module**: Keyframes, `.animate-*` utilities, `.hover-lift/grow/glow` micro-interactions, skeleton loader
+- **Utility Classes**: Spacing, typography, flexbox, grid, colors, borders, sizing, effects, icons, animations, print, view-transitions
+- **Accessibility First**: `prefers-reduced-motion`, `::selection`, `aria-*` in examples, `focus-visible` everywhere
+- **Modern CSS**: CSS Layers, Custom Properties, `color-mix(in oklch)`, `:has()`, `:user-invalid`, `@starting-style`, `@container`, `@supports(contrast-color)`
 - **Multiple Font Stacks**: Modern, Tech, Minimal, Artistic variants
-- **Zero Dependencies**: Pure CSS, no build step required  
+- **Design Tokens**: `tokens.json` (W3C spec) + generator for non-CSS consumers
+- **Print Styles**: `.no-print`, `.print-only`, smart link URL reveal, break-inside rules
+- **Zero Runtime Dependencies**: Pure CSS, optional minify via `npm run build`
 - **BEM-like Methodology**: Clean, predictable class naming
 
 ---
@@ -274,6 +285,74 @@ The theme switcher component provides styling for a theme selection dropdown.
 </dialog>
 ```
 
+### Accordion
+
+```html
+<div class="accordion">
+  <details class="accordion__item" open>
+    <summary class="accordion__header">Section one</summary>
+    <div class="accordion__content">Hidden content for section one.</div>
+  </details>
+  <details class="accordion__item">
+    <summary class="accordion__header">Section two</summary>
+    <div class="accordion__content">Hidden content for section two.</div>
+  </details>
+</div>
+```
+
+### Tabs
+
+```html
+<div class="tabs" role="tablist" aria-label="Docs">
+  <div class="tabs__list">
+    <input type="radio" name="docs" id="t1" class="tabs__input" checked>
+    <label for="t1" class="tabs__tab" role="tab">Overview</label>
+    <input type="radio" name="docs" id="t2" class="tabs__input">
+    <label for="t2" class="tabs__tab" role="tab">Install</label>
+    <input type="radio" name="docs" id="t3" class="tabs__input">
+    <label for="t3" class="tabs__tab" role="tab">API</label>
+  </div>
+  <div class="tabs__panel" data-for="t1" role="tabpanel">Overview content…</div>
+  <div class="tabs__panel" data-for="t2" role="tabpanel">Install content…</div>
+  <div class="tabs__panel" data-for="t3" role="tabpanel">API content…</div>
+</div>
+```
+Variants: `.tabs--pills`, `.tabs--vertical`.
+
+### Tooltip
+
+```html
+<button class="btn tooltip" data-tooltip="Copy to clipboard" aria-label="Copy">📋</button>
+<span class="tooltip tooltip--bottom" data-tooltip="Hidden help">Hover me</span>
+```
+Variants: `--top` (default), `--bottom`, `--left`, `--right`.
+
+### Toast
+
+```html
+<div class="toast-container toast-container--top-right" role="region" aria-label="Notifications">
+  <div class="toast toast--success" role="status">
+    <span class="toast__icon">✓</span>
+    <div class="toast__body">
+      <p class="toast__title">Saved</p>
+      <p class="toast__message">Your changes are live.</p>
+    </div>
+    <button class="toast__close" aria-label="Dismiss">×</button>
+  </div>
+</div>
+```
+
+### Animations
+
+```html
+<div class="card animate-fade-in">Fades in on mount</div>
+<div class="card animate-slide-up animate-delay-150">Slides up after 150ms</div>
+<button class="btn hover-lift">Lifts on hover</button>
+<button class="btn hover-glow">Glows on hover</button>
+<div class="skeleton" style="height: 1rem; width: 80%;"></div>
+<svg class="icon icon--lg animate-spin">…</svg>
+```
+
 ---
 
 ## Color Schemes
@@ -327,6 +406,48 @@ Set the font stack using the `data-font` attribute on the `<html>` element:
 <div class="text-center">Centered text</div>
 ```
 
+### Fluid Typography
+
+`--text-sm` … `--text-5xl` scale with viewport via `clamp()`. To lock them to fixed values:
+
+```html
+<html data-typo="fixed">
+```
+
+### Density
+
+Rescale every `--size-*` token globally:
+
+```html
+<html data-density="compact">   <!-- ~80% spacing -->
+<html data-density="spacious">  <!-- ~120% spacing -->
+```
+
+### Responsive Utilities
+
+Prefix common utilities with `sm:` / `md:` / `lg:` / `xl:` / `2xl:` (breakpoints 40/48/64/80/96rem):
+
+```html
+<div class="flex flex-col md:flex-row gap-2 md:gap-4 text-center md:text-left">
+  <p class="text-sm md:text-base">Responsive text</p>
+</div>
+```
+
+### Icons
+
+```html
+<svg class="icon icon--lg" viewBox="0 0 24 24">…</svg>
+<svg class="icon icon--stroke" viewBox="0 0 24 24">…</svg>
+<svg class="icon icon--spin" viewBox="0 0 24 24">…</svg>
+```
+
+### Print
+
+```html
+<div class="no-print">Hidden when printing</div>
+<div class="print-only">Only shown when printing</div>
+```
+
 ### Flexbox
 
 ```html
@@ -363,11 +484,40 @@ The library includes ready-made templates demonstrating real-world usage:
 
 ## Browser Support
 
-- Chrome / Edge 105+  
-- Firefox 103+  
-- Safari 15.4+  
+**Baseline:**
+- Chrome / Edge 111+
+- Firefox 113+
+- Safari 16.4+
 
-Requires support for: **CSS Layers**, **Custom Properties**, **`color-mix()`**, **`:has()`**, **`:user-invalid`**.
+Requires: **CSS Layers**, **Custom Properties**, **`color-mix()`**, **`:has()`**, **`:user-invalid`**, **`@container`**.
+
+**Progressive enhancement (optional, graceful fallback):**
+- `@starting-style` — Chrome 117+, Safari 17.5+ (dialog/menu entry transitions)
+- `contrast-color()` — Chrome 132+ (auto `--fg-on-accent`)
+- `interpolate-size` — Chrome 129+ (`.accordion--animated`)
+- `view-transition-name` — Chrome 111+, Safari 18+ (`utilities/view-transitions.css`)
+- `transition-behavior: allow-discrete` — Chrome 117+
+
+All progressive features are wrapped in `@supports` and ship with keyframe/CSS fallbacks.
+
+## Build
+
+```bash
+npm install
+npm run build:tokens   # regenerate core/tokens.generated.css from tokens.json
+npm run lint           # eslint + stylelint + htmlhint
+npm run minify         # → min/
+npm run build          # full cycle
+```
+
+## Design Tokens
+
+`tokens.json` follows the W3C Design Tokens Community Group format and is the source of truth for light/dark palettes plus scalar groups (size, radius, text, breakpoint, transition, duration). Non-standard themes (sepia, nord, ocean, rose, high-contrast) remain authored in `core/tokens.css`.
+
+```bash
+node scripts/build-tokens.js            # print to stdout
+node scripts/build-tokens.js --write    # overwrite core/tokens.generated.css
+```
 
 ---
 
@@ -479,6 +629,34 @@ Litura uses CSS Layers for predictable cascade control:
 - **components** — components (buttons, forms, etc.)  
 - **utilities** — utility classes (`!important`)  
 - **overrides** — user overrides
+
+---
+
+## Changelog
+
+### 0.3.0-alpha
+- **New accent**: default brand color switched from emerald (`#0aa77a`) to deep teal (`#0f766e`) with a lighter teal (`#2dd4bf`) for dark mode. More refined, less "startup-y".
+- **New components**: accordion, tabs, tooltip, toast.
+- **Animation module** (`utilities/animations.css`): 12 keyframes, `.animate-*`, `.hover-*`, skeleton loader — all respect `prefers-reduced-motion`.
+- **Fluid typography**: `--text-sm`..`--text-5xl` now use `clamp()`. Opt out with `<html data-typo="fixed">`.
+- **Density system**: `<html data-density="compact|spacious">` rescales every `--size-*` token.
+- **Icon utility** (`utilities/icon.css`): `.icon` + 6 sizes + `--stroke` / `--spin`.
+- **Responsive utilities** (`utilities/responsive.css`): `sm:/md:/lg:/xl:/2xl:` prefixes for spacing, display, flex, typography, width.
+- **Print styles** (`utilities/print.css`): `.no-print`, `.print-only`, smart link URL reveal.
+- **View transitions** (`utilities/view-transitions.css`): opt-in helpers for the Navigation API.
+- **Shadow tokens**: `--shadow-xs/sm/md/lg/xl` — replaces duplicated shadow formulas across 13 components.
+- **Token generator**: `tokens.json` (W3C Design Tokens format) + `scripts/build-tokens.js` → `npm run build:tokens`.
+- **Native `<dialog>`**: dialog component now uses the native element (focus trap + ESC built-in). Legacy `<details class="dialog">` pattern still supported.
+- **`@starting-style`** entry transitions for dialog and menu, with keyframe fallback.
+- **`contrast-color()` forward-compat**: `--fg-on-accent` token with `@supports` upgrade.
+- **Card `overflow: clip`** + media flush-to-edges via grid layout.
+- **Docs**: new landing page (`/`), component playground (`/examples/components/`), templates grid (`/examples/`).
+- **Build**: new `npm run build:tokens`; existing `npm run build` now runs tokens → lint → minify.
+
+### 0.1.0-alpha
+- Initial components (button, form, table, card, alert, label, badge, nav, hero, pricing, stats, breadcrumb, dialog, menu, blog/forum/press layouts, theme-switcher).
+- 8 color themes.
+- Utility classes (spacing, typography, flex, grid, display, colors, borders, sizing, effects).
 
 ---
 

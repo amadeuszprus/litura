@@ -8,7 +8,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
     padding: var(--size-2);
-    box-shadow: 0 2px 8px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    box-shadow: var(--shadow-sm);
   }
 
   .theme-switcher select {
@@ -24,5 +24,10 @@
     background-repeat: no-repeat;
     background-position: right var(--size-2) center;
     background-size: 0.875rem;
+  }
+
+  .theme-switcher select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 }

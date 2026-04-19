@@ -26,8 +26,8 @@
   }
 
   .article-card:hover {
-    box-shadow: 0 4px 12px rgb(var(--shadow-color) / calc(0.15 * var(--shadow-strength)));
-    border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
   }
 
   .article-meta {
@@ -75,7 +75,7 @@
   }
 
   .featured-post {
-    background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 80%, transparent) 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, color-mix(in oklch, var(--accent) 80%, transparent) 100%);
     color: var(--accent-fg);
     border-radius: var(--radius-2);
     padding: var(--size-5);
@@ -97,35 +97,35 @@
   }
 
   .featured-post .article-excerpt {
-    color: color-mix(in srgb, var(--accent-fg) 90%, transparent);
+    color: color-mix(in oklch, var(--accent-fg) 90%, transparent);
   }
 
   .featured-post .read-more {
     color: var(--accent-fg);
-    background: color-mix(in srgb, var(--accent-fg) 15%, transparent);
+    background: color-mix(in oklch, var(--accent-fg) 15%, transparent);
     padding: var(--size-2) var(--size-3);
     border-radius: var(--radius-1);
     text-decoration: none;
   }
 
   .featured-post .article-meta {
-    color: color-mix(in srgb, var(--accent-fg) 85%, transparent);
+    color: color-mix(in oklch, var(--accent-fg) 85%, transparent);
   }
 
   .tag {
     display: inline-block;
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    background: color-mix(in oklch, var(--accent) 10%, transparent);
     color: var(--accent);
     padding: var(--size-1) var(--size-2);
     border-radius: var(--radius-1);
     font-size: var(--text-xs);
     font-weight: 500;
     text-decoration: none;
-    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
   }
 
   .tag:hover {
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    background: color-mix(in oklch, var(--accent) 15%, transparent);
   }
 
   .tags {
@@ -202,7 +202,7 @@
   .search-input:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in oklch, var(--accent) 20%, transparent);
   }
 
   .newsletter-form {
@@ -329,7 +329,7 @@
 
   .nav-link.active {
     color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    background: color-mix(in oklch, var(--accent) 10%, transparent);
   }
 
   .site-footer {

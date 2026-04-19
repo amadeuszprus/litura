@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Card</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="card">
+  <main class="pg-main">
+    <header>
+      <h1>Card</h1>
+      <p>Flexible container with header / media / body / footer sub-elements. Visual and layout variants.</p>
+    </header>
+    
+  <h2>Default</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="card" style="max-width:22rem">
+  <div class="card__header">
+    <div>
+      <h3 class="card__title">Card title</h3>
+      <p class="card__subtitle">Subtitle</p>
+    </div>
+  </div>
+  <div class="card__body">Body content goes here.</div>
+  <div class="card__footer">
+    <button class="btn btn--ghost">Cancel</button>
+    <button class="btn">Action</button>
+  </div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="card"&gt;
+  &lt;div class="card__header"&gt;
+    &lt;h3 class="card__title"&gt;Title&lt;/h3&gt;
+    &lt;p class="card__subtitle"&gt;Subtitle&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card__body"&gt;Content&lt;/div&gt;
+  &lt;div class="card__footer"&gt;Actions&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>With media (flush to edges)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="card" style="max-width:22rem">
+  <div class="card__media">
+    <div style="aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),color-mix(in oklch,var(--accent) 40%,var(--bg)))"></div>
+  </div>
+  <div class="card__body">
+    <h3 class="card__title">Media card</h3>
+    <p class="text-sm text-muted">Media reaches the card edges via a negative margin.</p>
+  </div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="card"&gt;
+  &lt;div class="card__media"&gt;
+    &lt;img src="..." alt="..."&gt;
+  &lt;/div&gt;
+  &lt;div class="card__body"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Visual variants</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="grid md:grid-cols-2 gap-3">
+  <div class="card card--soft"><div class="card__body"><strong>Soft</strong><p class="text-muted">Tinted background.</p></div></div>
+  <div class="card card--elevated"><div class="card__body"><strong>Elevated</strong><p class="text-muted">Shadow-lg.</p></div></div>
+  <div class="card card--accented"><div class="card__body"><strong>Accented</strong><p class="text-muted">Top accent line.</p></div></div>
+  <div class="card card--interactive"><div class="card__body"><strong>Interactive</strong><p class="text-muted">Hover: lift + shadow.</p></div></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="card card--elevated"&gt;…&lt;/div&gt;
+&lt;div class="card card--accented"&gt;…&lt;/div&gt;
+&lt;div class="card card--interactive"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Horizontal layout</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="card card--horizontal" style="max-width:32rem">
+  <div class="card__media" style="width:8rem">
+    <div style="height:100%;background:var(--accent)"></div>
+  </div>
+  <div class="card__body">
+    <h3 class="card__title">Horizontal</h3>
+    <p class="text-muted">Media left, body right.</p>
+  </div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="card card--horizontal"&gt;
+  &lt;div class="card__media"&gt;…&lt;/div&gt;
+  &lt;div class="card__body"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.card</code></td><td>Base — padded, bordered, max-width 36rem.</td></tr>
+    <tr><td><code>.card--soft</code></td><td>Tinted background (<code>--soft</code>).</td></tr>
+    <tr><td><code>.card--elevated</code></td><td>Drop shadow (<code>--shadow-lg</code>).</td></tr>
+    <tr><td><code>.card--glass</code></td><td>Translucent bg + backdrop blur.</td></tr>
+    <tr><td><code>.card--interactive</code></td><td>Hover: translateY(-1px) + shadow.</td></tr>
+    <tr><td><code>.card--accented</code></td><td>Top 3px accent border.</td></tr>
+    <tr><td><code>.card--bordered / --borderless</code></td><td>Toggle base border.</td></tr>
+    <tr><td><code>.card--horizontal</code></td><td>Media left, body right.</td></tr>
+    <tr><td><code>.card--compact / --spacious</code></td><td>Scale padding down / up.</td></tr>
+    <tr><td><code>.card--fluid</code></td><td>Remove max-width.</td></tr>
+    <tr><td><code>.card--narrow / --wide</code></td><td>Set max-width to 24rem / 48rem.</td></tr>
+    <tr><td><code>.card--centered</code></td><td>Auto margin-inline.</td></tr>
+    <tr><td><code>.card--stretch</code></td><td>Stretch to grid cell height.</td></tr>
+    <tr><td><code>.card__header / __title / __subtitle / __media / __body / __footer</code></td><td>Sub-elements.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

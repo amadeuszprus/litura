@@ -33,8 +33,8 @@
       <div class="flex justify-between items-center py-3">
         <a href="#" class="site-logo">Dashboard</a>
 
-        <div class="flex items-center gap-2">
-          <a href="#" class="nav-link active">Overview</a>
+        <div class="flex items-center gap-2" aria-label="Main navigation">
+          <a href="#" class="nav-link active" aria-current="page">Overview</a>
           <a href="#" class="nav-link">Analytics</a>
           <a href="#" class="nav-link">Products</a>
           <a href="#" class="nav-link">Settings</a>
@@ -52,7 +52,7 @@
   <main class="container py-5">
 
     <!-- Alert Banner -->
-    <div class="alert alert--success mb-5">
+    <div class="alert alert--success mb-5" role="status" aria-live="polite">
       <div class="alert__content">
         <p class="alert__title">All systems operational</p>
         <p class="alert__message">Welcome back, Jane. Your last login was 2 hours ago. All services are running smoothly.</p>
@@ -61,22 +61,22 @@
 
     <!-- Stats Row -->
     <section class="stats-grid mb-5">
-      <div class="stat-card">
+      <div class="stat-card animate-slide-up animate-delay-0 hover-lift">
         <span class="stat-number">$48,352</span>
-        <span class="text-muted">Revenue</span>
+        <span class="text-muted">Revenue <span class="badge badge--info-solid badge--small tooltip tooltip--bottom" data-tooltip="Z ostatnich 30 dni" aria-label="Z ostatnich 30 dni">30d</span></span>
         <div class="text-sm text-success mt-1">+12.5% from last month</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card animate-slide-up animate-delay-150 hover-lift">
         <span class="stat-number">3,241</span>
         <span class="text-muted">Users</span>
         <div class="text-sm text-success mt-1">+8.3% from last month</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card animate-slide-up animate-delay-300 hover-lift">
         <span class="stat-number">1,487</span>
         <span class="text-muted">Orders</span>
         <div class="text-sm text-error mt-1">-2.1% from last month</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card animate-slide-up animate-delay-500 hover-lift">
         <span class="stat-number">4.6%</span>
         <span class="text-muted">Conversion Rate</span>
         <div class="text-sm text-success mt-1">+0.7% from last month</div>
@@ -324,6 +324,60 @@
       </div>
     </div>
 
+    <!-- Tabs: Activity view -->
+    <section class="container mb-5">
+      <h2 class="text-2xl font-bold mb-3">Activity</h2>
+      <div class="tabs tabs--pills" role="tablist" aria-label="Activity view">
+        <div class="tabs__list">
+          <input type="radio" name="act" id="t1" class="tabs__input" checked>
+          <label for="t1" class="tabs__tab" role="tab">Today</label>
+          <input type="radio" name="act" id="t2" class="tabs__input">
+          <label for="t2" class="tabs__tab" role="tab">This week</label>
+          <input type="radio" name="act" id="t3" class="tabs__input">
+          <label for="t3" class="tabs__tab" role="tab">This month</label>
+        </div>
+        <div class="tabs__panel" data-for="t1" role="tabpanel">
+          <p class="text-muted">37 events logged today. Latest: Jane Cooper placed order #ORD-4812 (2 min ago).</p>
+        </div>
+        <div class="tabs__panel" data-for="t2" role="tabpanel">
+          <p class="text-muted">214 events this week. Peak day: Wednesday with 58 events.</p>
+        </div>
+        <div class="tabs__panel" data-for="t3" role="tabpanel">
+          <p class="text-muted">1,041 events this month. Growth vs last month: +12.5%.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ: Accordion -->
+    <section class="container mb-5">
+      <h2 class="text-2xl font-bold mb-3">Quick help</h2>
+      <div class="accordion">
+        <details class="accordion__item" open>
+          <summary class="accordion__header">Jak wyeksportować raport?</summary>
+          <div class="accordion__content">Naciśnij menu „Actions" w górnym prawym rogu i wybierz „Export CSV".</div>
+        </details>
+        <details class="accordion__item">
+          <summary class="accordion__header">Czy mogę zaprosić zespół?</summary>
+          <div class="accordion__content">Tak — w Settings → Team. Każde zaproszenie wygasa po 7 dniach.</div>
+        </details>
+        <details class="accordion__item">
+          <summary class="accordion__header">Jak skonfigurować powiadomienia?</summary>
+          <div class="accordion__content">Settings → Notifications. Możesz włączyć e-mail, Slack lub webhook.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Toast trigger demo -->
+    <section class="container mb-5">
+      <div class="flex items-center gap-3 flex-wrap">
+        <h2 class="text-xl font-bold m-0">Testuj powiadomienia</h2>
+        <button class="btn btn--soft tooltip" data-tooltip="Wywoła toast w prawym górnym rogu" aria-label="Pokaż przykład" onclick="dashboardToast('success','Zapisano','Wszystkie zmiany zostały zapisane.')">Pokaż toast</button>
+        <button class="btn btn--ghost tooltip" data-tooltip="Symulacja błędu" aria-label="Błąd" onclick="dashboardToast('error','Błąd połączenia','Spróbuj ponownie za chwilę.')">Błąd</button>
+      </div>
+    </section>
+
+    <div class="toast-container toast-container--top-right" role="region" aria-label="Powiadomienia" id="dash-toasts"></div>
+
   </main>
 
   <!-- Footer -->
@@ -332,6 +386,26 @@
       <p class="text-sm text-muted m-0">Dashboard powered by Litura CSS</p>
     </div>
   </footer>
+
+  <script>
+    function dashboardToast(tone, title, msg) {
+      const icons = { success: '✓', error: '✕', warning: '!', info: 'i' };
+      const el = document.createElement('div');
+      el.className = 'toast toast--' + tone;
+      el.setAttribute('role', tone === 'error' ? 'alert' : 'status');
+      el.innerHTML = '<span class="toast__icon">' + (icons[tone] || 'i') + '</span>' +
+        '<div class="toast__body"><p class="toast__title">' + title + '</p><p class="toast__message">' + msg + '</p></div>' +
+        '<button class="toast__close" aria-label="Zamknij">×</button>';
+      el.querySelector('.toast__close').addEventListener('click', () => dismissDashboardToast(el));
+      document.getElementById('dash-toasts').appendChild(el);
+      setTimeout(() => dismissDashboardToast(el), 4000);
+    }
+    function dismissDashboardToast(el) {
+      if (!el || el.classList.contains('toast--dismissing')) return;
+      el.classList.add('toast--dismissing');
+      setTimeout(() => el.remove(), 250);
+    }
+  </script>
 
   <script>
     const themeSelect = document.getElementById('theme-select');

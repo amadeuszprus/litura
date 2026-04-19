@@ -1,13 +1,21 @@
 @layer components {
   .stats-grid {
+    container-type: inline-size;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--size-4);
   }
 
+  @container (max-width: 28rem) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
   .stat-card {
     text-align: center;
-    padding: var(--size-4);
+    padding-block: var(--size-4);
+    padding-inline: var(--size-4);
     background: var(--soft);
     border-radius: var(--radius-2);
     border: 1px solid var(--line);
@@ -16,7 +24,7 @@
 
   .stat-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    box-shadow: var(--shadow-md);
   }
 
   .stat-number {

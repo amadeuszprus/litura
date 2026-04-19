@@ -1,0 +1,120 @@
+@layer components {
+  /*
+   * CSS-only accordion built on <details>/<summary>.
+   * Usage:
+   *   <div class="accordion">
+   *     <details class="accordion__item" open>
+   *       <summary class="accordion__header">Question</summary>
+   *       <div class="accordion__content">Answer...</div>
+   *     </details>
+   *   </div>
+   * For animated open/close: add the .accordion--animated modifier (requires Chrome 129+ / interpolate-size).
+   */
+
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .accordion__item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .accordion__item:last-child {
+    border-bottom: 0;
+  }
+
+  .accordion__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--size-3);
+    padding-block: var(--size-3);
+    padding-inline: var(--size-4);
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: var(--fg);
+    background: transparent;
+    transition: background var(--transition-fast);
+  }
+
+  .accordion__header::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion__header::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform var(--transition-normal);
+    flex-shrink: 0;
+  }
+
+  .accordion__item[open] > .accordion__header::after {
+    transform: rotate(-135deg);
+  }
+
+  .accordion__header:hover,
+  .accordion__header:focus-visible {
+    background: var(--soft);
+  }
+
+  .accordion__header:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  .accordion__content {
+    padding-block: var(--size-3);
+    padding-inline: var(--size-4);
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+
+  /* Animated variant — requires interpolate-size for height */
+  .accordion--animated .accordion__item {
+    interpolate-size: allow-keywords;
+  }
+
+  .accordion--animated .accordion__item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--transition-normal), content-visibility var(--transition-normal) allow-discrete;
+  }
+
+  .accordion--animated .accordion__item[open]::details-content {
+    block-size: auto;
+  }
+
+  /* Style variants */
+  .accordion--borderless {
+    border: 0;
+  }
+
+  .accordion--borderless .accordion__item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .accordion--flush {
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .accordion--flush .accordion__item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .accordion--flush .accordion__header,
+  .accordion--flush .accordion__content {
+    padding-inline: 0;
+  }
+}

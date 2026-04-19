@@ -55,18 +55,18 @@
   .prose code {
     font-family: var(--font-mono);
     font-size: 0.95em;
-    background: color-mix(in srgb, var(--accent) 8%, var(--soft));
-    color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+    background: color-mix(in oklch, var(--accent) 8%, var(--soft));
+    color: color-mix(in oklch, var(--accent) 85%, var(--fg));
     padding: 0.1em 0.35em;
     border-radius: var(--radius-1);
-    border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--line));
+    border: 1px solid color-mix(in oklch, var(--accent) 15%, var(--line));
   }
   .prose pre {
     overflow: auto;
     padding: var(--size-4);
-    background: color-mix(in srgb, var(--accent) 4%, var(--soft));
+    background: color-mix(in oklch, var(--accent) 4%, var(--soft));
     border-radius: var(--radius-2);
-    border: 1px solid color-mix(in srgb, var(--accent) 10%, var(--line));
+    border: 1px solid color-mix(in oklch, var(--accent) 10%, var(--line));
   }
   
   .prose pre code {
@@ -86,7 +86,7 @@
     margin-top: 0.25em;
   }
   .prose mark {
-    background: color-mix(in oklab, var(--accent) 20%, transparent);
+    background: color-mix(in oklch, var(--accent) 20%, transparent);
     padding: 0.1em 0.2em;
     border-radius: var(--radius-1);
   }

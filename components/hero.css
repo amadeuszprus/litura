@@ -16,19 +16,19 @@
   }
 
   .hero .btn--soft {
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    background: color-mix(in oklch, var(--accent) 15%, transparent);
     color: var(--accent);
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
   }
 
   .hero .btn--soft:hover {
-    background: color-mix(in srgb, var(--accent) 25%, transparent);
+    background: color-mix(in oklch, var(--accent) 25%, transparent);
     border-color: var(--accent);
   }
 
   .hero .btn--ghost {
     background: transparent;
-    border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+    border: 1px solid color-mix(in oklch, var(--fg) 20%, transparent);
     color: var(--fg);
   }
 

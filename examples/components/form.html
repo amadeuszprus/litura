@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Form</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="form">
+  <main class="pg-main">
+    <header>
+      <h1>Form</h1>
+      <p>Complete set: input / textarea / select / checkbox / radio / switch / file. Smart validation via <code>:user-invalid</code> (with legacy fallback).</p>
+    </header>
+    
+  <h2>Full form</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><form class="form" onsubmit="event.preventDefault();alert('Submit')" style="max-width:32rem">
+  <div class="form__group">
+    <label for="f-name" class="required">Full name</label>
+    <input id="f-name" type="text" required placeholder="Jane Doe">
+  </div>
+  <div class="form__group">
+    <label for="f-email">Email</label>
+    <input id="f-email" type="email" placeholder="you@example.com">
+    <p class="form__hint">We only use it to contact you.</p>
+  </div>
+  <div class="form__group">
+    <label for="f-msg">Message</label>
+    <textarea id="f-msg" rows="4" placeholder="Your message..."></textarea>
+  </div>
+  <label class="form__checkbox"><input type="checkbox" required> I accept the terms</label>
+  <label class="form__switch"><input type="checkbox" checked> Email notifications</label>
+  <div class="form__actions">
+    <button class="btn" type="submit">Send</button>
+    <button class="btn btn--ghost" type="reset">Clear</button>
+  </div>
+</form></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;form class="form"&gt;
+  &lt;div class="form__group"&gt;
+    &lt;label class="required"&gt;Required&lt;/label&gt;
+    &lt;input type="text" required&gt;
+  &lt;/div&gt;
+  &lt;label class="form__switch"&gt;&lt;input type="checkbox"&gt; Label&lt;/label&gt;
+  &lt;div class="form__actions"&gt;&lt;button class="btn"&gt;OK&lt;/button&gt;&lt;/div&gt;
+&lt;/form&gt;</code></pre>
+</div>
+
+  <h2>Input group (addons)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="form__input-group" style="max-width:22rem">
+  <span class="form__input-addon">$</span>
+  <input type="number" placeholder="0.00">
+  <span class="form__input-addon">USD</span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="form__input-group"&gt;
+  &lt;span class="form__input-addon"&gt;$&lt;/span&gt;
+  &lt;input type="number"&gt;
+  &lt;span class="form__input-addon"&gt;USD&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.form</code></td><td>Grid layout with gap.</td></tr>
+    <tr><td><code>.form__group</code></td><td>Field wrapper (label + input + hint).</td></tr>
+    <tr><td><code>.form__row</code></td><td>Multiple fields side-by-side.</td></tr>
+    <tr><td><code>.form__checkbox / .form__radio / .form__switch</code></td><td>Styled control wrappers.</td></tr>
+    <tr><td><code>.form__input-group / .form__input-addon</code></td><td>Prefix/suffix addons.</td></tr>
+    <tr><td><code>.form__file / .form__file--compact</code></td><td>Styled file input.</td></tr>
+    <tr><td><code>.form__range</code></td><td>Styled range slider.</td></tr>
+    <tr><td><code>.form__hint / .form__error</code></td><td>Help / error message slots.</td></tr>
+    <tr><td><code>.form__actions</code></td><td>Button row at the bottom.</td></tr>
+    <tr><td><code>label.required</code></td><td>Appends a red asterisk.</td></tr>
+    <tr><td><code>[aria-invalid="true"]</code></td><td>Forces the error border regardless of interaction state.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

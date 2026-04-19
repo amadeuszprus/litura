@@ -1,7 +1,15 @@
 @layer components {
-  .dialog {
+  /* Legacy <details class="dialog"> pattern — needs inline-block.
+     Native <dialog class="dialog"> is handled separately below. */
+  details.dialog {
     position: relative;
     display: inline-block;
+  }
+
+  /* Native <dialog> — ensure closed state is hidden even if an older cached
+     stylesheet still applies `display: inline-block` to `.dialog`. */
+  dialog.dialog:not([open]) {
+    display: none !important;
   }
 
   .dialog summary {
@@ -10,6 +18,43 @@
 
   .dialog summary::-webkit-details-marker {
     display: none;
+  }
+
+  /* Native <dialog> element — browser handles open/close + focus trap.
+     Default width shrinks to content (fit-content), capped by max-width. */
+  dialog.dialog {
+    padding: 0;
+    margin: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-2);
+    background: var(--bg);
+    color: var(--fg);
+    width: fit-content;
+    min-width: min(20rem, calc(100vw - 2rem));
+    max-width: min(32rem, calc(100vw - 2rem));
+    max-height: min(85vh, calc(100dvh - 2rem));
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+  }
+
+  dialog.dialog::backdrop {
+    background: var(--backdrop-color);
+    backdrop-filter: blur(2px);
+  }
+
+  /* Inside native <dialog>, reset positioning of .dialog__content. */
+  dialog.dialog > .dialog__content {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    animation: none;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
   }
 
   .dialog__backdrop {
@@ -46,8 +91,7 @@
     background: var(--bg);
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
-    box-shadow: 0 20px 25px -5px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
-      0 10px 10px -5px rgb(var(--shadow-color) / calc(0.04 * var(--shadow-strength)));
+    box-shadow: var(--shadow-xl);
     animation: dialogSlideIn var(--transition-slow);
     overflow: hidden;
     display: flex;
@@ -66,11 +110,65 @@
     }
   }
 
+  /* Legacy <details class="dialog"> — animate the .dialog__content which
+     is position:fixed and centered via translate. */
+  @supports (transition-behavior: allow-discrete) {
+    details.dialog[open] .dialog__content {
+      transition: opacity 200ms ease, transform 200ms ease, display 200ms ease;
+      transition-behavior: allow-discrete;
+    }
+
+    @starting-style {
+      details.dialog[open] .dialog__content {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+      }
+    }
+  }
+
+  /* Native <dialog class="dialog"> — the browser positions and shows the
+     element itself. Animate the dialog (and backdrop), not .dialog__content. */
+  @supports (transition-behavior: allow-discrete) {
+    dialog.dialog {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 180ms ease, transform 180ms ease, display 180ms ease allow-discrete, overlay 180ms ease allow-discrete;
+    }
+
+    dialog.dialog[open] {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @starting-style {
+      dialog.dialog[open] {
+        opacity: 0;
+        transform: scale(0.97);
+      }
+    }
+
+    dialog.dialog::backdrop {
+      opacity: 0;
+      transition: opacity 180ms ease, display 180ms ease allow-discrete, overlay 180ms ease allow-discrete;
+    }
+
+    dialog.dialog[open]::backdrop {
+      opacity: 1;
+    }
+
+    @starting-style {
+      dialog.dialog[open]::backdrop {
+        opacity: 0;
+      }
+    }
+  }
+
   .dialog__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--size-4) var(--size-4) var(--size-3);
+    padding-block: var(--size-4) var(--size-3);
+    padding-inline: var(--size-4);
     border-bottom: 1px solid var(--line);
     flex-shrink: 0;
   }
@@ -113,7 +211,8 @@
   }
 
   .dialog__body {
-    padding: var(--size-4);
+    padding-block: var(--size-4);
+    padding-inline: var(--size-4);
     overflow-y: auto;
     flex: 1;
   }
@@ -123,7 +222,8 @@
     align-items: center;
     justify-content: flex-end;
     gap: var(--size-2);
-    padding: var(--size-3) var(--size-4) var(--size-4);
+    padding-block: var(--size-3) var(--size-4);
+    padding-inline: var(--size-4);
     border-top: 1px solid var(--line);
     flex-shrink: 0;
   }
@@ -182,7 +282,8 @@
     display: inline-flex;
     align-items: center;
     gap: var(--size-2);
-    padding: var(--size-2) var(--size-3);
+    padding-block: var(--size-2);
+    padding-inline: var(--size-3);
     border: 1px solid var(--line);
     background: var(--bg);
     color: var(--fg);
@@ -218,7 +319,7 @@
 
   .dialog--enhanced .dialog__content {
     box-shadow: 0 25px 50px -12px rgb(var(--shadow-color) / calc(0.25 * var(--shadow-strength))),
-      0 0 0 1px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
+                0 0 0 1px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
   }
 
   @media (max-width: 640px) {

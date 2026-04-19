@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Toast</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="toast">
+  <main class="pg-main">
+    <header>
+      <h1>Toast</h1>
+      <p>Stackable notifications with a left accent bar. Triggered from JavaScript. Auto-dismisses after a timeout of your choice.</p>
+    </header>
+    
+  <h2>Live demo</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <button class="btn" onclick="showPgToast('success','Saved','Your changes are live.')">Success</button>
+  <button class="btn btn--ghost" onclick="showPgToast('info','Heads up','You have a new message.')">Info</button>
+  <button class="btn btn--ghost" onclick="showPgToast('warning','Session expiring','Only 5 minutes left.')">Warning</button>
+  <button class="btn btn--ghost" onclick="showPgToast('error','Connection lost','Please retry in a moment.')">Error</button>
+</div>
+<div class="toast-container toast-container--top-right" role="region" aria-label="Notifications" id="pg-toasts"></div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="toast-container toast-container--top-right" role="region" aria-label="Notifications"&gt;
+  &lt;div class="toast toast--success" role="status"&gt;
+    &lt;span class="toast__icon"&gt;✓&lt;/span&gt;
+    &lt;div class="toast__body"&gt;
+      &lt;p class="toast__title"&gt;Saved&lt;/p&gt;
+      &lt;p class="toast__message"&gt;Your changes are live.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class="toast__close" aria-label="Dismiss"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Tones (static preview)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview pg-example__preview--soft"><div style="display:flex;flex-direction:column;gap:var(--size-2);max-width:24rem">
+  <div class="toast toast--info" role="status" style="animation:none"><span class="toast__icon">i</span><div class="toast__body"><p class="toast__title">Info</p><p class="toast__message">An informational message.</p></div><button class="toast__close" aria-label="Dismiss" type="button">×</button></div>
+  <div class="toast toast--success" role="status" style="animation:none"><span class="toast__icon">✓</span><div class="toast__body"><p class="toast__title">Success</p><p class="toast__message">Operation completed.</p></div><button class="toast__close" aria-label="Dismiss" type="button">×</button></div>
+  <div class="toast toast--warning" role="status" style="animation:none"><span class="toast__icon">!</span><div class="toast__body"><p class="toast__title">Warning</p><p class="toast__message">Requires your attention.</p></div><button class="toast__close" aria-label="Dismiss" type="button">×</button></div>
+  <div class="toast toast--error" role="alert" style="animation:none"><span class="toast__icon">✕</span><div class="toast__body"><p class="toast__title">Error</p><p class="toast__message">Something went wrong.</p></div><button class="toast__close" aria-label="Dismiss" type="button">×</button></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="toast toast--info"    role="status"&gt;…&lt;/div&gt;
+&lt;div class="toast toast--success" role="status"&gt;…&lt;/div&gt;
+&lt;div class="toast toast--warning" role="status"&gt;…&lt;/div&gt;
+&lt;div class="toast toast--error"   role="alert"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.toast-container</code></td><td>Fixed container. Position via modifier below.</td></tr>
+    <tr><td><code>.toast-container--top-right</code></td><td>Top-right corner (default).</td></tr>
+    <tr><td><code>.toast-container--top-left</code></td><td>Top-left corner.</td></tr>
+    <tr><td><code>.toast-container--top-center</code></td><td>Top, horizontally centered.</td></tr>
+    <tr><td><code>.toast-container--bottom-right</code></td><td>Bottom-right corner.</td></tr>
+    <tr><td><code>.toast-container--bottom-left</code></td><td>Bottom-left corner.</td></tr>
+    <tr><td><code>.toast-container--bottom-center</code></td><td>Bottom, horizontally centered.</td></tr>
+    <tr><td><code>.toast</code></td><td>Single toast.</td></tr>
+    <tr><td><code>.toast--info / --success / --warning / --error</code></td><td>Tonal left accent bar.</td></tr>
+    <tr><td><code>.toast--dismissing</code></td><td>Triggers exit animation before removal.</td></tr>
+    <tr><td><code>.toast__icon / __body / __title / __message / __close</code></td><td>Sub-elements.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  <script>
+    function showPgToast(tone, title, msg) {
+      const el = document.createElement('div');
+      el.className = 'toast toast--' + tone;
+      el.setAttribute('role', tone === 'error' ? 'alert' : 'status');
+      const icon = { success: '✓', error: '✕', warning: '!', info: 'i' }[tone];
+      el.innerHTML = '<span class="toast__icon">' + icon + '</span>' +
+        '<div class="toast__body"><p class="toast__title">' + title + '</p><p class="toast__message">' + msg + '</p></div>' +
+        '<button class="toast__close" aria-label="Dismiss">×</button>';
+      el.querySelector('.toast__close').addEventListener('click', () => dismissPgToast(el));
+      document.getElementById('pg-toasts').appendChild(el);
+      setTimeout(() => dismissPgToast(el), 4000);
+    }
+    function dismissPgToast(el) {
+      if (!el || el.classList.contains('toast--dismissing')) return;
+      el.classList.add('toast--dismissing');
+      setTimeout(() => el.remove(), 250);
+    }
+  </script>
+</body>
+</html>

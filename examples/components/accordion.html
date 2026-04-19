@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Accordion</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="accordion">
+  <main class="pg-main">
+    <header>
+      <h1>Accordion</h1>
+      <p>CSS-only, built on <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>. No JavaScript required. Chevron rotates when open.</p>
+    </header>
+    
+  <h2>Default</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="accordion">
+  <details class="accordion__item" open>
+    <summary class="accordion__header">How do I get started?</summary>
+    <div class="accordion__content">Add a <code>&lt;link&gt;</code> to index.css and use the component classes.</div>
+  </details>
+  <details class="accordion__item">
+    <summary class="accordion__header">Does it require JavaScript?</summary>
+    <div class="accordion__content">No. Just plain HTML + CSS.</div>
+  </details>
+  <details class="accordion__item">
+    <summary class="accordion__header">What are the variants?</summary>
+    <div class="accordion__content"><code>--borderless</code>, <code>--flush</code>.</div>
+  </details>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="accordion"&gt;
+  &lt;details class="accordion__item" open&gt;
+    &lt;summary class="accordion__header"&gt;Question&lt;/summary&gt;
+    &lt;div class="accordion__content"&gt;Answer…&lt;/div&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Flush (full-width, no outer frame)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="accordion accordion--flush">
+  <details class="accordion__item">
+    <summary class="accordion__header">Item one</summary>
+    <div class="accordion__content">Content.</div>
+  </details>
+  <details class="accordion__item">
+    <summary class="accordion__header">Item two</summary>
+    <div class="accordion__content">Content.</div>
+  </details>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="accordion accordion--flush"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Borderless (no container border)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="accordion accordion--borderless">
+  <details class="accordion__item" open>
+    <summary class="accordion__header">Hello</summary>
+    <div class="accordion__content">No frame around the whole thing.</div>
+  </details>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="accordion accordion--borderless"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.accordion</code></td><td>Base container. Rounded border, soft bg.</td></tr>
+    <tr><td><code>.accordion--borderless</code></td><td>Remove outer border.</td></tr>
+    <tr><td><code>.accordion--flush</code></td><td>Remove outer border AND side padding; items span full width.</td></tr>
+    <tr><td><code>.accordion--animated</code></td><td>Animate height on open/close. Requires <code>interpolate-size: allow-keywords</code> (Chrome 129+).</td></tr>
+    <tr><td><code>.accordion__item</code></td><td>Single <code>&lt;details&gt;</code> row.</td></tr>
+    <tr><td><code>.accordion__header</code></td><td>Trigger summary with chevron.</td></tr>
+    <tr><td><code>.accordion__content</code></td><td>Expanded content area.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

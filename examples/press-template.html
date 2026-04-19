@@ -52,8 +52,8 @@
         </div>
       </div>
 
-      <nav class="nav-categories mt-3">
-        <a href="#" class="nav-category active">World</a>
+      <nav class="nav-categories mt-3" aria-label="Categories">
+        <a href="#" class="nav-category active" aria-current="page">World</a>
         <a href="#" class="nav-category">Politics</a>
         <a href="#" class="nav-category">Business</a>
         <a href="#" class="nav-category">Technology</a>
@@ -67,11 +67,11 @@
 
   <!-- Filter Tabs -->
   <div class="press-container mt-5">
-    <div class="filter-tabs">
-      <button class="filter-tab active">All</button>
-      <button class="filter-tab">Latest</button>
-      <button class="filter-tab">Trending</button>
-      <button class="filter-tab">Opinion</button>
+    <div class="filter-tabs" role="tablist" aria-label="Article filter">
+      <button class="filter-tab active" role="tab" aria-selected="true">All</button>
+      <button class="filter-tab" role="tab" aria-selected="false">Latest</button>
+      <button class="filter-tab" role="tab" aria-selected="false">Trending</button>
+      <button class="filter-tab" role="tab" aria-selected="false">Opinion</button>
     </div>
   </div>
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Pricing</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="pricing">
+  <main class="pg-main">
+    <header>
+      <h1>Pricing</h1>
+      <p>Pricing grid with a <code>.featured</code> variant (scaled + accent border).</p>
+    </header>
+    
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="pricing-grid">
+  <div class="pricing-card">
+    <h3>Basic</h3>
+    <div class="price">$9<span class="price-period">/mo</span></div>
+    <ul><li>10 projects</li><li>1 GB storage</li><li>Email support</li></ul>
+    <a class="btn btn--ghost" href="#">Choose</a>
+  </div>
+  <div class="pricing-card featured">
+    <span class="pricing-badge">Recommended</span>
+    <h3>Pro</h3>
+    <div class="price">$29<span class="price-period">/mo</span></div>
+    <ul><li>Unlimited projects</li><li>10 GB storage</li><li>Priority support</li></ul>
+    <a class="btn" href="#">Choose</a>
+  </div>
+  <div class="pricing-card">
+    <h3>Enterprise</h3>
+    <div class="price">custom</div>
+    <ul><li>Dedicated support</li><li>SLA</li><li>SSO</li></ul>
+    <a class="btn btn--ghost" href="#">Contact</a>
+  </div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="pricing-grid"&gt;
+  &lt;div class="pricing-card featured"&gt;
+    &lt;span class="pricing-badge"&gt;Recommended&lt;/span&gt;
+    &lt;h3&gt;Pro&lt;/h3&gt;
+    &lt;div class="price"&gt;$29&lt;span class="price-period"&gt;/mo&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.pricing-grid</code></td><td>Auto-fit grid.</td></tr>
+    <tr><td><code>.pricing-card</code></td><td>Base card.</td></tr>
+    <tr><td><code>.pricing-card.featured</code></td><td>Scaled + accent border.</td></tr>
+    <tr><td><code>.pricing-badge</code></td><td>Top-positioned pill.</td></tr>
+    <tr><td><code>.price / .price-period</code></td><td>Large number + period.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

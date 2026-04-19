@@ -1,0 +1,37 @@
+@layer utilities {
+  /*
+   * Opt-in helpers for Navigation/View Transitions API (Chrome 111+, Safari 18+).
+   * Apply .vt-<name> to mark an element as a persistent target across navigations.
+   * The API itself is JS-driven; these classes only supply view-transition-name.
+   */
+
+  @supports (view-transition-name: none) {
+    .vt-header   { view-transition-name: site-header; }
+    .vt-main     { view-transition-name: main-content; }
+    .vt-sidebar  { view-transition-name: sidebar; }
+    .vt-footer   { view-transition-name: site-footer; }
+    .vt-hero     { view-transition-name: hero; }
+    .vt-dialog   { view-transition-name: dialog; }
+
+    /* Cross-document view transitions opt-in for static sites. */
+    @view-transition {
+      navigation: auto;
+    }
+
+    /* Default old/new cross-fade with small slide */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 200ms;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @supports (view-transition-name: none) {
+      ::view-transition-old(*),
+      ::view-transition-new(*) {
+        animation: none !important;
+      }
+    }
+  }
+}

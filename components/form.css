@@ -22,11 +22,11 @@
   }
 
   .form__row .form__group :is(input, select, textarea) {
-    margin-bottom: 1.225rem;
+    margin-bottom: var(--form-field-gap);
   }
 
   .form__row .form__group :is(input, select, textarea):last-child {
-    margin-bottom: 1.225rem;
+    margin-bottom: var(--form-field-gap);
   }
 
   .form label:not(.form__checkbox):not(.form__radio):not(.form__switch) {
@@ -104,7 +104,7 @@
   }
 
   .form__row .form__hint {
-    margin-top: calc(var(--size-2) * -1 - 1.225rem);
+    margin-top: calc(var(--size-2) * -1 - var(--form-field-gap));
   }
 
   .form__error {
@@ -114,7 +114,7 @@
   }
 
   .form__row .form__error {
-    margin-top: calc(var(--size-1) - 1.225rem);
+    margin-top: calc(var(--size-1) - var(--form-field-gap));
   }
 
   .form :is(input, textarea):invalid:not(:focus):not(:placeholder-shown) {
@@ -122,6 +122,10 @@
   }
 
   .form select:invalid:not(:focus) {
+    border-color: var(--error);
+  }
+
+  .form :is(input, textarea, select)[aria-invalid="true"] {
     border-color: var(--error);
   }
 
@@ -159,30 +163,46 @@
 
   .form__input-group {
     display: flex;
+    align-items: stretch;
+    width: 100%;
   }
 
-  .form__input-group>* {
+  .form__input-group > input,
+  .form__input-group > select,
+  .form__input-group > textarea {
     flex: 1;
+    min-width: 0;
+    width: auto;
   }
 
-  .form__input-group> :not(:first-child) {
+  .form__input-addon {
+    flex: none;
+    display: flex;
+    align-items: center;
+    padding-inline: var(--size-3);
+    background: var(--soft);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* Merge borders — only the first child rounds left, only the last rounds right. */
+  .form__input-group > :not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    margin-left: -1px;
+    border-left: 0;
   }
 
-  .form__input-group> :not(:last-child) {
+  .form__input-group > :not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .form__input-addon {
-    padding: var(--size-3);
-    background: var(--soft);
-    border: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
+  /* Keep focus ring above siblings */
+  .form__input-group :is(input, select, textarea):focus {
+    position: relative;
+    z-index: 1;
   }
 
   .form__checkbox {
@@ -339,7 +359,7 @@
     top: 0.1875rem;
     left: 0.1875rem;
     transition: all var(--transition-fast);
-    box-shadow: 0 1px 3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    box-shadow: var(--shadow-sm);
   }
 
   .form__switch input[type="checkbox"]:checked {
@@ -392,7 +412,7 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all var(--transition-fast);
-    box-shadow: 0 1px 3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    box-shadow: var(--shadow-sm);
   }
 
   .form__range input[type="range"]::-moz-range-thumb {
@@ -403,7 +423,7 @@
     cursor: pointer;
     border: none;
     transition: all var(--transition-fast);
-    box-shadow: 0 1px 3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength)));
+    box-shadow: var(--shadow-sm);
   }
 
   .form__range input[type="range"]:focus {
@@ -460,7 +480,7 @@
 
   .form__file:hover .form__file-label {
     border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 5%, var(--soft));
+    background: color-mix(in oklch, var(--accent) 5%, var(--soft));
   }
 
   .form__file input:focus+.form__file-label {

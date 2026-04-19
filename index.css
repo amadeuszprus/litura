@@ -10,10 +10,14 @@
 @import "./components/menu.css" layer(components);
 @import "./components/dialog.css" layer(components);
 @import "./components/alert.css" layer(components);
+@import "./components/toast.css" layer(components);
 @import "./components/info-panel.css" layer(components);
 @import "./components/card.css" layer(components);
 @import "./components/badge.css" layer(components);
 @import "./components/label.css" layer(components);
+@import "./components/accordion.css" layer(components);
+@import "./components/tabs.css" layer(components);
+@import "./components/tooltip.css" layer(components);
 @import "./components/hero.css" layer(components);
 @import "./components/stats.css" layer(components);
 @import "./components/feature.css" layer(components);
@@ -34,6 +38,11 @@
 @import "./utilities/colors.css" layer(utilities);
 @import "./utilities/borders.css" layer(utilities);
 @import "./utilities/sizing.css" layer(utilities);
+@import "./utilities/icon.css" layer(utilities);
 @import "./utilities/effects.css" layer(utilities);
+@import "./utilities/animations.css" layer(utilities);
+@import "./utilities/view-transitions.css" layer(utilities);
+@import "./utilities/responsive.css" layer(utilities);
+@import "./utilities/print.css" layer(utilities);
 
 @layer overrides {}

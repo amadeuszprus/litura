@@ -3,7 +3,8 @@
     display: flex;
     align-items: flex-start;
     gap: var(--size-3);
-    padding: var(--size-3) var(--size-4);
+    padding-block: var(--size-3);
+    padding-inline: var(--size-4);
     border: 1px solid;
     border-radius: var(--radius-1);
     font-size: var(--text-sm);
@@ -82,44 +83,29 @@
 
   .alert,
   .alert--info {
-    background: color-mix(in srgb, var(--info) 8%, var(--bg));
-    border-color: color-mix(in srgb, var(--info) 20%, var(--line));
-    color: color-mix(in srgb, var(--info) 85%, var(--fg));
-  }
-
-  .alert__icon,
-  .alert--info .alert__icon {
-    fill: var(--info);
+    --alert-tone: var(--info);
   }
 
   .alert--success {
-    background: color-mix(in srgb, var(--success) 8%, var(--bg));
-    border-color: color-mix(in srgb, var(--success) 20%, var(--line));
-    color: color-mix(in srgb, var(--success) 85%, var(--fg));
-  }
-
-  .alert--success .alert__icon {
-    fill: var(--success);
+    --alert-tone: var(--success);
   }
 
   .alert--warning {
-    background: color-mix(in srgb, var(--warning) 8%, var(--bg));
-    border-color: color-mix(in srgb, var(--warning) 20%, var(--line));
-    color: color-mix(in srgb, var(--warning) 85%, var(--fg));
-  }
-
-  .alert--warning .alert__icon {
-    fill: var(--warning);
+    --alert-tone: var(--warning);
   }
 
   .alert--error {
-    background: color-mix(in srgb, var(--error) 8%, var(--bg));
-    border-color: color-mix(in srgb, var(--error) 20%, var(--line));
-    color: color-mix(in srgb, var(--error) 85%, var(--fg));
+    --alert-tone: var(--error);
   }
 
-  .alert--error .alert__icon {
-    fill: var(--error);
+  .alert:not([class*="alert--"][class*="-solid"]) {
+    background: color-mix(in oklch, var(--alert-tone) 8%, var(--bg));
+    border-color: color-mix(in oklch, var(--alert-tone) 20%, var(--line));
+    color: color-mix(in oklch, var(--alert-tone) 85%, var(--fg));
+  }
+
+  .alert:not([class*="alert--"][class*="-solid"]) .alert__icon {
+    fill: var(--alert-tone);
   }
 
   .alert--info-solid {
@@ -169,7 +155,8 @@
   }
 
   .alert--small {
-    padding: var(--size-2) var(--size-3);
+    padding-block: var(--size-2);
+    padding-inline: var(--size-3);
     font-size: var(--text-xs);
     gap: var(--size-2);
   }
@@ -185,7 +172,8 @@
   }
 
   .alert--large {
-    padding: var(--size-4) var(--size-5);
+    padding-block: var(--size-4);
+    padding-inline: var(--size-5);
     font-size: var(--text-base);
     gap: var(--size-4);
   }
@@ -206,8 +194,7 @@
   .alert-container .alert {
     pointer-events: auto;
     margin-bottom: var(--size-3);
-    box-shadow: 0 10px 15px -3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
-      0 4px 6px -2px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
+    box-shadow: var(--shadow-lg);
   }
 
   .alert-container--top-right {

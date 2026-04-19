@@ -1,13 +1,15 @@
 @layer components {
+  /* Card: the container has NO padding. Each region (header/body/footer)
+     applies its own padding. Media always sits flush to the card edges. */
   .card {
+    --card-padding: var(--size-4);
     display: flex;
     flex-direction: column;
-    gap: var(--size-3);
     background: var(--bg);
     color: var(--fg);
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
-    padding: var(--size-4);
+    overflow: clip;
     width: 100%;
     max-width: var(--card-max-width, 36rem);
     align-self: start;
@@ -17,21 +19,38 @@
     display: flex;
     align-items: center;
     gap: var(--size-3);
+    padding-block: var(--card-padding);
+    padding-inline: var(--card-padding);
   }
 
-  .card__media {
-    width: 100%;
-    overflow: hidden;
-    border-radius: var(--radius-2) var(--radius-2) 0 0;
-    display: block;
+  .card__header + .card__body,
+  .card__media + .card__body,
+  .card__body:first-child {
+    padding-block-start: var(--card-padding);
   }
 
-  .card__media img,
-  .card__media picture,
-  .card__media video {
-    display: block;
-    width: 100%;
-    height: auto;
+  .card__body {
+    padding-block-end: var(--card-padding);
+    padding-inline: var(--card-padding);
+    flex: 1;
+  }
+
+  /* When header exists, body's top padding comes from the gap instead of its own padding */
+  .card__header + .card__body {
+    padding-block-start: var(--size-3);
+  }
+
+  .card__footer {
+    display: flex;
+    gap: var(--size-2);
+    justify-content: flex-end;
+    padding-block: var(--card-padding);
+    padding-inline: var(--card-padding);
+    padding-block-start: 0;
+  }
+
+  .card__body + .card__footer {
+    padding-block-start: var(--size-3);
   }
 
   .card__title {
@@ -46,24 +65,26 @@
     font-size: var(--text-sm);
   }
 
-  .card__body {
-    flex: 1;
+  /* Media — always flush, no padding on the card fights it */
+  .card__media {
+    display: block;
+    overflow: hidden;
   }
 
-  .card__footer {
-    display: flex;
-    gap: var(--size-2);
-    justify-content: flex-end;
+  .card__media img,
+  .card__media picture,
+  .card__media video {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .card--soft {
-    background: var(--soft);
-  }
+  /* Visual variants */
+  .card--soft { background: var(--soft); }
 
   .card--elevated {
-    box-shadow: 0 10px 15px -3px rgb(var(--shadow-color) / calc(0.10 * var(--shadow-strength))),
-      0 4px 6px -2px rgb(var(--shadow-color) / calc(0.06 * var(--shadow-strength)));
-    border-color: color-mix(in srgb, var(--fg) 6%, var(--line));
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in oklch, var(--fg) 6%, var(--line));
   }
 
   .card--glass {
@@ -80,32 +101,25 @@
 
   .card--interactive:hover {
     transform: translateY(-1px);
-    box-shadow: 0 12px 20px -5px rgb(var(--shadow-color) / calc(0.14 * var(--shadow-strength))),
-      0 5px 8px -4px rgb(var(--shadow-color) / calc(0.08 * var(--shadow-strength)));
-    border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
   }
 
-  .card--borderless {
-    border: none;
-  }
+  .card--borderless { border: none; }
+  .card--bordered { border: 1px solid var(--line); }
+  .card--accented { border-top: 3px solid var(--accent); }
 
-  .card--bordered {
-    border: 1px solid var(--line);
-  }
-
-  .card--accented {
-    border-top: 3px solid var(--accent);
-  }
-
+  /* Horizontal: media left, content right */
   .card--horizontal {
     flex-direction: row;
     align-items: stretch;
   }
 
   .card--horizontal .card__media {
-    flex: 0 0 12rem;
+    flex: 0 0 auto;
+    width: var(--card-media-width, 12rem);
     max-width: 40%;
-    border-radius: var(--radius-2) 0 0 var(--radius-2);
+    align-self: stretch;
   }
 
   .card--horizontal .card__media img,
@@ -116,32 +130,18 @@
     object-fit: cover;
   }
 
-  .card--compact {
-    padding: var(--size-3);
+  /* In horizontal, content sections fill remaining width and stack vertically */
+  .card--horizontal > :not(.card__media) {
+    flex: 1;
+    min-width: 0;
   }
 
-  .card--spacious {
-    padding: var(--size-5);
-  }
-
-  .card--fluid {
-    max-width: none;
-  }
-
-  .card--narrow {
-    --card-max-width: 24rem;
-  }
-
-  .card--wide {
-    --card-max-width: 48rem;
-  }
-
-  .card--centered {
-    width: auto;
-    margin-inline: auto;
-  }
-
-  .card--stretch {
-    align-self: stretch;
-  }
+  /* Sizing */
+  .card--compact { --card-padding: var(--size-3); }
+  .card--spacious { --card-padding: var(--size-5); }
+  .card--fluid { max-width: none; }
+  .card--narrow { --card-max-width: 24rem; }
+  .card--wide { --card-max-width: 48rem; }
+  .card--centered { width: auto; margin-inline: auto; }
+  .card--stretch { align-self: stretch; }
 }

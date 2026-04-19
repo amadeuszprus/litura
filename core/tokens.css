@@ -1,13 +1,22 @@
 @layer tokens {
-  :root {
+  :root,
+  :root[data-theme="light"],
+  [data-theme="light"] {
     --size-1: 0.25rem;
     --size-2: 0.5rem;
     --size-3: 0.75rem;
     --size-4: 1rem;
     --size-5: 1.25rem;
     --size-6: 1.5rem;
+    --size-7: 2rem;
+    --size-8: 2.5rem;
+    --size-9: 3rem;
+    --size-10: 4rem;
+
     --radius-1: 0.25rem;
     --radius-2: 0.5rem;
+    --radius-3: 0.75rem;
+    --radius-full: 9999px;
 
     --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -20,40 +29,30 @@
     --leading: 1.6;
     --measure: 65ch;
 
+    /* Fluid typography — clamp(min, preferred, max). Disable by setting data-typo="fixed" on <html>. */
     --text-2xs: 0.7rem;
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.25rem;
-    --text-2xl: 1.5rem;
-    --text-3xl: 2rem;
-    --text-4xl: 2.5rem;
-    --text-5xl: 3rem;
+    --text-xs:  0.75rem;
+    --text-sm:  clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+    --text-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
+    --text-lg:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --text-xl:  clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+    --text-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    --text-3xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --text-4xl: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem);
+    --text-5xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
 
-    /* Sizing scale (extended) */
-    --size-7: 2rem;
-    --size-8: 2.5rem;
-    --size-9: 3rem;
-    --size-10: 4rem;
-
-    /* Radius */
-    --radius-3: 0.75rem;
-    --radius-full: 9999px;
-
-    /* Transitions */
     --transition-fast: 150ms ease;
     --transition-normal: 200ms ease;
     --transition-slow: 300ms ease;
 
-    /* Breakpoints (reference) */
     --bp-sm: 40rem;
     --bp-md: 48rem;
     --bp-lg: 64rem;
     --bp-xl: 80rem;
     --bp-2xl: 96rem;
 
-    /* Backdrop */
+    --form-field-gap: 1.225rem;
+
     --backdrop-color: rgba(0, 0, 0, 0.5);
 
     color-scheme: light;
@@ -62,8 +61,11 @@
     --muted: #666666;
     --soft: #f4f4f5;
     --line: #e6e6e7;
-    --accent: #0aa77a;
+    --accent: #0f766e;
     --accent-fg: #ffffff;
+    /* Alias for readability — WHERE TEXT SITS ON ACCENT BACKGROUND.
+       When contrast-color() ships broadly, migrate to contrast-color(var(--accent)). */
+    --fg-on-accent: var(--accent-fg);
     --shadow-color: 0 0 0;
     --shadow-strength: 1;
 
@@ -72,8 +74,16 @@
     --warning: #f59e0b;
     --error: #ef4444;
 
+    --shadow-xs: 0 1px 2px 0 rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
+    --shadow-sm: 0 1px 3px 0 rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
+                 0 1px 2px 0 rgb(var(--shadow-color) / calc(0.06 * var(--shadow-strength)));
+    --shadow-md: 0 4px 6px -1px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
+                 0 2px 4px -1px rgb(var(--shadow-color) / calc(0.06 * var(--shadow-strength)));
+    --shadow-lg: 0 10px 15px -3px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
+                 0 4px 6px -2px rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
+    --shadow-xl: 0 20px 25px -5px rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
+                 0 10px 10px -5px rgb(var(--shadow-color) / calc(0.04 * var(--shadow-strength)));
 
-    /* Premium Tokens */
     --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
     --gradient-hero: linear-gradient(135deg, var(--soft) 0%, var(--bg) 100%);
     --gradient-surface: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -84,25 +94,6 @@
     --glass-blur: blur(12px);
   }
 
-  :root[data-theme="light"],
-  [data-theme="light"] {
-    color-scheme: light;
-    --bg: #ffffff;
-    --fg: #0a0a0a;
-    --muted: #666666;
-    --soft: #f4f4f5;
-    --line: #e6e6e7;
-    --accent: #0aa77a;
-    --accent-fg: #ffffff;
-    --shadow-color: 0 0 0;
-    --shadow-strength: 1;
-
-    --info: #3b82f6;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --error: #ef4444;
-  }
-
   :root[data-theme="dark"],
   [data-theme="dark"] {
     color-scheme: dark;
@@ -111,7 +102,7 @@
     --muted: #bbbbbb;
     --soft: #161618;
     --line: #242428;
-    --accent: #35d0a0;
+    --accent: #2dd4bf;
     --accent-fg: #000000;
     --shadow-color: 255 255 255;
     --shadow-strength: 0.8;
@@ -123,7 +114,6 @@
 
     --backdrop-color: rgba(0, 0, 0, 0.7);
 
-    /* Premium Tokens Dark */
     --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
     --gradient-hero: linear-gradient(135deg, #18181b 0%, #09090b 100%);
 
@@ -235,7 +225,7 @@
       --muted: #bbbbbb;
       --soft: #161618;
       --line: #242428;
-      --accent: #35d0a0;
+      --accent: #2dd4bf;
       --accent-fg: #000000;
       --shadow-color: 255 255 255;
       --shadow-strength: 0.8;
@@ -247,6 +237,44 @@
 
       --backdrop-color: rgba(0, 0, 0, 0.7);
     }
+  }
+
+  :root[data-typo="fixed"] {
+    --text-sm:  0.875rem;
+    --text-base: 1rem;
+    --text-lg:  1.125rem;
+    --text-xl:  1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+    --text-5xl: 3rem;
+  }
+
+  /* Density — scales spacing globally. Compose via <html data-density="compact"> */
+  :root[data-density="compact"] {
+    --size-1: 0.2rem;
+    --size-2: 0.4rem;
+    --size-3: 0.6rem;
+    --size-4: 0.8rem;
+    --size-5: 1rem;
+    --size-6: 1.2rem;
+    --size-7: 1.6rem;
+    --size-8: 2rem;
+    --size-9: 2.4rem;
+    --size-10: 3.2rem;
+  }
+
+  :root[data-density="spacious"] {
+    --size-1: 0.3rem;
+    --size-2: 0.6rem;
+    --size-3: 0.9rem;
+    --size-4: 1.2rem;
+    --size-5: 1.5rem;
+    --size-6: 1.8rem;
+    --size-7: 2.4rem;
+    --size-8: 3rem;
+    --size-9: 3.6rem;
+    --size-10: 4.8rem;
   }
 
   :root[data-font="modern"] {
@@ -265,4 +293,12 @@
   :root[data-font="artistic"] {
     --font-sans: var(--font-artistic-body);
   }
+
+  /* Progressive enhancement: when contrast-color() ships, derive --fg-on-accent from --accent. */
+  @supports (color: contrast-color(black)) {
+    :root {
+      --fg-on-accent: contrast-color(var(--accent));
+    }
+  }
 }
+

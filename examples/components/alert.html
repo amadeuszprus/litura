@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Alert</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="alert">
+  <main class="pg-main">
+    <header>
+      <h1>Alert</h1>
+      <p>Inline messages with a tone + optional icon. Solid variants and size modifiers available.</p>
+    </header>
+    
+  <h2>Tonal variants (subtle)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div style="display:flex;flex-direction:column;gap:var(--size-2)">
+  <div class="alert alert--info" role="status"><div class="alert__content"><p class="alert__title">Info</p><p class="alert__message">An informational message.</p></div></div>
+  <div class="alert alert--success" role="status"><div class="alert__content"><p class="alert__title">Success</p><p class="alert__message">Operation succeeded.</p></div></div>
+  <div class="alert alert--warning" role="alert"><div class="alert__content"><p class="alert__title">Warning</p><p class="alert__message">Take note.</p></div></div>
+  <div class="alert alert--error" role="alert"><div class="alert__content"><p class="alert__title">Error</p><p class="alert__message">Something went wrong.</p></div></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="alert alert--info" role="status"&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;p class="alert__title"&gt;Info&lt;/p&gt;
+    &lt;p class="alert__message"&gt;Message.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Solid</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div style="display:flex;flex-direction:column;gap:var(--size-2)">
+  <div class="alert alert--info-solid"><div class="alert__content"><p class="alert__title">Info solid</p></div></div>
+  <div class="alert alert--success-solid"><div class="alert__content"><p class="alert__title">Success solid</p></div></div>
+  <div class="alert alert--warning-solid"><div class="alert__content"><p class="alert__title">Warning solid</p></div></div>
+  <div class="alert alert--error-solid"><div class="alert__content"><p class="alert__title">Error solid</p></div></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="alert alert--info-solid"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Sizes</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div style="display:flex;flex-direction:column;gap:var(--size-2)">
+  <div class="alert alert--info alert--small"><div class="alert__content"><p class="alert__message">Small alert</p></div></div>
+  <div class="alert alert--info"><div class="alert__content"><p class="alert__message">Default</p></div></div>
+  <div class="alert alert--info alert--large"><div class="alert__content"><p class="alert__title">Large</p><p class="alert__message">With title and extra padding.</p></div></div>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;div class="alert alert--small"&gt;…&lt;/div&gt;
+&lt;div class="alert alert--large"&gt;…&lt;/div&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.alert</code></td><td>Base. Defaults to info tone.</td></tr>
+    <tr><td><code>.alert--info / --success / --warning / --error</code></td><td>Subtle tonal variant.</td></tr>
+    <tr><td><code>.alert--info-solid / ...-solid</code></td><td>Solid bg, white text.</td></tr>
+    <tr><td><code>.alert--small / --large</code></td><td>Scale padding + font.</td></tr>
+    <tr><td><code>.alert--no-icon / --no-close</code></td><td>Hide icon or close button.</td></tr>
+    <tr><td><code>.alert--auto-dismiss</code></td><td>Shows progress bar (pair with JS timeout).</td></tr>
+    <tr><td><code>.alert--dismissing</code></td><td>Triggers exit animation.</td></tr>
+    <tr><td><code>.alert__icon / __content / __title / __message / __close</code></td><td>Sub-elements.</td></tr>
+    <tr><td><code>.alert-container--{top,bottom}-{left,right,center}</code></td><td>Floating toast-style container.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

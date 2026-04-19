@@ -1,0 +1,135 @@
+@layer components {
+  /*
+   * CSS-only tabs via radio inputs.
+   * Usage:
+   *   <div class="tabs" role="tablist">
+   *     <input type="radio" name="t" id="t1" class="tabs__input" checked>
+   *     <label for="t1" class="tabs__tab" role="tab">One</label>
+   *     <input type="radio" name="t" id="t2" class="tabs__input">
+   *     <label for="t2" class="tabs__tab" role="tab">Two</label>
+   *
+   *     <div class="tabs__panel" data-for="t1" role="tabpanel">...</div>
+   *     <div class="tabs__panel" data-for="t2" role="tabpanel">...</div>
+   *   </div>
+   *
+   * For real ARIA semantics use aria-controls + JS; this offers the CSS skeleton.
+   */
+
+  .tabs {
+    display: grid;
+    grid-template-columns: auto;
+    gap: var(--size-3);
+  }
+
+  .tabs__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+  }
+
+  .tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-1);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tabs__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--size-2);
+    padding-block: var(--size-2);
+    padding-inline: var(--size-3);
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    border-radius: var(--radius-1) var(--radius-1) 0 0;
+    transition: color var(--transition-fast), background var(--transition-fast);
+  }
+
+  .tabs__tab:hover {
+    color: var(--fg);
+    background: var(--soft);
+  }
+
+  .tabs__input:focus-visible + .tabs__tab {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .tabs__input:checked + .tabs__tab {
+    color: var(--accent);
+    background: transparent;
+  }
+
+  .tabs__input:checked + .tabs__tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .tabs__panel {
+    display: none;
+  }
+
+  /* Panel visibility tied to matching input via sibling selector fallback.
+     When all tabs live in the same parent as panels, :has lets us route: */
+  .tabs:has(#t1:checked) .tabs__panel[data-for="t1"],
+  .tabs:has(#t2:checked) .tabs__panel[data-for="t2"],
+  .tabs:has(#t3:checked) .tabs__panel[data-for="t3"],
+  .tabs:has(#t4:checked) .tabs__panel[data-for="t4"],
+  .tabs:has(#t5:checked) .tabs__panel[data-for="t5"],
+  .tabs:has(#t6:checked) .tabs__panel[data-for="t6"] {
+    display: block;
+    animation: fade-in var(--duration-200, 200ms) var(--ease-out, ease);
+  }
+
+  /* Variant: pills */
+  .tabs--pills .tabs__list {
+    border-bottom: 0;
+    gap: var(--size-2);
+  }
+
+  .tabs--pills .tabs__tab {
+    border-radius: var(--radius-full);
+  }
+
+  .tabs--pills .tabs__input:checked + .tabs__tab {
+    background: var(--accent);
+    color: var(--fg-on-accent);
+  }
+
+  .tabs--pills .tabs__input:checked + .tabs__tab::after {
+    display: none;
+  }
+
+  /* Variant: vertical */
+  .tabs--vertical {
+    grid-template-columns: auto 1fr;
+    gap: var(--size-4);
+  }
+
+  .tabs--vertical .tabs__list {
+    flex-direction: column;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+
+  .tabs--vertical .tabs__input:checked + .tabs__tab::after {
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: -1px;
+    width: 2px;
+    height: auto;
+  }
+}

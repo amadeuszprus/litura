@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litura — Icon</title>
+  <link rel="stylesheet" href="../../index.css?v=202604191729">
+  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  
+</head>
+<body data-page="icon">
+  <main class="pg-main">
+    <header>
+      <h1>Icon</h1>
+      <p>Base <code>.icon</code> class (1em × 1em, inherits <code>currentColor</code> for fill + stroke) plus sizes and modifiers.</p>
+    </header>
+    
+  <h2>Sizes</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div style="display:flex;align-items:end;gap:1rem;color:var(--accent)">
+  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><svg class="icon icon--xs" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><small>xs</small></span>
+  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><svg class="icon icon--sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><small>sm</small></span>
+  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><svg class="icon icon--md" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><small>md</small></span>
+  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><svg class="icon icon--lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><small>lg</small></span>
+  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><svg class="icon icon--xl" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><small>xl</small></span>
+  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><svg class="icon icon--2xl" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><small>2xl</small></span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;svg class="icon icon--lg" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;</code></pre>
+</div>
+
+  <h2>Stroke variant</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div style="display:flex;gap:1rem;color:var(--accent)">
+  <svg class="icon icon--xl icon--stroke" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+  <svg class="icon icon--xl icon--stroke" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+  <svg class="icon icon--xl icon--stroke" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/></svg>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;svg class="icon icon--xl icon--stroke" viewBox="0 0 24 24"&gt;
+  &lt;path d="…"/&gt;
+&lt;/svg&gt;</code></pre>
+</div>
+
+  <h2>Spin (loader)</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div style="display:flex;gap:1rem;align-items:center;color:var(--accent)">
+  <svg class="icon icon--xl icon--stroke icon--spin" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/></svg>
+  <span class="text-muted">Loading…</span>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;svg class="icon icon--xl icon--stroke icon--spin"&gt;…&lt;/svg&gt;</code></pre>
+</div>
+
+  <h2>Inside a button</h2>
+  <div class="pg-example">
+  
+  <div class="pg-example__preview"><div class="cluster">
+  <button class="btn"><svg class="icon icon--sm icon--stroke" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Add</button>
+  <button class="btn btn--ghost"><svg class="icon icon--sm icon--stroke" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Save</button>
+</div></div>
+  <pre class="pg-example__code"><code class="language-html">&lt;button class="btn"&gt;&lt;svg class="icon icon--sm icon--stroke"&gt;…&lt;/svg&gt; Add&lt;/button&gt;</code></pre>
+</div>
+
+  <h2>Modifiers</h2>
+  <table class="pg-ref">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.icon</code></td><td>Base. 1em × 1em, fill + stroke = currentColor, vertical-align −0.125em.</td></tr>
+    <tr><td><code>.icon--xs / sm / md / lg / xl / 2xl</code></td><td>0.75 / 0.875 / 1 / 1.25 / 1.5 / 2 em.</td></tr>
+    <tr><td><code>.icon--stroke</code></td><td>fill: none; stroke-width: 1.5; round line cap/join.</td></tr>
+    <tr><td><code>.icon--spin</code></td><td>Applies the <code>spin</code> keyframe.</td></tr>
+  </tbody>
+</table>
+  
+  </main>
+  <script src="_playground.js"></script>
+  
+</body>
+</html>

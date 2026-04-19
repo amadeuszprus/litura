@@ -1,6 +1,6 @@
 {
   "name": "litura",
-  "version": "0.1.0-alpha",
+  "version": "0.3.0-alpha",
   "description": "A minimalist CSS library focused on content",
   "author": "Amadeusz Prus <https://github.com/amadeuszprus>",
   "license": "MIT",
@@ -26,20 +26,23 @@
   ],
   "files": [
     "index.css",
+    "tokens.json",
     "core/",
     "js/",
     "components/",
-    "utilities/"
+    "utilities/",
+    "min/"
   ],
   "scripts": {
     "lint:js": "eslint '**/*.js'",
     "lint:css": "stylelint '**/*.css'",
     "lint:html": "htmlhint '**/*.html'",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "build:tokens": "node scripts/build-tokens.js --write",
     "minify:css": "cleancss -o min/index.min.css index.css && find core components utilities -name '*.css' -exec sh -c 'mkdir -p min/$(dirname {}) && cleancss -o min/{}.min.css {}' \\;",
     "minify:js": "find js -name '*.js' -exec sh -c 'mkdir -p min/$(dirname {}) && terser {} -o min/{}.min.js' \\;",
     "minify": "npm run minify:css && npm run minify:js",
-    "build": "npm run lint && npm run minify"
+    "build": "npm run build:tokens && npm run lint && npm run minify"
   },
   "bugs": {
     "url": "https://github.com/amadeuszprus/litura/issues"
