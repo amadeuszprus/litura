@@ -635,6 +635,15 @@ Litura uses CSS Layers for predictable cascade control:
 
 ## Changelog
 
+### 0.3.1-alpha
+- **fix(table)**: `.table` styles now apply to plain `<th>` / `<td>` / `<tr>` / `<thead>` / `<tbody>` instead of requiring BEM classes. Semantic HTML works out of the box.
+- **fix(dialog)**: native `<dialog class="dialog">` no longer stretches full width (`width: fit-content`, `min-width: 20rem`, `max-width: 32rem`).
+- **fix(dialog)**: entry transition scoped separately for native `<dialog>` vs legacy `<details class="dialog">` — no more conflicting `transform` animations.
+- **fix(playground)**: `.pg-example__preview` gets rounded top corners when it's the first child (no title above).
+- **fix(card)**: `overflow: clip` + flex layout so `.card__media` sits flush against the card edges; horizontal layout works again.
+- **feat(docs)**: Google Fonts loaded on landing, playground, and templates index so the font switcher actually changes typography.
+- **chore(docs)**: honest "vibe coded" disclosure in README.
+
 ### 0.3.0-alpha
 - **New accent**: default brand color switched from emerald (`#0aa77a`) to deep teal (`#0f766e`) with a lighter teal (`#2dd4bf`) for dark mode. More refined, less "startup-y".
 - **New components**: accordion, tabs, tooltip, toast.
