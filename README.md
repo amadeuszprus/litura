@@ -4,6 +4,7 @@ A minimalist, content-first CSS library built on modern primitives: `@layer`, cu
 
 [![npm](https://img.shields.io/npm/v/litura.svg)](https://www.npmjs.com/package/litura)
 [![license](https://img.shields.io/npm/l/litura.svg)](./LICENCE.md)
+[![vibe coded](https://img.shields.io/badge/vibe%20coded-%F0%9F%A4%96-teal)](#)
 
 **🔗 [Landing](https://litura.net/) · [Component playground](https://litura.net/examples/components/) · [Templates](https://litura.net/examples/)**
 
