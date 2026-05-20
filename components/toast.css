@@ -62,7 +62,12 @@
   }
 
   .toast--dismissing {
-    animation: scale-out var(--duration-200) var(--ease-in) forwards;
+    animation: toast-dismiss var(--duration-200) var(--ease-in) forwards;
+  }
+
+  @keyframes toast-dismiss {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(8px); }
   }
 
   .toast__icon {
@@ -103,12 +108,22 @@
     cursor: pointer;
     border-radius: var(--radius-1);
     padding: var(--size-1);
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast), color var(--transition-fast), scale var(--transition-fast);
   }
 
   .toast__close:hover,
   .toast__close:focus-visible {
     color: var(--fg);
     background: var(--soft);
+  }
+
+  .toast__close:active {
+    scale: 0.96;
   }
 
   .toast--info    { --toast-tone: var(--info); border-left: 3px solid var(--info); }

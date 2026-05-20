@@ -33,6 +33,7 @@
     font-weight: 700;
     color: var(--accent);
     margin-bottom: var(--size-1);
+    font-variant-numeric: tabular-nums;
   }
 
   .stat-card .text-muted {

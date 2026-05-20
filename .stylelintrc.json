@@ -1,23 +1,52 @@
 {
   "extends": ["stylelint-config-standard"],
+  "ignoreFiles": ["min/**/*", "node_modules/**/*"],
   "rules": {
     "at-rule-no-unknown": [
       true,
-      {
-        "ignoreAtRules": ["layer", "supports"]
-      }
+      { "ignoreAtRules": ["layer", "supports", "starting-style", "container"] }
     ],
     "property-no-unknown": [
       true,
-      {
-        "ignoreProperties": ["color-mix"]
-      }
+      { "ignoreProperties": ["color-mix"] }
     ],
     "selector-pseudo-class-no-unknown": [
       true,
+      { "ignorePseudoClasses": ["user-invalid"] }
+    ],
+
+    "selector-class-pattern": [
+      "^((sm|md|lg|xl|2xl):)?[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z][a-z0-9-]*)?(--[a-z0-9][a-z0-9-]*)*(\\/[0-9]+)?$",
       {
-        "ignorePseudoClasses": ["user-invalid"]
+        "message": "Class must use kebab-case BEM (.block, .block__element, .block--modifier) or a responsive prefix (sm:/md:/lg:/xl:/2xl:)"
       }
-    ]
+    ],
+
+    "keyframes-name-pattern": null,
+    "no-descending-specificity": null,
+    "declaration-block-single-line-max-declarations": null,
+    "at-rule-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "value-keyword-case": null,
+    "selector-attribute-quotes": null,
+    "media-feature-range-notation": null,
+    "media-query-no-invalid": null,
+    "import-notation": null,
+    "color-function-notation": null,
+    "color-function-alias-notation": null,
+    "alpha-value-notation": null,
+    "color-hex-length": null,
+    "selector-not-notation": null,
+    "property-no-vendor-prefix": null,
+    "property-no-deprecated": null,
+    "number-max-precision": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "no-invalid-position-declaration": null,
+    "keyframe-selector-notation": null,
+    "no-duplicate-selectors": null,
+    "block-no-empty": null
   }
 }

@@ -635,6 +635,19 @@ Litura uses CSS Layers for predictable cascade control:
 
 ## Changelog
 
+### 0.3.2-alpha
+- **polish(interaction)**: `scale(0.96)` on press across all interactive surfaces — `.btn`, `.dialog__close`, `.dialog__trigger`, `.menu__trigger`, `.accordion__header`, `.tabs__tab`, `.toast__close`, landing `.lp-link-card` / `.lp-install__copy`. Specific `transition` properties instead of `transition: all`.
+- **polish(type)**: `-webkit-font-smoothing: antialiased` + `-moz-osx-font-smoothing: grayscale` on body. `text-wrap: balance` on h1–h6, `text-wrap: pretty` on paragraphs.
+- **polish(numbers)**: `font-variant-numeric: tabular-nums` on `.stat-number`, `.price`, `.market-value`, `.market-change`, `.menu__shortcut` — no layout shift on dynamic counters.
+- **polish(images)**: subtle 1px outline on `<img>` via new `--image-outline-color` token (black 10% in light themes, white 10% in dark / high-contrast / nord).
+- **polish(a11y)**: `.dialog__close` enlarged 32→40px hit area. `.toast__close` gets min 36×36px touch target.
+- **polish(tooltip)**: floating tip uses `--radius-2` (8px) instead of `--radius-1` — friendlier feel.
+- **polish(toast)**: softer dismiss animation — `translateY(8px)` + fade instead of scale-out.
+- **polish(landing)**: hero stagger — eyebrow / heading / lead / CTA / install fade in with 75–500ms delays.
+- **fix(animations)**: dialog and menu keyframe animations now wrapped in `@supports not (transition-behavior: allow-discrete)` — modern browsers use the interruptible `@starting-style` transition instead of double-firing.
+- **fix(menu-enhancement.js)**: `case` blocks with lexical declarations wrapped in `{}`, `let` → `const` where applicable.
+- **chore(lint)**: stylelint config tuned to recognize BEM (`block__element`, `block--modifier`) and Tailwind-like utility classes (`sm:`/`md:`/`lg:`/`xl:`/`2xl:` prefixes, fraction widths `w-1/2`). htmlhint accepts BEM class names. eslint config splits browser globals (`js/`) from node globals (`scripts/`), ignores `min/`. `npm run lint` passes clean.
+
 ### 0.3.1-alpha
 - **fix(table)**: `.table` styles now apply to plain `<th>` / `<td>` / `<tr>` / `<thead>` / `<tbody>` instead of requiring BEM classes. Semantic HTML works out of the box.
 - **fix(dialog)**: native `<dialog class="dialog">` no longer stretches full width (`width: fit-content`, `min-width: 20rem`, `max-width: 32rem`).

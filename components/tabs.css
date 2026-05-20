@@ -49,12 +49,16 @@
     cursor: pointer;
     position: relative;
     border-radius: var(--radius-1) var(--radius-1) 0 0;
-    transition: color var(--transition-fast), background var(--transition-fast);
+    transition: color var(--transition-fast), background var(--transition-fast), scale var(--transition-fast);
   }
 
   .tabs__tab:hover {
     color: var(--fg);
     background: var(--soft);
+  }
+
+  .tabs__tab:active {
+    scale: 0.96;
   }
 
   .tabs__input:focus-visible + .tabs__tab {
@@ -125,10 +129,7 @@
   }
 
   .tabs--vertical .tabs__input:checked + .tabs__tab::after {
-    top: 0;
-    bottom: 0;
-    left: auto;
-    right: -1px;
+    inset: 0 -1px 0 auto;
     width: 2px;
     height: auto;
   }

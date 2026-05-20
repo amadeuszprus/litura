@@ -53,12 +53,13 @@
       // Enhanced keyboard support
       menu.addEventListener('keydown', (e) => {
         switch (e.key) {
-          case 'Escape':
+          case 'Escape': {
             menu.removeAttribute('open');
             const summary = menu.querySelector('summary');
             if (summary) summary.focus();
             break;
-            
+          }
+
           case 'ArrowDown':
             if (menu.hasAttribute('open')) {
               e.preventDefault();
@@ -74,7 +75,7 @@
             break;
             
           case 'Enter':
-          case ' ':
+          case ' ': {
             const target = e.target;
             if (target.matches('.menu__link[href="#"]')) {
               e.preventDefault();
@@ -82,6 +83,7 @@
               menu.removeAttribute('open');
             }
             break;
+          }
         }
       });
 
@@ -117,7 +119,7 @@
       height: window.innerHeight
     };
 
-    let adjustments = {};
+    const adjustments = {};
 
     // Check if menu overflows right edge
     if (rect.right > viewport.width) {
@@ -164,7 +166,7 @@
       height: window.innerHeight
     };
 
-    let adjustments = {};
+    const adjustments = {};
 
     // Check if submenu overflows right edge
     if (rect.right > viewport.width) {

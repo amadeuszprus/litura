@@ -51,6 +51,7 @@
     font-weight: 700;
     color: var(--accent);
     margin: var(--size-3) 0;
+    font-variant-numeric: tabular-nums;
   }
 
   .price-period {

@@ -40,7 +40,11 @@
     font-weight: 600;
     color: var(--fg);
     background: transparent;
-    transition: background var(--transition-fast);
+    transition: background var(--transition-fast), scale var(--transition-fast);
+  }
+
+  .accordion__header:active {
+    scale: 0.96;
   }
 
   .accordion__header::-webkit-details-marker {
@@ -51,8 +55,8 @@
     content: "";
     width: 0.5rem;
     height: 0.5rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentcolor;
+    border-bottom: 2px solid currentcolor;
     transform: rotate(45deg);
     transition: transform var(--transition-normal);
     flex-shrink: 0;
