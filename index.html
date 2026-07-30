@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="auto">
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Litura — a minimalist content-first CSS library</title>
   <meta name="description" content="A minimalist, content-focused CSS library built on modern primitives: layers, tokens, color-mix, @starting-style, container queries. 23 components, 8 themes, fluid typography, zero runtime dependencies.">
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./index.css?v=202607301232">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
@@ -42,6 +43,7 @@
     .lp-nav__links {
       margin-inline-start: auto;
       display: flex;
+      flex-wrap: wrap;
       gap: var(--size-1);
       align-items: center;
     }
@@ -264,15 +266,6 @@
     .lp-footer a { color: inherit; }
 
     .lp-theme-picker {
-      position: fixed;
-      top: var(--size-3);
-      right: var(--size-3);
-      z-index: 60;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-2);
-      padding: var(--size-2);
-      box-shadow: var(--shadow-sm);
       font-size: var(--text-xs);
     }
     .lp-theme-picker select {
@@ -291,18 +284,6 @@
   </style>
 </head>
 <body>
-  <div class="lp-theme-picker">
-    <select id="theme-select" aria-label="Theme">
-      <option value="auto">Auto</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="high-contrast">High contrast</option>
-      <option value="sepia">Sepia</option>
-      <option value="nord">Nord</option>
-      <option value="ocean">Ocean</option>
-      <option value="rose">Rose</option>
-    </select>
-  </div>
 
   <nav class="lp-nav" aria-label="Primary">
     <div class="lp-nav__inner">
@@ -312,13 +293,21 @@
         <a href="examples/">Templates</a>
         <a href="https://github.com/amadeuszprus/litura">GitHub</a>
         <a href="https://www.npmjs.com/package/litura">npm</a>
+        <div class="lp-theme-picker"><select id="theme-select" aria-label="Theme"><option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option></select></div>
       </div>
     </div>
   </nav>
 
   <section class="lp-hero">
     <div class="lp-hero__inner">
-      <span class="lp-eyebrow animate-fade-in">0.3.2-alpha · pure CSS</span>
+      <span class="lp-eyebrow animate-fade-in">0.4.0-alpha · pure CSS</span>
       <h1 class="animate-slide-up animate-delay-75">A minimalist CSS library, <em>built on modern primitives</em></h1>
       <p class="lp-lead animate-slide-up animate-delay-150">Content-first styling with <code>@layer</code>, custom properties, <code>color-mix(in oklch)</code>, <code>:has()</code>, <code>@starting-style</code>, container queries. 23 components, 8 themes, fluid typography, zero runtime dependencies.</p>
 
@@ -482,7 +471,7 @@
 
     function isDark() {
       const attr = root.getAttribute('data-theme');
-      if (attr) return DARK_THEMES.has(attr);
+      if (attr && attr !== 'auto') return DARK_THEMES.has(attr);
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
     function syncHljs() {

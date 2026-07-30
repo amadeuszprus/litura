@@ -2,20 +2,32 @@
 <html lang="en" data-theme="auto" data-font="modern">
 
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DevForum - Developer Community</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../index.css" />
+  <link rel="stylesheet" href="../index.css?v=202607301232" />
 </head>
 
 <body>
 
   <!-- Theme Switcher -->
-  <div class="theme-switcher">
-    <select id="theme-select">
+
+  <!-- Sticky Header -->
+  <header class="forum-header">
+    <div class="container">
+      <div class="flex flex-wrap justify-between items-center gap-2 py-3">
+        <a href="#" class="site-logo">DevForum</a>
+        <nav class="flex flex-wrap items-center gap-3">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Members</a>
+          <a href="#" class="nav-link">Rules</a>
+          <a href="#" class="btn btn--ghost">Log In</a>
+          <a href="#" class="btn">Sign Up</a>
+          <div class="theme-switcher theme-switcher--inline"><select id="theme-select" aria-label="Color theme">
       <option value="auto">Auto</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
@@ -24,20 +36,7 @@
       <option value="nord">Nord</option>
       <option value="ocean">Ocean</option>
       <option value="rose">Rose</option>
-    </select>
-  </div>
-
-  <!-- Sticky Header -->
-  <header class="forum-header">
-    <div class="container">
-      <div class="flex justify-between items-center py-3">
-        <a href="#" class="site-logo">DevForum</a>
-        <nav class="flex items-center gap-3">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">Members</a>
-          <a href="#" class="nav-link">Rules</a>
-          <a href="#" class="btn btn--ghost">Log In</a>
-          <a href="#" class="btn">Sign Up</a>
+    </select></div>
         </nav>
       </div>
     </div>
@@ -91,12 +90,12 @@
             <p class="category-description">Official news, updates, and important notices from the DevForum team</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">34</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">34</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">251</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">251</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">Site Maintenance Schedule</a></div>
@@ -111,12 +110,12 @@
             <p class="category-description">Off-topic conversations, introductions, and community hangout</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">1,482</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">1,482</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">9,714</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">9,714</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">What are you working on today?</a></div>
@@ -131,12 +130,12 @@
             <p class="category-description">Ask questions, get answers, and troubleshoot problems together</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">763</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">763</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">3,129</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">3,129</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">How to center a div (for real)</a></div>
@@ -159,12 +158,12 @@
             <p class="category-description">HTML, CSS, JavaScript, frameworks, and everything browser-side</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">621</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">621</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">3,407</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">3,407</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">CSS Layers changed my workflow</a></div>
@@ -179,12 +178,12 @@
             <p class="category-description">Servers, APIs, databases, and server-side languages</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">489</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">489</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">2,156</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">2,156</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">Postgres 17 performance tips</a></div>
@@ -199,12 +198,12 @@
             <p class="category-description">CI/CD, containers, cloud infrastructure, and automation</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">274</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">274</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">1,083</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">1,083</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">Docker Compose for local dev</a></div>
@@ -227,12 +226,12 @@
             <p class="category-description">Share your projects, get feedback, and celebrate your wins</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">318</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">318</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">1,540</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">1,540</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">My first SaaS launch!</a></div>
@@ -247,12 +246,12 @@
             <p class="category-description">Job postings, career advice, interviews, and professional growth</p>
           </div>
           <div class="category-stats">
-            <span class="stat-number">196</span>
-            <span class="stat-label">Topics</span>
+            <span class="forum-stat-number">196</span>
+            <span class="forum-stat-label">Topics</span>
           </div>
           <div class="category-stats">
-            <span class="stat-number">872</span>
-            <span class="stat-label">Posts</span>
+            <span class="forum-stat-number">872</span>
+            <span class="forum-stat-label">Posts</span>
           </div>
           <div class="last-post">
             <div class="last-post-title"><a href="#">Remote Sr. Frontend role open</a></div>
@@ -298,7 +297,7 @@
       <div class="widget">
         <h3 class="widget-title">Search Forum</h3>
         <form class="search-form">
-          <input type="search" class="search-input" placeholder="Search threads..." />
+          <input type="search" class="search-input" placeholder="Search threads..." aria-label="Search threads" />
           <button type="submit" class="btn">Search</button>
         </form>
       </div>
@@ -323,7 +322,7 @@
     const themeSelect = document.getElementById('theme-select');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('theme') || 'auto';
+    const savedTheme = localStorage.getItem('litura-theme') || 'auto';
     themeSelect.value = savedTheme;
 
     function applyTheme(theme) {
@@ -338,7 +337,7 @@
 
     themeSelect.addEventListener('change', (e) => {
       const theme = e.target.value;
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('litura-theme', theme);
       applyTheme(theme);
     });
   </script>

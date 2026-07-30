@@ -235,7 +235,7 @@
   }
 
   .dialog--no-header .dialog__content {
-    padding-top: var(--size-4);
+    padding-block-start: var(--size-4);
   }
 
   .dialog--no-header .dialog__header {
@@ -326,7 +326,7 @@
   }
 
   .dialog__form .form__row:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .dialog--enhanced .dialog__content {
@@ -349,8 +349,7 @@
     .dialog__header,
     .dialog__body,
     .dialog__footer {
-      padding-left: var(--size-3);
-      padding-right: var(--size-3);
+      padding-inline: var(--size-3);
     }
   }
 }

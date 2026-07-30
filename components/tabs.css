@@ -92,7 +92,10 @@
   .tabs:has(#t3:checked) .tabs__panel[data-for="t3"],
   .tabs:has(#t4:checked) .tabs__panel[data-for="t4"],
   .tabs:has(#t5:checked) .tabs__panel[data-for="t5"],
-  .tabs:has(#t6:checked) .tabs__panel[data-for="t6"] {
+  .tabs:has(#t6:checked) .tabs__panel[data-for="t6"],
+  .tabs:has(#t7:checked) .tabs__panel[data-for="t7"],
+  .tabs:has(#t8:checked) .tabs__panel[data-for="t8"],
+  .tabs:has(#t9:checked) .tabs__panel[data-for="t9"] {
     display: block;
     animation: fade-in var(--duration-200, 200ms) var(--ease-out, ease);
   }

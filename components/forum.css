@@ -61,7 +61,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
     overflow: hidden;
-    margin-bottom: var(--size-4);
+    margin-block-end: var(--size-4);
   }
 
   .section-header {
@@ -125,7 +125,7 @@
   .category-title {
     font-weight: 600;
     color: var(--fg);
-    margin-bottom: var(--size-1);
+    margin-block-end: var(--size-1);
   }
 
   .category-title a {
@@ -149,19 +149,19 @@
     color: var(--muted);
   }
 
-  .stat-number {
+  .forum-stat-number {
     font-weight: 600;
     color: var(--fg);
     display: block;
     font-size: var(--text-sm);
   }
 
-  .stat-label {
+  .forum-stat-label {
     font-size: var(--text-2xs);
   }
 
   .last-post {
-    text-align: right;
+    text-align: end;
     font-size: var(--text-sm);
     color: var(--muted);
     min-width: 120px;
@@ -170,7 +170,7 @@
   .last-post-title {
     font-weight: 500;
     color: var(--fg);
-    margin-bottom: var(--size-1);
+    margin-block-end: var(--size-1);
   }
 
   .last-post-title a {

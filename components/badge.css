@@ -3,13 +3,13 @@
     display: inline-flex;
     align-items: center;
     gap: var(--size-1);
-    padding-block: 0.05rem;
-    padding-inline: 0.35rem;
+    padding-block: 0.125rem;
+    padding-inline: 0.5rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-2);
-    font-weight: 700;
-    font-size: var(--text-2xs);
-    line-height: 1;
+    font-weight: 600;
+    font-size: var(--text-xs);
+    line-height: 1rem;
     background: var(--soft);
     color: var(--fg);
     white-space: nowrap;
@@ -37,19 +37,19 @@
     fill: var(--badge-tone);
   }
 
-  .badge--info-solid    { --badge-tone: var(--info); }
-  .badge--success-solid { --badge-tone: var(--success); }
-  .badge--warning-solid { --badge-tone: var(--warning); }
-  .badge--error-solid   { --badge-tone: var(--error); }
+  .badge--info-solid    { --badge-tone: var(--info); --badge-tone-fg: var(--info-fg, #000); }
+  .badge--success-solid { --badge-tone: var(--success); --badge-tone-fg: var(--success-fg, #000); }
+  .badge--warning-solid { --badge-tone: var(--warning); --badge-tone-fg: var(--warning-fg, #000); }
+  .badge--error-solid   { --badge-tone: var(--error); --badge-tone-fg: var(--error-fg, #000); }
 
   .badge:is(.badge--info-solid, .badge--success-solid, .badge--warning-solid, .badge--error-solid) {
     background: var(--badge-tone);
     border-color: var(--badge-tone);
-    color: var(--accent-fg);
+    color: var(--badge-tone-fg);
   }
 
   .badge:is(.badge--info-solid, .badge--success-solid, .badge--warning-solid, .badge--error-solid) .badge__icon {
-    fill: var(--accent-fg);
+    fill: var(--badge-tone-fg);
   }
 
   .badge--pill {
@@ -58,17 +58,19 @@
 
   .badge--small {
     font-size: var(--text-2xs);
-    padding-block: 0.025rem;
-    padding-inline: 0.3rem;
+    line-height: 0.875rem;
+    padding-block: 0.0625rem;
+    padding-inline: 0.375rem;
   }
 
   .badge--large {
-    font-size: var(--text-xs);
-    padding-block: 0.1rem;
-    padding-inline: 0.45rem;
+    font-size: var(--text-sm);
+    line-height: 1.25rem;
+    padding-block: 0.1875rem;
+    padding-inline: 0.625rem;
   }
 
-  .badge--dot {
+  .badge.badge--dot {
     width: 0.5rem;
     height: 0.5rem;
     border-radius: var(--radius-full);

@@ -2,19 +2,31 @@
 <html lang="en" data-theme="auto" data-font="modern">
 
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LituraInsights - A Developer Blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../index.css?v=202607301232">
 </head>
 
 <body>
   <!-- Theme Switcher -->
-  <div class="theme-switcher">
-    <select id="theme-select">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="flex flex-wrap justify-between items-center gap-2 py-4">
+        <a href="#" class="site-logo">LituraInsights</a>
+        <nav class="flex flex-wrap items-center gap-2" aria-label="Main navigation">
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
+          <a href="#" class="nav-link">Articles</a>
+          <a href="#" class="nav-link">Categories</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-link">Contact</a>
+          <div class="theme-switcher theme-switcher--inline"><select id="theme-select" aria-label="Color theme">
       <option value="auto">Auto</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
@@ -23,20 +35,7 @@
       <option value="nord">Nord</option>
       <option value="ocean">Ocean</option>
       <option value="rose">Rose</option>
-    </select>
-  </div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container">
-      <div class="flex justify-between items-center py-4">
-        <a href="#" class="site-logo">LituraInsights</a>
-        <nav class="flex items-center gap-2" aria-label="Main navigation">
-          <a href="#" class="nav-link active" aria-current="page">Home</a>
-          <a href="#" class="nav-link">Articles</a>
-          <a href="#" class="nav-link">Categories</a>
-          <a href="#" class="nav-link">About</a>
-          <a href="#" class="nav-link">Contact</a>
+    </select></div>
         </nav>
       </div>
     </div>
@@ -234,7 +233,7 @@
       <div class="widget">
         <h3 class="widget-title">Search</h3>
         <form class="search-form">
-          <input type="search" placeholder="Search articles..." class="search-input">
+          <input type="search" placeholder="Search articles..." class="search-input" aria-label="Search articles">
           <button type="submit" class="btn btn--ghost">Go</button>
         </form>
       </div>
@@ -274,7 +273,7 @@
         <h3 class="widget-title">Newsletter</h3>
         <p class="text-sm text-muted mb-3">Get weekly articles delivered to your inbox. No spam, unsubscribe anytime.</p>
         <form class="newsletter-form">
-          <input type="email" placeholder="your@email.com" required>
+          <input type="email" placeholder="your@email.com" required aria-label="Email address">
           <button type="submit" class="btn">Subscribe</button>
         </form>
       </div>
@@ -326,7 +325,7 @@
     const themeSelect = document.getElementById('theme-select');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('theme') || 'auto';
+    const savedTheme = localStorage.getItem('litura-theme') || 'auto';
     themeSelect.value = savedTheme;
 
     function applyTheme(theme) {
@@ -341,7 +340,7 @@
 
     themeSelect.addEventListener('change', (e) => {
       const theme = e.target.value;
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('litura-theme', theme);
       applyTheme(theme);
     });
 

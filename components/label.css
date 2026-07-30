@@ -37,19 +37,19 @@
     fill: var(--label-tone);
   }
 
-  .label--info-solid    { --label-tone: var(--info); }
-  .label--success-solid { --label-tone: var(--success); }
-  .label--warning-solid { --label-tone: var(--warning); }
-  .label--error-solid   { --label-tone: var(--error); }
+  .label--info-solid    { --label-tone: var(--info); --label-tone-fg: var(--info-fg, #000); }
+  .label--success-solid { --label-tone: var(--success); --label-tone-fg: var(--success-fg, #000); }
+  .label--warning-solid { --label-tone: var(--warning); --label-tone-fg: var(--warning-fg, #000); }
+  .label--error-solid   { --label-tone: var(--error); --label-tone-fg: var(--error-fg, #000); }
 
   .label:is(.label--info-solid, .label--success-solid, .label--warning-solid, .label--error-solid) {
     background: var(--label-tone);
     border-color: var(--label-tone);
-    color: var(--accent-fg);
+    color: var(--label-tone-fg);
   }
 
   .label:is(.label--info-solid, .label--success-solid, .label--warning-solid, .label--error-solid) .label__icon {
-    fill: var(--accent-fg);
+    fill: var(--label-tone-fg);
   }
 
   .label--pill {

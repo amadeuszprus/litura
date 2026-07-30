@@ -69,6 +69,16 @@
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
+
+    /* Text color on solid tone backgrounds. White on the brand-ish tones
+       (blue/green/red) is the convention; amber warning always needs dark text. */
+    --info-fg: #fff;
+    --success-fg: #fff;
+    --warning-fg: #000;
+    --error-fg: #fff;
+
+    /* Select chevron — themed via override because data URIs can't reference var(). */
+    --select-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     --shadow-xs: 0 1px 2px 0 rgb(var(--shadow-color) / calc(0.05 * var(--shadow-strength)));
     --shadow-sm: 0 1px 3px 0 rgb(var(--shadow-color) / calc(0.1 * var(--shadow-strength))),
                  0 1px 2px 0 rgb(var(--shadow-color) / calc(0.06 * var(--shadow-strength)));
@@ -105,12 +115,18 @@
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
+    /* Dark surface: dark text on these mid tones reads best (all pass AA). */
+    --info-fg: #000;
+    --success-fg: #000;
+    --warning-fg: #000;
+    --error-fg: #000;
     --backdrop-color: rgb(0 0 0 / 70%);
     --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
     --gradient-hero: linear-gradient(135deg, #18181b 0%, #09090b 100%);
     --glass-bg: rgb(20 20 23 / 70%);
     --glass-border: rgb(255 255 255 / 10%);
     --glass-shadow: 0 8px 32px 0 rgb(0 0 0 / 30%);
+    --select-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23aaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   }
 
   :root[data-theme="high-contrast"],
@@ -131,6 +147,16 @@
     --success: #a6ffbf;
     --warning: #ffe680;
     --error: #f99;
+    /* Pale pastel tones — dark text only. */
+    --info-fg: #000;
+    --success-fg: #000;
+    --warning-fg: #000;
+    --error-fg: #000;
+    --gradient-hero: linear-gradient(135deg, #1a1a00 0%, #000 100%);
+    --glass-bg: rgb(0 0 0 / 85%);
+    --glass-border: rgb(255 255 0 / 60%);
+    --glass-shadow: 0 8px 32px 0 rgb(0 0 0 / 30%);
+    --select-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ff0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   }
 
   :root[data-theme="sepia"],
@@ -150,6 +176,10 @@
     --success: #2a7f5e;
     --warning: #b87419;
     --error: #b23a3a;
+    --info-fg: #fff;
+    --success-fg: #fff;
+    --warning-fg: #000;
+    --error-fg: #fff;
   }
 
   :root[data-theme="nord"],
@@ -170,6 +200,16 @@
     --success: #a3be8c;
     --warning: #ebcb8b;
     --error: #bf616a;
+    /* Muted Nord tones — dark text reads best on all four. */
+    --info-fg: #000;
+    --success-fg: #000;
+    --warning-fg: #000;
+    --error-fg: #000;
+    --gradient-hero: linear-gradient(135deg, #3b4252 0%, #2e3440 100%);
+    --glass-bg: rgb(46 52 64 / 70%);
+    --glass-border: rgb(255 255 255 / 10%);
+    --glass-shadow: 0 8px 32px 0 rgb(0 0 0 / 30%);
+    --select-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23d8dee9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   }
 
   :root[data-theme="ocean"],
@@ -189,6 +229,10 @@
     --success: #059669;
     --warning: #d97706;
     --error: #dc2626;
+    --info-fg: #fff;
+    --success-fg: #fff;
+    --warning-fg: #000;
+    --error-fg: #fff;
   }
 
   :root[data-theme="rose"],
@@ -208,10 +252,16 @@
     --success: #7cc4a3;
     --warning: #e2a04a;
     --error: #e26d8f;
+    /* Light rose pastels — dark text reads best on all four. */
+    --info-fg: #000;
+    --success-fg: #000;
+    --warning-fg: #000;
+    --error-fg: #000;
   }
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
+    :root:not([data-theme]),
+    :root[data-theme="auto"] {
       color-scheme: dark;
 
       --bg: #0b0b0c;
@@ -223,11 +273,22 @@
       --accent-fg: #000;
       --shadow-color: 255 255 255;
       --shadow-strength: 0.8;
+      --image-outline-color: rgb(255 255 255 / 10%);
       --info: #3b82f6;
       --success: #10b981;
       --warning: #f59e0b;
       --error: #ef4444;
+      --info-fg: #000;
+      --success-fg: #000;
+      --warning-fg: #000;
+      --error-fg: #000;
       --backdrop-color: rgb(0 0 0 / 70%);
+      --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+      --gradient-hero: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+      --glass-bg: rgb(20 20 23 / 70%);
+      --glass-border: rgb(255 255 255 / 10%);
+      --glass-shadow: 0 8px 32px 0 rgb(0 0 0 / 30%);
+      --select-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23aaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     }
   }
 
@@ -286,9 +347,15 @@
     --font-sans: var(--font-artistic-body);
   }
 
-  /* Progressive enhancement: when contrast-color() ships, derive --fg-on-accent from --accent. */
+  [data-font="artistic"] :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-artistic);
+  }
+
+  /* Progressive enhancement: when contrast-color() ships, derive --fg-on-accent from --accent.
+     :root[data-theme] keeps it winning over the explicit [data-theme="light"] block. */
   @supports (color: contrast-color(black)) {
-    :root {
+    :root,
+    :root[data-theme] {
       --fg-on-accent: contrast-color(var(--accent));
     }
   }

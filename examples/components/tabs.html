@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="auto">
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Litura — Tabs</title>
-  <link rel="stylesheet" href="../../index.css?v=202604191729">
-  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  <link rel="stylesheet" href="../../index.css?v=202607301232">
+  <link rel="stylesheet" href="_playground.css?v=202607301232">
   
 </head>
 <body data-page="tabs">
@@ -48,16 +49,16 @@
   
   <div class="pg-example__preview"><div class="tabs tabs--pills" role="tablist">
   <div class="tabs__list">
-    <input type="radio" name="p" id="p1" class="tabs__input" checked>
-    <label for="p1" class="tabs__tab" role="tab">Daily</label>
-    <input type="radio" name="p" id="p2" class="tabs__input">
-    <label for="p2" class="tabs__tab" role="tab">Weekly</label>
-    <input type="radio" name="p" id="p3" class="tabs__input">
-    <label for="p3" class="tabs__tab" role="tab">Monthly</label>
+    <input type="radio" name="p" id="t4" class="tabs__input" checked>
+    <label for="t4" class="tabs__tab" role="tab">Daily</label>
+    <input type="radio" name="p" id="t5" class="tabs__input">
+    <label for="t5" class="tabs__tab" role="tab">Weekly</label>
+    <input type="radio" name="p" id="t6" class="tabs__input">
+    <label for="t6" class="tabs__tab" role="tab">Monthly</label>
   </div>
-  <div class="tabs__panel" data-for="p1" role="tabpanel">Daily view</div>
-  <div class="tabs__panel" data-for="p2" role="tabpanel">Weekly view</div>
-  <div class="tabs__panel" data-for="p3" role="tabpanel">Monthly view</div>
+  <div class="tabs__panel" data-for="t4" role="tabpanel">Daily view</div>
+  <div class="tabs__panel" data-for="t5" role="tabpanel">Weekly view</div>
+  <div class="tabs__panel" data-for="t6" role="tabpanel">Monthly view</div>
 </div></div>
   <pre class="pg-example__code"><code class="language-html">&lt;div class="tabs tabs--pills" role="tablist"&gt;…&lt;/div&gt;</code></pre>
 </div>
@@ -67,16 +68,16 @@
   
   <div class="pg-example__preview"><div class="tabs tabs--vertical" role="tablist">
   <div class="tabs__list">
-    <input type="radio" name="v" id="v1" class="tabs__input" checked>
-    <label for="v1" class="tabs__tab" role="tab">Section 1</label>
-    <input type="radio" name="v" id="v2" class="tabs__input">
-    <label for="v2" class="tabs__tab" role="tab">Section 2</label>
-    <input type="radio" name="v" id="v3" class="tabs__input">
-    <label for="v3" class="tabs__tab" role="tab">Section 3</label>
+    <input type="radio" name="v" id="t7" class="tabs__input" checked>
+    <label for="t7" class="tabs__tab" role="tab">Section 1</label>
+    <input type="radio" name="v" id="t8" class="tabs__input">
+    <label for="t8" class="tabs__tab" role="tab">Section 2</label>
+    <input type="radio" name="v" id="t9" class="tabs__input">
+    <label for="t9" class="tabs__tab" role="tab">Section 3</label>
   </div>
-  <div class="tabs__panel" data-for="v1" role="tabpanel">Panel 1</div>
-  <div class="tabs__panel" data-for="v2" role="tabpanel">Panel 2</div>
-  <div class="tabs__panel" data-for="v3" role="tabpanel">Panel 3</div>
+  <div class="tabs__panel" data-for="t7" role="tabpanel">Panel 1</div>
+  <div class="tabs__panel" data-for="t8" role="tabpanel">Panel 2</div>
+  <div class="tabs__panel" data-for="t9" role="tabpanel">Panel 3</div>
 </div></div>
   <pre class="pg-example__code"><code class="language-html">&lt;div class="tabs tabs--vertical"&gt;…&lt;/div&gt;</code></pre>
 </div>
@@ -95,7 +96,7 @@
   </tbody>
 </table>
 
-  <p class="text-sm" style="color:var(--muted);margin-top:var(--size-4)"><strong>Note:</strong> The CSS routes panels for IDs <code>t1</code>–<code>t6</code> out of the box. For unique IDs, extend the <code>:has</code> selector in <code>components/tabs.css</code>.</p>
+  <p class="text-sm" style="color:var(--muted);margin-top:var(--size-4)"><strong>Note:</strong> The CSS routes panels for IDs <code>t1</code>–<code>t9</code> out of the box. For unique IDs, extend the <code>:has</code> selector in <code>components/tabs.css</code>.</p>
   
   </main>
   <script src="_playground.js"></script>

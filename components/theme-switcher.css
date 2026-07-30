@@ -20,7 +20,7 @@
     color: var(--fg);
     font-size: var(--text-sm);
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-image: var(--select-chevron, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"));
     background-repeat: no-repeat;
     background-position: right var(--size-2) center;
     background-size: 0.875rem;
@@ -29,5 +29,15 @@
   .theme-switcher select:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+  }
+
+  /* Inline variant — sits in the page flow (e.g. inside a site header)
+     instead of floating fixed over the top-right corner. */
+  .theme-switcher--inline {
+    position: static;
+    box-shadow: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
   }
 }

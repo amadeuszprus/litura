@@ -130,7 +130,8 @@
     object-fit: cover;
   }
 
-  /* In horizontal, content sections fill remaining width and stack vertically */
+  /* In horizontal, each non-media child fills the remaining width beside the media
+     (use a single wrapper around header/body/footer if you need them stacked) */
   .card--horizontal > :not(.card__media) {
     flex: 1;
     min-width: 0;

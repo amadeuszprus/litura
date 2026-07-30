@@ -2,38 +2,27 @@
 <html lang="en" data-theme="auto" data-font="minimal">
 
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dashboard - Litura</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../index.css?v=202607301232">
 </head>
 
 <body>
 
   <!-- Theme Switcher -->
-  <div class="theme-switcher">
-    <select id="theme-select">
-      <option value="auto">Auto</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="high-contrast">High Contrast</option>
-      <option value="sepia">Sepia</option>
-      <option value="nord">Nord</option>
-      <option value="ocean">Ocean</option>
-      <option value="rose">Rose</option>
-    </select>
-  </div>
 
   <!-- Sticky Header -->
   <header class="site-header">
     <nav class="container">
-      <div class="flex justify-between items-center py-3">
+      <div class="flex flex-wrap justify-between items-center gap-2 py-3">
         <a href="#" class="site-logo">Dashboard</a>
 
-        <div class="flex items-center gap-2" aria-label="Main navigation">
+        <div class="flex flex-wrap items-center gap-2" aria-label="Main navigation">
           <a href="#" class="nav-link active" aria-current="page">Overview</a>
           <a href="#" class="nav-link">Analytics</a>
           <a href="#" class="nav-link">Products</a>
@@ -43,6 +32,16 @@
         <div class="flex items-center gap-2">
           <span class="text-sm text-muted">Jane Doe</span>
           <span class="flex items-center justify-center w-8 h-8 bg-accent text-accent-fg font-semibold rounded-full text-sm">JD</span>
+          <div class="theme-switcher theme-switcher--inline"><select id="theme-select" aria-label="Color theme">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select></div>
         </div>
       </div>
     </nav>
@@ -161,32 +160,32 @@
               <h2 class="card__title">Revenue Trend</h2>
             </div>
             <div class="card__body">
-              <div class="flex items-end gap-2" style="height: 12rem">
-                <div class="flex flex-col flex-1 items-center gap-1">
+              <div class="flex gap-2" style="height: 12rem">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 55%"></div>
                   <span class="text-xs text-muted">Mon</span>
                 </div>
-                <div class="flex flex-col flex-1 items-center gap-1">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 72%"></div>
                   <span class="text-xs text-muted">Tue</span>
                 </div>
-                <div class="flex flex-col flex-1 items-center gap-1">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 48%"></div>
                   <span class="text-xs text-muted">Wed</span>
                 </div>
-                <div class="flex flex-col flex-1 items-center gap-1">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 85%"></div>
                   <span class="text-xs text-muted">Thu</span>
                 </div>
-                <div class="flex flex-col flex-1 items-center gap-1">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 100%"></div>
                   <span class="text-xs text-muted">Fri</span>
                 </div>
-                <div class="flex flex-col flex-1 items-center gap-1">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 65%"></div>
                   <span class="text-xs text-muted">Sat</span>
                 </div>
-                <div class="flex flex-col flex-1 items-center gap-1">
+                <div class="flex flex-col flex-1 items-center justify-end gap-1">
                   <div class="w-full bg-accent rounded-1" style="height: 38%"></div>
                   <span class="text-xs text-muted">Sun</span>
                 </div>
@@ -411,7 +410,7 @@
     const themeSelect = document.getElementById('theme-select');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('theme') || 'auto';
+    const savedTheme = localStorage.getItem('litura-theme') || 'auto';
     themeSelect.value = savedTheme;
 
     function applyTheme(theme) {
@@ -426,7 +425,7 @@
 
     themeSelect.addEventListener('change', (e) => {
       const theme = e.target.value;
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('litura-theme', theme);
       applyTheme(theme);
     });
   </script>

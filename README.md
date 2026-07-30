@@ -635,6 +635,22 @@ Litura uses CSS Layers for predictable cascade control:
 
 ## Changelog
 
+### 0.4.0-alpha
+- **fix(minify)!**: minifier switched from `cleancss` to `lightningcss` — the old bundle rewrote `@import … layer(x)` into invalid `@media layer(x)`, so `min/index.min.css` applied no styles at all. The bundle works again and `@starting-style`, `color-mix()`, `interpolate-size` and `contrast-color()` survive minification.
+- **feat(tokens)**: new per-theme on-colors `--info-fg` / `--success-fg` / `--warning-fg` / `--error-fg` — solid badge/label/alert variants now meet WCAG AA in every theme instead of reusing `--accent-fg`. New `--select-chevron` token so `<select>` arrows follow the theme (dark, nord, high-contrast, auto-dark).
+- **fix(forms)**: legacy validation fallback used `border-color: unset`, which resolved to `currentColor` and overrode the real error styles — replaced with `var(--line)` guarded by `:not(:user-invalid):not([aria-invalid="true"])`. Error states for checkbox/radio/switch now target the real inputs (the old rules hit `display:none` elements). Added `@media (forced-colors: active)` support for custom checkbox/radio/switch.
+- **fix(components)!**: class collisions between component files resolved — press.css classes that clashed with blog.css are prefixed (`.press-article-card`, `.press-article-title`, `.press-article-meta`, `.press-article-excerpt`, `.press-site-header`, `.press-site-logo`, `.press-site-footer`, `.press-widget`, `.press-widget-title`, `.press-widget-list`, `.press-newsletter-form`, `.press-section-icon`), forum.css stats renamed to `.forum-stat-number` / `.forum-stat-label`. `.stat-number` from stats.css renders big accent numbers again.
+- **fix(themes)**: explicit `data-theme="auto"` now behaves like no attribute (alias in the auto-dark block) instead of locking the page to light. Auto-dark gained the missing `--glass-*`, `--image-outline-color` and `--gradient-*` tokens; nord and high-contrast got glass tokens too.
+- **feat(theme-switcher)**: `.theme-switcher--inline` static variant; all templates moved the switcher into the page header instead of floating it over content. Unified localStorage keys (`litura-theme` / `litura-font`) across every page plus an inline anti-FOUC snippet in each `<head>`.
+- **fix(tabs)**: panel routing preset extended to `t1`–`t9`; playground pills/vertical examples used unrouted IDs and never switched — fixed.
+- **fix(toast)**: local copies of the slide-in keyframes plus duration/easing fallbacks — importing `components/toast.css` alone now animates without `utilities/animations.css`.
+- **fix(tooltip)**: long tooltips wrap (`width: max-content` instead of `white-space: nowrap`).
+- **fix(js)**: re-enhancement no longer stacks event listeners (delegated document click for menus, `:not(--enhanced)` filters); `trapFocus` guards against dialogs with no focusable elements; alert close button `aria-label` in English.
+- **fix(dashboard)**: revenue chart columns get `justify-end` so percentage-height bars are visible and bottom-aligned.
+- **fix(typography)**: `[data-font="artistic"]` applies the display font to headings again; `contrast-color()` progressive enhancement now also wins over explicit `data-theme` blocks.
+- **a11y**: `aria-label` on template search/newsletter inputs; template headers wrap on narrow screens (`flex-wrap`); alert container dropped `!important` overrides.
+- **chore**: `tokens.json` synced with tokens.css (fluid `clamp()` text scale, tone on-colors); badge sizing polished (consistent line-heights and paddings); physical properties → logical in blog/press/forum/menu/nav/prose/dialog.
+
 ### 0.3.2-alpha
 - **polish(interaction)**: `scale(0.96)` on press across all interactive surfaces — `.btn`, `.dialog__close`, `.dialog__trigger`, `.menu__trigger`, `.accordion__header`, `.tabs__tab`, `.toast__close`, landing `.lp-link-card` / `.lp-install__copy`. Specific `transition` properties instead of `transition: all`.
 - **polish(type)**: `-webkit-font-smoothing: antialiased` + `-moz-osx-font-smoothing: grayscale` on body. `text-wrap: balance` on h1–h6, `text-wrap: pretty` on paragraphs.

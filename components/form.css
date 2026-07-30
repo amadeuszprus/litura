@@ -25,10 +25,6 @@
     margin-bottom: var(--form-field-gap);
   }
 
-  .form__row .form__group :is(input, select, textarea):last-child {
-    margin-bottom: var(--form-field-gap);
-  }
-
   .form label:not(.form__checkbox):not(.form__radio):not(.form__switch) {
     display: block;
     font-weight: 600;
@@ -73,7 +69,7 @@
     -moz-appearance: none;
     cursor: pointer;
     padding-right: var(--size-6);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-image: var(--select-chevron, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"));
     background-repeat: no-repeat;
     background-position: right var(--size-3) center;
     background-size: 1rem;
@@ -134,12 +130,15 @@
       border-color: var(--error);
     }
 
-    .form :is(input, textarea):invalid:not(:focus):not(:placeholder-shown) {
-      border-color: unset;
+    /* Neutralize the legacy fallback so the error shows only after user interaction.
+       :not(:user-invalid)/:not([aria-invalid]) keep the real error states winning —
+       `unset` here would resolve to currentColor and override them. */
+    .form :is(input, textarea):invalid:not(:focus):not(:placeholder-shown):not(:user-invalid):not([aria-invalid="true"]) {
+      border-color: var(--line);
     }
 
-    .form select:invalid:not(:focus) {
-      border-color: unset;
+    .form select:invalid:not(:focus):not(:user-invalid):not([aria-invalid="true"]) {
+      border-color: var(--line);
     }
   }
 
@@ -538,10 +537,60 @@
     flex-wrap: wrap;
   }
 
-  .form__checkbox input:user-invalid+.form__checkbox-custom,
-  .form__radio input:user-invalid+.form__radio-custom,
-  .form__switch input:user-invalid+.form__switch-track {
+  .form__checkbox input:user-invalid,
+  .form__checkbox input[aria-invalid="true"],
+  .form__radio input:user-invalid,
+  .form__radio input[aria-invalid="true"] {
     border-color: var(--error);
+  }
+
+  .form__switch input:user-invalid,
+  .form__switch input[aria-invalid="true"] {
+    outline: 2px solid var(--error);
+    outline-offset: 2px;
+  }
+
+  /* Windows High Contrast / forced colors: appearance-none controls need explicit
+     system-color state indication or checked/unchecked become indistinguishable. */
+  @media (forced-colors: active) {
+    .form__checkbox input[type="checkbox"],
+    .form__radio input[type="radio"],
+    .form__switch input[type="checkbox"] {
+      border: 1px solid ButtonText;
+    }
+
+    .form__checkbox input[type="checkbox"]:checked {
+      background: Highlight;
+      border-color: Highlight;
+    }
+
+    .form__checkbox input[type="checkbox"]:checked::after {
+      border-color: HighlightText;
+    }
+
+    .form__radio input[type="radio"]:checked {
+      border-color: Highlight;
+    }
+
+    .form__radio input[type="radio"]:checked::after {
+      background: Highlight;
+    }
+
+    .form__switch input[type="checkbox"] {
+      background: ButtonFace;
+    }
+
+    .form__switch input[type="checkbox"]::after {
+      background: ButtonText;
+    }
+
+    .form__switch input[type="checkbox"]:checked {
+      background: Highlight;
+    }
+
+    .form__switch input[type="checkbox"]:checked::after {
+      background: HighlightText;
+    }
   }
 
   .form__file-progress {

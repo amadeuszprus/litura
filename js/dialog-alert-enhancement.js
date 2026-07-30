@@ -15,20 +15,14 @@
 (function() {
   'use strict';
 
-  let isEnhanced = false;
-
   function enhanceComponents() {
-    if (isEnhanced) return;
-    
     enhanceDialogs();
     enhanceAlerts();
-    
-    isEnhanced = true;
-    console.log('Dialog & Alert enhancement: Components enhanced');
   }
 
   function enhanceDialogs() {
-    const dialogs = document.querySelectorAll('details.dialog');
+    // Only touch dialogs not enhanced yet — re-runs must not duplicate listeners.
+    const dialogs = document.querySelectorAll('details.dialog:not(.dialog--enhanced)');
     
     dialogs.forEach(dialog => {
       dialog.classList.add('dialog--enhanced');
@@ -92,7 +86,8 @@
   }
 
   function enhanceAlerts() {
-    const alerts = document.querySelectorAll('.alert');
+    // Only touch alerts not enhanced yet — re-runs must not schedule extra timers.
+    const alerts = document.querySelectorAll('.alert:not(.alert--enhanced)');
     
     alerts.forEach(alert => {
       alert.classList.add('alert--enhanced');
@@ -123,6 +118,11 @@
       'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
     );
     
+    if (focusableElements.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
     const firstFocusable = focusableElements[0];
     const lastFocusable = focusableElements[focusableElements.length - 1];
 
@@ -210,7 +210,7 @@
     // Close button
     if (closable) {
       alertHTML += `
-        <button class="alert__close" aria-label="Zamknij">
+        <button class="alert__close" aria-label="Close">
           <svg viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
@@ -268,11 +268,8 @@
 
   // Re-enhance if new components are added dynamically
   const observer = new MutationObserver(() => {
-    const newDialogs = document.querySelectorAll('details.dialog:not(.dialog--enhanced)');
-    const newAlerts = document.querySelectorAll('.alert:not(.alert--enhanced)');
-    
-    if (newDialogs.length > 0 || newAlerts.length > 0) {
-      isEnhanced = false;
+    if (document.querySelector('details.dialog:not(.dialog--enhanced)') ||
+        document.querySelector('.alert:not(.alert--enhanced)')) {
       enhanceComponents();
     }
   });

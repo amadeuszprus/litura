@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="auto">
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Litura — Form</title>
-  <link rel="stylesheet" href="../../index.css?v=202604191729">
-  <link rel="stylesheet" href="_playground.css?v=202604191729">
+  <link rel="stylesheet" href="../../index.css?v=202607301232">
+  <link rel="stylesheet" href="_playground.css?v=202607301232">
   
 </head>
 <body data-page="form">
@@ -52,16 +53,20 @@
   <h2>Input group (addons)</h2>
   <div class="pg-example">
   
-  <div class="pg-example__preview"><div class="form__input-group" style="max-width:22rem">
-  <span class="form__input-addon">$</span>
-  <input type="number" placeholder="0.00">
-  <span class="form__input-addon">USD</span>
+  <div class="pg-example__preview"><div class="form" style="max-width:22rem">
+  <div class="form__input-group">
+    <span class="form__input-addon">$</span>
+    <input type="number" placeholder="0.00" aria-label="Amount">
+    <span class="form__input-addon">USD</span>
+  </div>
 </div></div>
-  <pre class="pg-example__code"><code class="language-html">&lt;div class="form__input-group"&gt;
-  &lt;span class="form__input-addon"&gt;$&lt;/span&gt;
-  &lt;input type="number"&gt;
-  &lt;span class="form__input-addon"&gt;USD&lt;/span&gt;
-&lt;/div&gt;</code></pre>
+  <pre class="pg-example__code"><code class="language-html">&lt;form class="form"&gt;
+  &lt;div class="form__input-group"&gt;
+    &lt;span class="form__input-addon"&gt;$&lt;/span&gt;
+    &lt;input type="number"&gt;
+    &lt;span class="form__input-addon"&gt;USD&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
 </div>
 
   <h2>Modifiers</h2>

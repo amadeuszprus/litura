@@ -20,26 +20,25 @@
     return;
   }
 
-  let isEnhanced = false;
+  // One delegated listener for all menus — attached once, so dynamically
+  // added menus are covered without stacking document-level handlers.
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('details.menu[open]').forEach(menu => {
+      if (!menu.contains(e.target)) {
+        menu.removeAttribute('open');
+      }
+    });
+  });
 
   function enhanceMenus() {
-    if (isEnhanced) return;
-    
-    const menus = document.querySelectorAll('details.menu');
-    
+    // Only touch menus not enhanced yet — re-runs must not duplicate listeners.
+    const menus = document.querySelectorAll('details.menu:not(.menu--enhanced)');
+
     if (menus.length === 0) return;
 
     menus.forEach(menu => {
-      // Add enhanced class for styling hooks if needed
+      // Add enhanced class for styling hooks (and as the "already wired" marker)
       menu.classList.add('menu--enhanced');
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        // Check if click is outside this menu
-        if (!menu.contains(e.target)) {
-          menu.removeAttribute('open');
-        }
-      });
 
       // Smart positioning when menu opens
       menu.addEventListener('toggle', () => {
@@ -105,7 +104,6 @@
       });
     });
 
-    isEnhanced = true;
     console.log('Menu enhancement: Enhanced', menus.length, 'menus');
   }
 
@@ -225,9 +223,7 @@
 
   // Re-enhance if new menus are added dynamically
   const observer = new MutationObserver(() => {
-    const newMenus = document.querySelectorAll('details.menu:not(.menu--enhanced)');
-    if (newMenus.length > 0) {
-      isEnhanced = false;
+    if (document.querySelector('details.menu:not(.menu--enhanced)')) {
       enhanceMenus();
     }
   });

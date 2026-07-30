@@ -2,30 +2,19 @@
 <html lang="en" data-theme="auto" data-font="modern">
 
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Daily Wire - Breaking News &amp; Press Releases</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../index.css?v=202607301232">
 </head>
 
 <body>
 
   <!-- Theme Switcher -->
-  <div class="theme-switcher">
-    <select id="theme-select">
-      <option value="auto">Auto</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="high-contrast">High Contrast</option>
-      <option value="sepia">Sepia</option>
-      <option value="nord">Nord</option>
-      <option value="ocean">Ocean</option>
-      <option value="rose">Rose</option>
-    </select>
-  </div>
 
   <!-- Breaking News Banner -->
   <div class="breaking-news">
@@ -36,19 +25,29 @@
   </div>
 
   <!-- Sticky Header -->
-  <header class="site-header static">
+  <header class="press-site-header static">
     <div class="press-container py-4">
       <div class="flex justify-between items-center">
         <div>
-          <a href="#" class="site-logo">The Daily Wire</a>
+          <a href="#" class="press-site-logo">The Daily Wire</a>
           <p class="tagline">Trusted News Since 1952</p>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
           <form class="search-form">
             <input type="search" class="search-input" placeholder="Search news..." aria-label="Search news">
           </form>
           <a href="#" class="nav-link">Sign In</a>
           <a href="#subscribe" class="btn btn--soft">Subscribe</a>
+          <div class="theme-switcher theme-switcher--inline"><select id="theme-select" aria-label="Color theme">
+      <option value="auto">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+      <option value="sepia">Sepia</option>
+      <option value="nord">Nord</option>
+      <option value="ocean">Ocean</option>
+      <option value="rose">Rose</option>
+    </select></div>
         </div>
       </div>
 
@@ -102,108 +101,108 @@
     <div>
       <!-- Articles Grid -->
       <section class="articles-grid">
-        <article class="article-card">
+        <article class="press-article-card">
           <div class="article-image">📊</div>
           <div class="article-content">
             <a href="#" class="article-category">BUSINESS</a>
-            <h2 class="article-title">
+            <h2 class="press-article-title">
               <a href="#">Global Markets Rally as Central Banks Signal Rate Cuts</a>
             </h2>
-            <p class="article-excerpt">
+            <p class="press-article-excerpt">
               Major stock indices surged to record highs after coordinated statements from the Federal Reserve, ECB,
               and Bank of Japan suggested a pivot toward easing monetary policy.
             </p>
-            <div class="article-meta">
+            <div class="press-article-meta">
               <span>Michael Torres</span>
               <span>2 hours ago</span>
             </div>
           </div>
         </article>
 
-        <article class="article-card">
+        <article class="press-article-card">
           <div class="article-image">🌍</div>
           <div class="article-content">
             <a href="#" class="article-category">POLITICS</a>
-            <h2 class="article-title">
+            <h2 class="press-article-title">
               <a href="#">European Parliament Passes Sweeping Digital Privacy Legislation</a>
             </h2>
-            <p class="article-excerpt">
+            <p class="press-article-excerpt">
               The new law grants citizens unprecedented control over personal data, imposing strict penalties
               on companies that fail to comply with transparency requirements.
             </p>
-            <div class="article-meta">
+            <div class="press-article-meta">
               <span>Emma Lindqvist</span>
               <span>4 hours ago</span>
             </div>
           </div>
         </article>
 
-        <article class="article-card">
+        <article class="press-article-card">
           <div class="article-image">⚡</div>
           <div class="article-content">
             <a href="#" class="article-category">TECHNOLOGY</a>
-            <h2 class="article-title">
+            <h2 class="press-article-title">
               <a href="#">Quantum Computing Breakthrough Solves Long-Standing Encryption Challenge</a>
             </h2>
-            <p class="article-excerpt">
+            <p class="press-article-excerpt">
               Researchers at MIT demonstrate a stable 1,000-qubit processor capable of breaking current
               encryption standards, prompting urgent calls for post-quantum cryptography adoption.
             </p>
-            <div class="article-meta">
+            <div class="press-article-meta">
               <span>Dr. Raj Patel</span>
               <span>5 hours ago</span>
             </div>
           </div>
         </article>
 
-        <article class="article-card">
+        <article class="press-article-card">
           <div class="article-image">🏥</div>
           <div class="article-content">
             <a href="#" class="article-category">HEALTH</a>
-            <h2 class="article-title">
+            <h2 class="press-article-title">
               <a href="#">WHO Declares End to Global Mpox Emergency After Successful Vaccination Campaign</a>
             </h2>
-            <p class="article-excerpt">
+            <p class="press-article-excerpt">
               The World Health Organization announced the conclusion of the public health emergency following
               an international vaccination effort that reached 120 million people across 45 countries.
             </p>
-            <div class="article-meta">
+            <div class="press-article-meta">
               <span>Dr. Amara Osei</span>
               <span>7 hours ago</span>
             </div>
           </div>
         </article>
 
-        <article class="article-card">
+        <article class="press-article-card">
           <div class="article-image">🚀</div>
           <div class="article-content">
             <a href="#" class="article-category">SCIENCE</a>
-            <h2 class="article-title">
+            <h2 class="press-article-title">
               <a href="#">NASA Confirms Evidence of Microbial Life in Mars Soil Samples</a>
             </h2>
-            <p class="article-excerpt">
+            <p class="press-article-excerpt">
               Analysis of samples returned by the Perseverance rover reveals biosignatures consistent with
               ancient microbial activity, marking a milestone in the search for extraterrestrial life.
             </p>
-            <div class="article-meta">
+            <div class="press-article-meta">
               <span>James Kowalski</span>
               <span>10 hours ago</span>
             </div>
           </div>
         </article>
 
-        <article class="article-card">
+        <article class="press-article-card">
           <div class="article-image">🎯</div>
           <div class="article-content">
             <a href="#" class="article-category">OPINION</a>
-            <h2 class="article-title">
+            <h2 class="press-article-title">
               <a href="#">Why the AI Governance Resolution Doesn't Go Far Enough</a>
             </h2>
-            <p class="article-excerpt">
+            <p class="press-article-excerpt">
               While the UN resolution is a step forward, its voluntary compliance mechanisms and lack of
               enforcement provisions leave critical gaps that could undermine its effectiveness.
             </p>
-            <div class="article-meta">
+            <div class="press-article-meta">
               <span>Prof. Yuki Tanaka</span>
               <span>12 hours ago</span>
             </div>
@@ -214,7 +213,7 @@
       <!-- Press Releases Section -->
       <section class="press-releases">
         <h2 class="section-title">
-          <div class="section-icon">📰</div>
+          <div class="press-section-icon">📰</div>
           Latest Press Releases
         </h2>
 
@@ -263,8 +262,8 @@
     <!-- Sidebar -->
     <aside class="press-sidebar">
       <!-- Trending Topics -->
-      <div class="widget">
-        <h3 class="widget-title">📈 Trending</h3>
+      <div class="press-widget">
+        <h3 class="press-widget-title">📈 Trending</h3>
         <a href="#" class="trending-topic">
           <div class="trending-number">1</div>
           <div class="trending-text">UN AI Governance Resolution</div>
@@ -288,8 +287,8 @@
       </div>
 
       <!-- Live Updates -->
-      <div class="widget">
-        <h3 class="widget-title">🔴 Live Updates</h3>
+      <div class="press-widget">
+        <h3 class="press-widget-title">🔴 Live Updates</h3>
         <div class="live-update">
           <div class="live-time">16:45</div>
           <div class="live-text">Senate committee hearing on AI regulation begins with opening statements</div>
@@ -309,8 +308,8 @@
       </div>
 
       <!-- Markets -->
-      <div class="widget">
-        <h3 class="widget-title">💹 Markets</h3>
+      <div class="press-widget">
+        <h3 class="press-widget-title">💹 Markets</h3>
         <div class="market-item">
           <div class="market-symbol">S&amp;P 500</div>
           <div class="market-price">
@@ -356,19 +355,19 @@
       </div>
 
       <!-- Newsletter -->
-      <div class="widget" id="subscribe">
-        <h3 class="widget-title">📧 Daily Briefing</h3>
+      <div class="press-widget" id="subscribe">
+        <h3 class="press-widget-title">📧 Daily Briefing</h3>
         <p class="text-sm text-muted mb-3">Get the day's top stories delivered to your inbox every morning.</p>
-        <form class="newsletter-form">
+        <form class="press-newsletter-form">
           <input type="email" placeholder="Your email address" required aria-label="Email address">
           <button type="submit" class="btn">Subscribe</button>
         </form>
       </div>
 
       <!-- Categories -->
-      <div class="widget">
-        <h3 class="widget-title">📂 Sections</h3>
-        <ul class="widget-list">
+      <div class="press-widget">
+        <h3 class="press-widget-title">📂 Sections</h3>
+        <ul class="press-widget-list">
           <li><a href="#">World (52)</a></li>
           <li><a href="#">Politics (38)</a></li>
           <li><a href="#">Business (41)</a></li>
@@ -382,7 +381,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="press-site-footer">
     <div class="press-container">
       <div class="footer-grid">
         <div class="footer-section">
@@ -455,7 +454,7 @@
     });
 
     // Newsletter form
-    document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+    document.querySelector('.press-newsletter-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const email = e.target.querySelector('input').value;
       alert('Subscribed: ' + email + ' (This is a demo)');
@@ -481,7 +480,7 @@
     const themeSelect = document.getElementById('theme-select');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('theme') || 'auto';
+    const savedTheme = localStorage.getItem('litura-theme') || 'auto';
     themeSelect.value = savedTheme;
 
     function applyTheme(theme) {
@@ -496,7 +495,7 @@
 
     themeSelect.addEventListener('change', (e) => {
       const theme = e.target.value;
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('litura-theme', theme);
       applyTheme(theme);
     });
   </script>

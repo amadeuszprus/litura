@@ -2,20 +2,32 @@
 <html lang="en" data-theme="auto" data-font="artistic">
 
 <head>
+  <script>/* Apply saved theme before first paint to avoid a flash */try{var d=document.documentElement,t=localStorage.getItem('litura-theme');if(t)d.setAttribute('data-theme',t);var f=localStorage.getItem('litura-font');if(f&&f!=='system')d.setAttribute('data-font',f);}catch(e){}</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Elena Vasquez - Designer &amp; Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../index.css?v=202607301232">
 </head>
 
 <body>
 
   <!-- Theme Switcher -->
-  <div class="theme-switcher">
-    <select id="theme-select">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="flex flex-wrap justify-between items-center gap-2 py-4">
+        <a href="#" class="site-logo">Elena Vasquez</a>
+        <nav class="flex flex-wrap items-center gap-2">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#work" class="nav-link">Work</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#writing" class="nav-link">Writing</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <div class="theme-switcher theme-switcher--inline"><select id="theme-select" aria-label="Color theme">
       <option value="auto">Auto</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
@@ -24,20 +36,7 @@
       <option value="nord">Nord</option>
       <option value="ocean">Ocean</option>
       <option value="rose">Rose</option>
-    </select>
-  </div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container">
-      <div class="flex justify-between items-center py-4">
-        <a href="#" class="site-logo">Elena Vasquez</a>
-        <nav class="flex items-center gap-2">
-          <a href="#about" class="nav-link">About</a>
-          <a href="#work" class="nav-link">Work</a>
-          <a href="#services" class="nav-link">Services</a>
-          <a href="#writing" class="nav-link">Writing</a>
-          <a href="#contact" class="nav-link">Contact</a>
+    </select></div>
         </nav>
       </div>
     </div>
@@ -507,7 +506,7 @@
     const themeSelect = document.getElementById('theme-select');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('theme') || 'auto';
+    const savedTheme = localStorage.getItem('litura-theme') || 'auto';
     themeSelect.value = savedTheme;
 
     function applyTheme(theme) {
@@ -522,7 +521,7 @@
 
     themeSelect.addEventListener('change', (e) => {
       const theme = e.target.value;
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('litura-theme', theme);
       applyTheme(theme);
     });
   </script>
